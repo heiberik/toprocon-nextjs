@@ -1,0 +1,28 @@
+.button-component-add {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.9em 0.9em;
+    padding-right: 1.5em;
+    margin-right: 10px;
+    white-space: nowrap;
+    transition: width 1s ease-in-out;
+    text-align: center;
+    transition: all 0.4s;
+}
+
+.button-component-add p {
+    color: inherit;
+    margin-left: 10px;
+    font-size: 1em;
+}
+
+.button-component-add svg {
+    margin: 0px;
+    height: 18px;
+    width: 18px;
+}
+
+.container-alternatives .alternative .button-component-add {
+    padding: 1em 1.3em;
+}

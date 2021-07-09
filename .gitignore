@@ -32,3 +32,13 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+server/seeder.js
+server/modules/user/users.js
+server/modules/topic/topics.js
+
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local

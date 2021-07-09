@@ -1,0 +1,77 @@
+.container-topicbar {
+    padding-top: 40px;
+    padding-bottom: 20px;
+    border-bottom: solid 2px var(--text-2-color);
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    background-color: inherit;
+    position: relative;
+}
+
+.container-part-topic {
+    display: flex;
+    position: relative;
+}
+
+.input-style::placeholder {
+    color: var(--text-2-color);
+}
+
+
+.button-submit-topic {
+    width: 10em;
+}
+
+#button-argument-top:hover:before {
+    content: "Top";
+}
+
+#button-argument-new:hover:before {
+    content: "Newest";
+}
+
+#button-argument-controversial:hover:before {
+    content: "Controversial";
+}
+
+.button-sort:hover:before, .button-sort-active:hover:before {
+    position: absolute;
+    color: var(--background-1-color);
+    background-color: var(--text-2-color);
+    padding: 5px 15px;
+    top: -30px;
+    font-size: 0.9em;
+    left: 50%;
+    font-weight: 400;
+    border-radius: 5px;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-settings-switch {
+    border-radius: 5px;
+    width: 160px;
+    height: 52px;
+    border: none;
+    margin-right: 10px;
+    color: var(--primary-1-color);
+    background-color: var(--card-1-color) !important;
+    border: solid 1px var(--text-2-color) !important;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 20px;
+    align-items: center;
+}
+
+.button-settings-switch svg {
+    height: 20px;
+    width: 20px;
+    color: inherit;
+}
+
+.container-alternatives .button-submit-topic {
+    padding: .5em .7em;
+}

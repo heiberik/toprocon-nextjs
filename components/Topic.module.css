@@ -1,0 +1,64 @@
+.container-card-topic {
+    padding: 30px;
+    border-radius: 5px;
+    background-color: var(--text-2-color);
+    background-color: var(--card-1-color);
+    border: solid 1px var(--text-2-color);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    transition: all 0.1s;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+}
+
+.container-card-topic:hover {
+    border: solid 1px rgba(255, 255, 255, 0.6);
+}
+
+.container-card-topic .container-report {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: rgb(121, 121, 134);
+}
+
+.topic-card-name {
+    color: var(--background-1-color);
+    font-weight: 600;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.topic-card-username {
+    font-size: 1em;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.7);
+    border-radius: 2px;
+    margin-bottom: 15px;
+}
+
+.container-card-topic div {
+    display: flex;
+    align-items: center;
+}
+
+.topic-card-info {
+    color: rgba(255, 255, 255, 0.8);
+    padding: 5px 15px;
+    border: solid 2px rgb(121, 121, 134);
+    border-radius: 5px;
+    font-size: 0.9em;
+    white-space: nowrap;
+    margin-right: 10px;
+}
+
+.info-pros {
+    border: solid 2px rgb(121, 121, 134);
+}
+
+.info-cons {
+    border: solid 2px rgb(121, 121, 134);
+}

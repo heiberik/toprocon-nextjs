@@ -1,0 +1,117 @@
+.container-report {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: #797986;
+    padding: 10px;
+}
+
+.report-argument {
+    padding-top: 8px;
+    padding-right: 5px;
+    margin-right: 0px;
+    margin-left: -15px;
+    position: relative;
+}
+
+.container-report svg {
+    height: 20px;
+    color: var(--text-2-color);
+}
+
+.report-argument svg {
+    color: var(--background-1-color);
+}
+
+.container-report .dummy-popup {
+    z-index: 998;
+    padding: 10px;
+    width: 180px;
+    height: 140px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-color: transparent;
+}   
+
+.report-argument .dummy-popup {
+    z-index: 998;
+    padding: 10px;
+    width: 180px;
+    height: 140px;
+    position: absolute;
+    top: 0px;
+    right: -180px;
+    background-color: transparent;
+}
+
+
+.container-report .container-popup {
+    border-radius: 10px;
+    border: solid 2px var(--text-2-color);
+    z-index: 9999;
+    padding: 20px;
+    width: 200px;
+    height: 140px;
+    position: absolute;
+    top: 40px;
+    right: 0px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-3-color);
+    justify-content: center;
+    align-items: flex-start;
+    overflow: visible;
+}
+
+.report-argument .container-popup {
+    z-index: 9999999;
+    padding: 12px;
+    
+    position: absolute;
+    top: 40px;
+    right: -180px;
+    overflow: visible;
+}  
+
+.container-report .container-popup .report-alt {
+    color: rgba(255, 255, 255, 0.7);
+    width: fit-content;
+    white-space: nowrap;
+    padding: 3px;
+}
+
+.container-report .container-popup .report-alt::before {
+    content: "- "
+}
+
+.container-report .container-popup .thank-you {
+    color: var(--background-1-color);
+    text-align: center;
+    margin: auto;
+    font-weight: 900;
+}
+
+.container-report .container-popup .error-message-report {
+    color: var(--downvote-color);
+    text-align: center;
+    font-weight: 900;
+}
+
+
+.container-report .container-popup .report-header {
+    color: var(--background-1-color);
+    margin-bottom: 5px;
+    margin-left: 2px;
+    width: fit-content;
+    background-color: var(--card-1-color);
+    border: solid 1px var(--text-2-color);
+    border-radius: 5px;
+    padding: 6px 15px;
+    padding-top: 8px;
+}
+
+
+.container-report .container-popup .report-alt:hover {
+    color: var(--background-1-color);
+}

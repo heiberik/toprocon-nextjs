@@ -1,0 +1,63 @@
+.search-form-container {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+}
+
+.search-form-container .button-search-open {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    
+}
+
+.search-form-container .button-search svg, .search-form-container .button-search-open svg {
+    color: inherit;
+    height: 18px;
+    width: 18px;
+}
+
+.search-form-container .button-search, .search-form-container .button-search-open {
+    background-color: var(--text-2-color);
+    background-color: var(--card-1-color);
+    border: solid 2px var(--text-2-color);
+}
+
+
+.search-form-container .form-search {
+    margin-left: 0px;
+    width: 0px;
+    max-width: 400px;
+    transition: all ease-in .5s;
+    overflow: hidden;
+    position: relative;
+}
+
+.search-form-container .input-search {
+    width: calc(100% - 25px);
+    border: solid 2px var(--text-2-color);
+    border-left: none;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    background-color: rgba(0, 0, 0, 0.1);
+    color: var(--background-1-color);
+    opacity: 1;
+    padding: 0.9em;
+    padding-left: 20px;
+    padding-right: 0px;
+    font-size: 1em;
+}
+
+.search-form-container .submit-search {
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 0px;
+    background-color: var(--card-1-color);
+    color: var(--background-1-color);
+    outline: none;
+    border: solid 2px var(--text-2-color);
+    height: 100%;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}

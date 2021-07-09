@@ -1,0 +1,106 @@
+.input-wrapper {
+    margin-top: 35px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.container-input {
+    position: relative;
+    border-radius: 5px;
+    max-width: 45em;
+    padding: 12px 20px;
+    padding-right: 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 5px;
+    background-color: var(--background-3-color);
+    border: solid var(--text-2-color) 2px;
+}
+
+.container-input svg {
+    color: var(--background-1-color);
+}
+
+.container-input .icon-valid {
+    color: var(--primary-1-color);
+    width: 20px;
+    height: 20px;
+    opacity: 1;
+}
+
+
+.container-input div {
+    position: absolute;
+    left: 15px;
+}
+
+
+.input-style {
+    border: none;
+    width: 100%;
+    margin-bottom: 0px;
+    font-size: 1em;
+    padding-left: 15px;
+    margin-left: 15px;
+    background-color: inherit;
+    color: var(--text-2-color);
+    color: rgba(255, 255, 255, 1);
+    opacity: 1;
+    border-radius: 0px;
+}
+
+.input-style::placeholder {
+    opacity: 1;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+    box-shadow: 0 0 0 30px var(--background-3-color) inset !important;
+    -webkit-box-shadow: 0 0 0 30px var(--background-3-color) inset !important;
+    -webkit-text-fill-color: white !important;
+}
+
+.input-style::-webkit-scrollbar {
+    width: 6px;
+}
+
+.input-style::-webkit-scrollbar-thumb {
+    background-color: var(--primary-1-color);
+    border-radius: 3px;
+}
+
+.input-style:focus {
+    opacity: 1;
+}
+
+
+.input-label {
+    margin-left: 5px;
+    font-weight: 500;
+    font-size: 1.1em;
+    color: var(--text-3-color);
+}
+
+.check-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -40px;
+}
+
+.input-button {
+    padding: 0.8em 1.5em;
+    border: solid 2px var(--text-1-color);
+    background-color: var(--background-1-color);
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+    color: var(--text-2-color);
+    font-weight: 500;
+    font-size: 1em;
+    width: fit-content;
+    white-space: nowrap;
+    transition: all 0.5s;
+    margin-top: 20px;
+}   

@@ -1,0 +1,30 @@
+.resources-button {
+    margin: auto;
+    margin-left: 0px;
+    margin-right: 0px;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.4);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.container-resources {
+    display: flex;
+    justify-content: center;
+    margin-left: 0px;
+    padding-left: 20px;
+    align-items: center;
+    border-radius: 5px;
+    background-color: inherit;
+    width: fit-content;
+}
+
+.container-resources a {
+    color: var(--text-2-color);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9em;
+    margin-right: 10px;
+}
+
+.container-resources a:hover {
+    color: var(--background-1-color);
+}

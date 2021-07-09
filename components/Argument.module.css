@@ -1,0 +1,109 @@
+.argument {
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    padding-right: 0px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: var(--text-2-color);
+    background-color: var(--card-1-color);
+    border: solid 1px var(--text-2-color);
+    max-height: 100%;   
+    transition: all 0.5s;
+    cursor: default;
+}
+
+.argument .container-report svg {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.argument:last-of-type {
+    margin-bottom: 0px;
+}
+
+.fadeInChildren:last-of-type {
+    margin-bottom: 0px;
+}
+
+.argument-username {
+    margin-top: 8px;
+    margin-bottom: 20px;
+    width: fit-content;
+    color: var(--primary-1-color);
+    color: rgb(149, 145, 149);
+    font-size: 0.9em;
+    font-weight: 400;
+    cursor: pointer;
+} 
+
+.argument-text {
+    max-width: 100%;   
+    color: var(--background-1-color);
+    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: hidden;
+    transition: all 1s;
+    font-size: 1em;
+    line-height: 1.5em;
+}
+
+.argument-text-expanded {
+    white-space: pre-line;
+}
+
+.wrapper-upvote {
+    width: 5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+.wrapper-upvote svg {
+    color: var(--upvote-color);
+}
+
+.wrapper-upvote:hover p {
+    color: var(--upvote-color);
+}
+
+.wrapper-downvote:hover p {
+    color: var(--downvote-color);
+}   
+
+.upvote {
+    color: var(--upvote-color);
+    font-size: 1em;
+    text-align: right;
+    color: white;
+    margin-top: 2px;
+}
+
+.wrapper-downvote {
+    margin-top: 8px;
+    flex-direction: column;
+    border-radius: 5px;
+    width: 5em;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.wrapper-downvote svg {
+    color: var(--downvote-color);
+}
+
+
+.downvote {
+    color: var(--downvote-color);
+    color: white;
+    font-size: 1em;
+    text-align: right;
+}
+
+
+

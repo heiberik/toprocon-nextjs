@@ -1,0 +1,192 @@
+.container-searchbar {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    border-bottom: solid 2px var(--background-1-color);
+    border-bottom: solid 2px var(--text-2-color);
+    margin-bottom: 20px;
+}
+
+.container-part {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    width: fit-content;
+}
+
+
+.button-settings {
+    position: relative;
+    border-radius: 5px;
+    width: 60px;
+    height: 46px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-2-color);
+}
+
+.button-settings svg {
+    width: 22px;
+    height: 22px;
+    color: var(--text-2-color);
+}
+ 
+
+.input-style-search {
+    margin-bottom: 0px;
+    padding-left: 20px;
+    background-color: var(--background-1-color);
+    border: solid 1px var(--background-3-color);
+    color: var(--text-1-color);
+    opacity: 1;
+    width: 100%;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    transition: all 0.5s;
+}
+
+
+
+.button-sort {
+    margin-left: 10px;
+    width: 52px;
+    height: 46px;
+    background-color: var(--text-2-color);
+    border: none;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--background-1-color);
+    border: solid 2px var(--text-2-color);
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+.button-sort svg, .button-sort-active svg {
+    width: 18px;
+    height: 18px;
+    color: inherit;
+}
+
+.button-sort-active {
+    position: relative;
+    margin-left: 10px;
+    border-radius: 5px;
+    width: 52px;
+    height: 46px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-1-color);
+    color: var(--background-1-color);
+    border: solid 2px var(--primary-1-color);
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+
+}
+
+.button-search-topic {
+    padding: 0.9em 1.5em;
+    margin-right: 10px;
+    border: solid 1px var(--background-3-color);
+    border-left: none;
+    background-color: var(--background-2-color);
+    box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+    color: var(--primary-1-color);
+    white-space: nowrap;
+    transition: all 0.5s;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;    
+    transition: all 0.5s;
+}
+
+.button-search-topic:hover {
+    background-color: inherit;
+}
+
+.container-search-form {
+    display: flex;
+    width: 100%;
+}
+
+#button-topic-top:hover:before {
+    content: "Top";
+}
+
+#button-topic-new:hover:before {
+    content: "Newest";
+}
+
+#button-topic-controversial:hover:before {
+    content: "Controversial";
+}
+
+.container-alternatives {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    top:60px;
+    z-index: 1;
+    border-radius: 5px;
+    left: 0px;
+    width: calc(100% - 40px);
+    background-color: var(--background-1-color);
+    border: solid 1px var(--background-2-color);
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-top: none;
+
+}
+
+.container-alternatives .alternative {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+    margin: 0px;
+    height: 75px;
+    width: 100%;
+    border-radius: 5px;
+}
+
+
+.container-alternatives button:hover:before {
+    content: "" !important;
+    display: none !important;
+}
+
+.container-alternatives .active-alternative {
+    color: var(--text-2-color);
+    background-color:  var(--primary-1-color);
+    border: solid 1px rgba(255,255,255,0.2);
+}
+
+
+
+@media screen and (max-width: 1000px) {
+
+    .container-header {
+        margin-bottom: 10px;
+    } 
+
+
+    .header-name {
+        padding-right: 0px;
+        margin-right: 0px;
+        border-right: none;
+    }
+
+    .wrapper-header {
+        height: 5em;
+        padding: 0px 10px;
+        padding-right: 30px;
+    }
+
+    .wrapper-header img{
+        margin-left: -18px;
+    }
+}
