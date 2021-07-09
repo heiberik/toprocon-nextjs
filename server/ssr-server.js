@@ -1,11 +1,10 @@
-//import userRoutes from './pages/api/user/userRoutes.js'
+import userRoutes from './modules/user/userRoutes.js'
 import topicRoutes from './modules/topic/topicRoutes.js'
+import reportRoutes from "./modules/report/reportRoutes.js"
+import boardRoutes from "./modules/leaderboard/boardRoutes.js"
+import argumentRoutes from './modules/argument/argumentRoutes.js'
+import bp from 'body-parser'
 
-/*
-import reportRoutes from "./pages/api/report/reportRoutes.js"
-import boardRoutes from "./pages/api/leaderboard/boardRoutes.js"
-import argumentRoutes from './pages/api/argument/argumentRoutes.js'
-*/
 
 import connectDB from './config/db.js'
 import express from 'express'
@@ -20,16 +19,17 @@ app.prepare()
 
         const server = express()
 
+        server.use(bp.json())
+        server.use(bp.urlencoded({ extended: true }))
+
         connectDB()
 
         server.use('/api/topics', topicRoutes)
-
-        /*
-        app.use('/api/users', userRoutes)
-        app.use('/api/arguments', argumentRoutes)
-        app.use('/api/reports', reportRoutes)
-        app.use("/api/leaderboards", boardRoutes)
-        */
+        server.use('/api/users', userRoutes)
+        server.use('/api/arguments', argumentRoutes)
+        server.use('/api/reports', reportRoutes)
+        server.use("/api/leaderboards", boardRoutes)
+    
 
         server.get('*', (req, res) => {
             return handle(req, res)

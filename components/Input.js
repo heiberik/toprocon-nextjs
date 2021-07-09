@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
-import "./Input.css"
+import styles from "./Input.module.css"
 
 const Input = ({ label, icon, handler, value, type, placeholder, name, validation, textarea }) => {
 
@@ -18,8 +18,8 @@ const Input = ({ label, icon, handler, value, type, placeholder, name, validatio
 
     if (textarea) {
         return (
-            <div className="input-wrapper">
-                <label className="input-label" htmlFor={name}> {label} </label>
+            <div className={styles["input-wrapper"]}>
+                <label className={styles["input-label"]} htmlFor={name}> {label} </label>
                 <div className="container-input">
                     <div> {valid ? <FontAwesomeIcon icon={faCheck} className="icon-valid" color="rgb(253, 193, 19)" /> : icon} </div>
                     <textarea
@@ -27,7 +27,7 @@ const Input = ({ label, icon, handler, value, type, placeholder, name, validatio
                         value={value}
                         name={name}
                         id={name}
-                        className="input-style"
+                        className={styles["input-style"]}
                         onChange={handler}
                         placeholder={placeholder}
                         autoComplete="off" />
@@ -36,15 +36,15 @@ const Input = ({ label, icon, handler, value, type, placeholder, name, validatio
         )
     }
     else return (
-        <div className="input-wrapper">
-            <label className="input-label" htmlFor={name}> {label} </label>
-            <div className="container-input">
+        <div className={styles["input-wrapper"]}>
+            <label className={styles["input-label"]} htmlFor={name}> {label} </label>
+            <div className={styles["container-input"]}>
                 <div> {valid ? <FontAwesomeIcon icon={faCheck} className="icon-valid" color="rgb(253, 193, 19)"/> : icon} </div>
                 <input
                     type={type}
                     value={value}
                     name={name}
-                    className="input-style"
+                    className={styles["input-style"]}
                     onChange={handler}
                     placeholder={placeholder}
                     id={name}

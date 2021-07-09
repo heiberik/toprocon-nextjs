@@ -13,7 +13,6 @@ class UserService {
     authUser = async (username, password) => {
 
         const user = await User.findOne({ username })
-
         if (!user) throw new Error('Invalid email or password.');
 
         const passwordMatch = await user.matchPassword(password)

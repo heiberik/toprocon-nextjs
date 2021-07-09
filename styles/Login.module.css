@@ -1,0 +1,30 @@
+.container-auth-card {
+    padding: 40px 50px;
+    background-color: var(--text-2-color);
+    background-color: var(--card-1-color);
+    border: solid 2px var(--text-2-color);
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    margin: 0px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}
+
+.container-auth-card h1 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.button-margin {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+@media screen and (max-width: 600px) {
+    .container-auth-card {
+        padding: 15px;
+        width: calc(100% - 30px);
+        max-width: 100%;
+    }
+}

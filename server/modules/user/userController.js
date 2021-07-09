@@ -1,13 +1,23 @@
 import asyncHandler from 'express-async-handler'
 import User from './userModel.js'
+import dayjs from "dayjs";
 import UserService from "./userService.js"
 
 const authUser = asyncHandler(async (req, res) => {
 
     const { username, password } = req.body
-    
+
     UserService.authUser(username, password)
         .then(userJson => {
+
+            const token = userJson.token
+
+            res.cookie("jwt", JSON.stringify(token), {
+                secure: process.env.NODE_ENV !== "development",
+                httpOnly: true,
+                expires: dayjs().add(30, "days").toDate(),
+            });
+
             res.json(userJson)
         })
         .catch(error => {
@@ -65,7 +75,7 @@ const activateUser = asyncHandler(async (req, res) => {
 
     UserService.activateUser(username, token)
         .then(userJson => {
-            const baseUrl = process.env.NODE_ENV == "development" ? "localhost:3000" : req.headers.host 
+            const baseUrl = process.env.NODE_ENV == "development" ? "localhost:3000" : req.headers.host
             res.redirect(`http://${baseUrl}/login`)
         })
         .catch(error => {
@@ -222,7 +232,7 @@ export {
     getUserById,
     updateUser,
     checkIfUsernameTaken,
-    activateUser, 
+    activateUser,
     resetPassword,
     newPassword,
     banUser

@@ -54,10 +54,10 @@
     opacity: 1;
 }
 
-input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active {
+.input-wrapper input:-webkit-autofill,
+.input-wrapper input:-webkit-autofill:hover, 
+.input-wrapper input:-webkit-autofill:focus, 
+.input-wrapper input:-webkit-autofill:active {
     box-shadow: 0 0 0 30px var(--background-3-color) inset !important;
     -webkit-box-shadow: 0 0 0 30px var(--background-3-color) inset !important;
     -webkit-text-fill-color: white !important;

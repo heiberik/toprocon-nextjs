@@ -6,12 +6,16 @@ import styles from "./Header.module.css"
 import Link from "next/link"
 import icon from "../public/icon.png"
 import Image from 'next/image'
+import { useRouter } from 'next/router'
+
 
 
 const Header = ({ user, setUser }) => {
 
     const [showDropdown, setShowDropdown] = useState(false)
     const [path, setPath] = useState("")
+    const router = useRouter()
+
 
     useEffect(() => {
 
@@ -30,6 +34,7 @@ const Header = ({ user, setUser }) => {
 
     const handleLogin = () => {
         setShowDropdown(false)
+        router.push("/login")
     }
 
     const handleRegister = () => {
