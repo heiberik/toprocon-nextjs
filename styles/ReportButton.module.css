@@ -7,11 +7,11 @@
 }
 
 .report-argument {
-    padding-top: 8px;
-    padding-right: 5px;
-    margin-right: 0px;
-    margin-left: -15px;
     position: relative;
+    margin-top: -12px;
+    margin-left: -5px;
+    margin-right: -10px;
+    cursor: pointer;
 }
 
 .container-report svg {
@@ -20,7 +20,7 @@
 }
 
 .report-argument svg {
-    color: var(--background-1-color);
+    color: var(--card-2-color);
 }
 
 .container-report .dummy-popup {

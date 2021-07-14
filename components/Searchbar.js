@@ -30,15 +30,12 @@ const Searchbar = ({ topics, setTopics }) => {
 
         if (!topics) return
 
-        setFetching(true)
-
         if (sortBy === "top" && topicsTop) {
             getTopics(sortBy, pageTop, limit)
                 .then(res => {
                     setPageTop(pageTop + limit)
                     setTopicsTop(topicsTop.concat(res.data))
                     setTopics(topicsTop)
-                    setFetching(false)
                 })
                 .catch(error => {
                     console.log(error);
@@ -50,7 +47,6 @@ const Searchbar = ({ topics, setTopics }) => {
                     setPageNew(pageNew + limit)
                     setTopicsNew(topicsNew.concat(res.data))
                     setTopics(topicsNew)
-                    setFetching(false)
                 })
                 .catch(error => {
                     console.log(error);
@@ -62,7 +58,6 @@ const Searchbar = ({ topics, setTopics }) => {
                     setPageControversial(pageControversial + limit)
                     setTopicsControversial(topicsControversial.concat(res.data))
                     setTopics(topicsControversial)
-                    setFetching(false)
                 })
                 .catch(error => {
                     console.log(error);
@@ -74,7 +69,6 @@ const Searchbar = ({ topics, setTopics }) => {
                     setPageSearch(pageSearch + limit)
                     setTopicsSearch(topicsSearch.concat(res.data))
                     setTopics(topicsSearch)
-                    setFetching(false)
                 })
                 .catch(error => {
                     console.log(error);
@@ -125,6 +119,7 @@ const Searchbar = ({ topics, setTopics }) => {
 
         searchTopic(searchText, 0, limit)
             .then(res => {
+                console.log(res);
                 setTopicsSearch(res.data)
                 setTopics(res.data)
             })

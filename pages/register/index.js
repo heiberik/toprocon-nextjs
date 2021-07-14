@@ -9,6 +9,7 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import validator from "email-validator"
 import styles from "../../styles/Register.module.css"
 import styles2 from "../../styles/Login.module.css"
+import Head from 'next/head'
 
 
 
@@ -88,6 +89,12 @@ const RegisterPage = () => {
 
     return (
         <div className="container-normal">
+            <Head>
+                <html lang="en" />
+                <title> Toprocon | Register</title>
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+            </Head>
+
             <div className={styles2["container-auth-card"]}>
 
                 <h1> Register </h1>

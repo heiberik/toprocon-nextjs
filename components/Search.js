@@ -36,8 +36,10 @@ const Search = ({ submitHandler, inputChangeHandler, searchText, clickHandler })
         <div className={styles["search-form-container"]} >
             
             <button
+                aria-label="Search"
                 className={active ? "button-primary" + " " + styles["button-search-open"] : "button-primary" + " " +styles["button-search"]}
                 onClick={toggleExpand} >
+                
 
                 {!active && <FontAwesomeIcon icon={faSearch} size="2x" />}
                 {active && <FontAwesomeIcon icon={faTimes} size="2x" />}

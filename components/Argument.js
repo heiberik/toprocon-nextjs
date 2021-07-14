@@ -38,14 +38,15 @@ const Argument = ({ argument, type, setTopic, user }) => {
 
     return (
         <div className={styles["argument"]} >
-            
+
             <div style={{ maxWidth: "85%" }}>
-                <div style={{display: "flex", alignItems: "flex-start"}}>
-                <ReportButton
+                <div style={{ display: "flex", alignItems: "flex-start" }}>
+                    <ReportButton
                         type="argument"
                         reportedId={argument._id}
                     />
                     <p className={styles["argument-username"]} onClick={usernameClicked}> {argument.user.username} </p>
+
                 </div>
                 <p className={styles["argument-text"]}> {argument.message} </p>
             </div>

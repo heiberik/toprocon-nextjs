@@ -19,7 +19,6 @@ const getUser = asyncHandler(async (req, res) => {
 
     UserService.getUser(req.headers.cookie)
         .then(userJson => {
-            console.log(userJson);
             res.json(userJson)
         })
         .catch(error => {

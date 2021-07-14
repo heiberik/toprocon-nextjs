@@ -85,7 +85,6 @@ class ArgumentService {
 
         if (!argument) throw new Error('Argument not found')
 
-        console.log(user);
         if (voteType === "upvote") {
             if (user.upvotes.includes(argument._id)) {
                 user.upvotes.pull({ _id: argument._id })
@@ -121,7 +120,6 @@ class ArgumentService {
                 }
             }
         }
-        console.log(user);
 
         await user.save()
         await argument.save()

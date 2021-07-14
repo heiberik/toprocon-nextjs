@@ -5,6 +5,7 @@ import Input from '../../components/Input';
 import validator from "email-validator"
 import { resetPassword } from '../../services/userService'
 import styles2 from "../../styles/Login.module.css"
+import Head from 'next/head'
 
 
 
@@ -12,7 +13,7 @@ const EmailPage = () => {
 
     const [email, setEmail] = useState("")
     const [error, setError] = useState(null)
-    const [message, setMessage] = useState(null)    
+    const [message, setMessage] = useState(null)
     const [loading, setLoading] = useState(false)
 
 
@@ -51,6 +52,13 @@ const EmailPage = () => {
 
     return (
         <div className="container-normal">
+
+            <Head>
+                <html lang="en" />
+                <title> Toprocon | Reset password</title>
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+            </Head>
+
             <div className={styles2["container-auth-card"]}>
 
                 <h1> Reset password </h1>
@@ -66,7 +74,7 @@ const EmailPage = () => {
                         icon={<FontAwesomeIcon icon={faEnvelope} color="white" />} />
 
                     <div>
-                        <button type="submit" className="button-primary" style={{marginBottom: "20px", marginTop: "15px"}}> Submit </button>
+                        <button type="submit" className="button-primary" style={{ marginBottom: "20px", marginTop: "15px" }}> Submit </button>
                         {message && <p className="text-message"> {message} </p>}
                         {error && <p className="text-error"> {error} </p>}
                     </div>

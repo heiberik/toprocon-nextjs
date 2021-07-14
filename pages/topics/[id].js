@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import AddArgument from '../../components/AddArgument'
 import Argument from '../../components/Argument'
-//import Resources from '../../components/Resources'
+import Head from 'next/head'
 import TopicBar from '../../components/TopicBar'
 import { PieChart } from 'react-minimal-pie-chart'
 import ReportButton from '../../components/ReportButton'
@@ -25,6 +25,11 @@ const TopicPage = ({ user, idSet, topicServer }) => {
     if (!topic) return null
     else return (
         <div className="container-normal">
+
+            <Head>
+                <title> Toprocon | {topic.name} </title>
+                <description> Pros and Cons of {topic.name}. </description>
+            </Head>
 
             <div className={styles["container-desc"]}>
                 <div className={styles["topic-name-container"]}>
@@ -52,7 +57,7 @@ const TopicPage = ({ user, idSet, topicServer }) => {
 
 
             <TopicBar setAddingPro={setAddingPro} idSet={idSet} setAddingCon={setAddingCon} setTopic={setTopic} topic={topic} user={user} />
-            
+
 
             <div className={styles["container-arguments"]}>
 
@@ -63,7 +68,7 @@ const TopicPage = ({ user, idSet, topicServer }) => {
                             return <Argument type={"pro"} key={pro._id} user={user} setTopic={setTopic} argument={pro} />
                         })}
                     </div>
-                </div>  
+                </div>
 
                 <div className={styles["container-part-arguments"]}>
                     <div className={styles["container-args"]}>
@@ -79,13 +84,13 @@ const TopicPage = ({ user, idSet, topicServer }) => {
     )
 }
 
-export async function getServerSideProps(context){
+export async function getServerSideProps(context) {
 
     const { id } = context.query
 
     let topic = await TopicService.getTopicById(id)
     topic = JSON.parse(JSON.stringify(topic))
-    
+
     return {
         props: {
             topicServer: topic

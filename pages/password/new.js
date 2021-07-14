@@ -4,6 +4,7 @@ import { faLock } from '@fortawesome/free-solid-svg-icons'
 import Input from '../../components/Input';
 import { newPassword } from '../../services/userService';
 import styles2 from "../../styles/Login.module.css"
+import Head from 'next/head'
 
 
 
@@ -59,6 +60,13 @@ const PasswordPage = () => {
 
     return (
         <div className="container-normal">
+
+            <Head>
+                <html lang="en" />
+                <title> Toprocon | New password </title>
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+            </Head>
+
             <div className={styles2["container-auth-card"]}>
 
                 <h1> New password </h1>
@@ -81,9 +89,9 @@ const PasswordPage = () => {
                         placeholder="Reenter password"
                         validation={(v) => v === password1 && v.length >= 6}
                         icon={<FontAwesomeIcon icon={faLock} color="white" />} />
-s
+                    s
                     <div className="container-loader">
-                        <button type="submit" className="button-primary" style={{marginBottom: "20px", marginTop: "15px"}}> Submit </button>
+                        <button type="submit" className="button-primary" style={{ marginBottom: "20px", marginTop: "15px" }}> Submit </button>
                         {error && <p className="text-error"> {error} </p>}
                     </div>
 

@@ -32,12 +32,13 @@ class TopicService {
                 .limit(limit)
                 .populate({ path: 'user', model: 'User', select: 'username' })
         }
-
-        topics = await Topic.find({ active: true })
+        else {
+            topics = await Topic.find({ active: true })
             .sort({ "totalProsCons": -1, "_id": -1 })
             .skip(skip)
             .limit(limit)
             .populate({ path: 'user', model: 'User', select: 'username' })
+        }
 
         topics = topics.map(topic => {
             return {
