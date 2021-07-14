@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
-import styles from "./Search.module.css"
+import styles from "../styles/Search.module.css"
 
 const Search = ({ submitHandler, inputChangeHandler, searchText, clickHandler }) => {
 

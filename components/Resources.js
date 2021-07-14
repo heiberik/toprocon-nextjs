@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import { useMediaQuery } from 'react-responsive'
-import "./Resources.css"
+import "../styles/Resources.module.css"
 
 const Resources = ({ topic }) => {
 

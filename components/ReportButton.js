@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons'
 import { faEllipsisH } from '@fortawesome/free-solid-svg-icons'
 import { addReport } from '../services/reportService'
-import styles from "./ReportButton.module.css"
+import styles from "../styles/ReportButton.module.css"
 
 const ReportButton = ({ type, reportedId }) => {
 

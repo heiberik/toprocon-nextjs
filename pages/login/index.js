@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { loginUser } from "../services/userService"
-//import { setToken } from '../../services/tokenService'
+import { loginUser } from "../../services/userService"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { faLock } from '@fortawesome/free-solid-svg-icons'
-import Input from '../components/Input'
-import styles from "../styles/Login.module.css"
+import Input from '../../components/Input'
+import styles from "../../styles/Login.module.css"
+import { useRouter } from 'next/router'
+import { useContext } from 'react';
+import UserContext from '../../context/user';
 
 
-const LoginPage = ({ location, setUser }) => {
+const LoginPage = ({ location }) => {
+
+    const [user, setUser] = useContext(UserContext);
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
@@ -17,6 +21,8 @@ const LoginPage = ({ location, setUser }) => {
     const [error, setError] = useState(null)
     const [message, setMessage] = useState(null)
     const [loading, setLoading] = useState(false)
+
+    const router = useRouter()
 
     useEffect(() => {
 
@@ -36,13 +42,13 @@ const LoginPage = ({ location, setUser }) => {
             if (loading) return
             setLoading(true)
 
-            console.log(username);
-            console.log(password);
             loginUser(username, password)
                 .then(res => {
+
                     setLoading(false)
-                    
-                    console.log(res);
+                    setUser(res.data)
+                    router.push("/")
+
                 })
                 .catch(error => {
                     setLoading(false)

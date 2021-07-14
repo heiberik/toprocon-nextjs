@@ -11,8 +11,13 @@ export const registerUser = (username, email, password) => {
     return axios.post(`${url}`, {username, email, password })
 }
 
+export const getUser = () => {
+    return axios.get(`${url}`)
+}
+
+
 export const logoutUser = () => {
-    removeToken('userInfo')
+    return axios.post(`${url}/logout`)
 }
 
 export const checkIfUsernameTaken = (username) => {

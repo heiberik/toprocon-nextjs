@@ -2,54 +2,60 @@ import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { logoutUser } from "../services/userService"
-import "./ProfileButton.module.css"
+import styles from "../styles/ProfileButton.module.css"
 import  Link  from 'next/link'
+import { useRouter } from 'next/router'
+import { useContext } from 'react'
+import UserContext from '../context/user'
 
 
-const ProfileButton = ({ user, setUser, smallScreen, toggleDropdown }) => {
+
+const ProfileButton = ({ toggleDropdown }) => {
 
     const [showDropdown, setShowDropdown] = useState(false)
-    const history = useHistory()
+    const [user, setUser] = useContext(UserContext);
+    const router = useRouter()
 
-    const handleLogout = () => {
+    const handleLogout = async () => {
         if (toggleDropdown) toggleDropdown()
-        logoutUser()
+        await logoutUser()
         setUser(null)
-        history.go(0)
+        router.push("/")
     }
 
-    if (!smallScreen) return (
-        <div className="settings" onMouseEnter={() => setShowDropdown(true)} onMouseLeave={() => setShowDropdown(false)}>
+    return (
+        <div className={styles["settings"]} onMouseEnter={() => setShowDropdown(true)} onMouseLeave={() => setShowDropdown(false)}>
             <FontAwesomeIcon icon={faUser} size="1x" color="white" />
 
             {showDropdown &&
-                <div className="dummy-path"> </div>
+                <div className={styles["dummy-path"]}> </div>
             }
             {showDropdown &&
-                <div className="container-dropdown">
+                <div className={styles["container-dropdown"]}>
 
-                    <div className="dropdown-section-horizontal">
-                        <div className="icon-style"> {user.username.charAt(0)} </div>
+                    <div className={styles["dropdown-section-horizontal"]}>
+                        <div className={styles["icon-style"]}> {user.username.charAt(0)} </div>
                         <div style={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
-                            <p className="username-style"> {user.username} </p>
-                            <p className="email-style"> {user.email} </p>
+                            <p className={styles["username-style"]}> {user.username} </p>
+                            <p className={styles["email-style"]}> {user.email} </p>
                         </div>
                     </div>
 
-                    <div className="dropdown-section">
-                        <a href={`/profile/${user.username}`} className="text-style"> My profile </a>
-                        {false && <Link to={`/leaderboards`} className="text-style"> Leaderboards </Link>}
-                        {false && <Link to={`/about`} className="text-style"> About </Link>}
+                    <div className={styles["dropdown-section"]}>
+                        <a href={`/profile/${user.username}`} className={styles["text-style"]}> My profile </a>
+                        {false && <Link to={`/leaderboards`} className={styles["text-style"]}> Leaderboards </Link>}
+                        {false && <Link to={`/about`} className={styles["text-style"]}> About </Link>}
                     </div>
 
-                    <div className="dropdown-section">
-                        <button className="button-1 button-logout" onClick={handleLogout}> Logout </button>
+                    <div className={styles["dropdown-section"]}>
+                        <button className={styles["button-1"] + " " + styles["button-logout"]} onClick={handleLogout}> Logout </button>
                     </div>
 
                 </div>
             }
         </div>
     )
+    /*
     else return (
 
         <div>
@@ -72,7 +78,7 @@ const ProfileButton = ({ user, setUser, smallScreen, toggleDropdown }) => {
         </div>
 
     )
-
+    */
 }
 
 export default ProfileButton

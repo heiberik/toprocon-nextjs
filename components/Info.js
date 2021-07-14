@@ -1,5 +1,5 @@
 import React from 'react'
-import "./Info.css"
+import styles from "../styles/Info.module.css"
 
 const Info = ({ showInfo, setShowInfo}) => {
 

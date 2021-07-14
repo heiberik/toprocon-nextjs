@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
-import styles from "./Input.module.css"
+import styles from "../styles/Input.module.css"
 
 const Input = ({ label, icon, handler, value, type, placeholder, name, validation, textarea }) => {
 

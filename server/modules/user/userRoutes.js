@@ -5,9 +5,10 @@ const router = express.Router()
 
 import {
     authUser,
+    logoutUser,
     registerUser,
     updateUserProfile,
-    getUsers,
+    getUser,
     deleteUser,
     getPublicUserInfo,
     updateUser,
@@ -22,10 +23,13 @@ import { protect, admin } from '../../middleware/authMiddleware.js'
 
 router.route('/')
     .post(rateLimit({ windowMs: 60000 * 60, max: 50 }), registerUser)
-    .get(protect, admin, getUsers)
+    .get(getUser)
 
 router.route('/login')
     .post(rateLimit({ windowMs: 60000, max: 50 }), authUser)
+
+router.route('/logout')
+    .post(rateLimit({ windowMs: 60000, max: 50 }), logoutUser)
 
 router.route('/profile')
     .put(protect, updateUserProfile)

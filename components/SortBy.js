@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
-import styles from "./SortBy.module.css"
+import styles from "../styles/SortBy.module.css"
 
 const SortBy = ({ sortClick, sortBy, leaderboard }) => {
 

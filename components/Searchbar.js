@@ -4,7 +4,7 @@ import { useBottomScrollListener } from 'react-bottom-scroll-listener'
 import AddButton from './AddButton'
 import Search from './Search'
 import SortBy from './SortBy'
-import styles from "./Searchbar.module.css"
+import styles from "../styles/Searchbar.module.css"
 
 const Searchbar = ({ topics, setTopics }) => {
 

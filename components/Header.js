@@ -2,31 +2,31 @@ import { useEffect, useState } from 'react'
 import ProfileButton from './ProfileButton'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
-import styles from "./Header.module.css"
+import styles from "../styles/Header.module.css"
 import Link from "next/link"
 import icon from "../public/icon.png"
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+import { useContext } from 'react'
+import UserContext from '../context/user'
+import { getUser } from "../services/userService"
 
-
-
-const Header = ({ user, setUser }) => {
+const Header = ({ }) => {
 
     const [showDropdown, setShowDropdown] = useState(false)
-    const [path, setPath] = useState("")
+    const [user, setUser] = useContext(UserContext);
     const router = useRouter()
 
-
     useEffect(() => {
-
-        /*
-        setPath(window.location.pathname)
-        return history.listen((location) => {
-            setPath(location.pathname)
-        })
-        */
-
+        getUser()
+            .then(res => {
+                setUser(JSON.parse(res.data))
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }, [])
+
 
     const handleFrontPage = () => {
         setShowDropdown(false)
@@ -56,7 +56,7 @@ const Header = ({ user, setUser }) => {
                     <Link href={`/moderate`} className={styles["header-link"]}> Moderate </Link>
                 </div>
                 {user && <div className={styles["container-buttons"]}>
-                    <ProfileButton user={user} setUser={setUser} smallScreen={false} />
+                    <ProfileButton user={user} setUser={setUser} />
                 </div>}
                 {!user && <div className={styles["container-buttons"]}>
                     <button onClick={handleLogin} className={styles["header-button-first"]}> Login </button>

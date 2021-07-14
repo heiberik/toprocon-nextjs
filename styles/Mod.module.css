@@ -1,0 +1,50 @@
+.container-mod {
+    position: relative;
+}
+
+.container-mod .mod-overlay {
+    position: absolute;
+    z-index: 9999;
+    min-width: 100%;
+    min-height: 100%;
+    top: 0px;
+    left: 0px;
+    background-color: transparent;
+}
+
+
+.mod-chooser {
+    z-index: 99999;
+    position: fixed;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    bottom: 0px;
+    left: 0px;
+    min-width: 100%;
+    min-height: 6em;
+    background-color: var(--text-2-color);
+    border-top: solid 2px var(--background-1-color);
+}
+
+.mod-chooser .mod-yes {
+    background-color: var(--upvote-color);
+    border: solid 2px var(--upvote-color);
+}
+
+.mod-chooser .mod-no {
+    background-color: var(--downvote-color);
+    border: solid 2px var(--downvote-color);
+}
+
+.mod-chooser .mod-text {
+    color: var(--background-1-color);
+}
+
+.mod-fetching {
+    width: 100%;
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

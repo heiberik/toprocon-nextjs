@@ -6,7 +6,7 @@
     border-radius: 5px;
     margin-bottom: 10px;
     cursor: pointer;
-    background-color: var(--background-2-color);
+    background-color: var(--card-1-color);
     border: solid 1px white;
     max-height: 100%;
 }

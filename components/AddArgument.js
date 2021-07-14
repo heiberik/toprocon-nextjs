@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
 import { addArgument } from '../services/argumentService.js'
-import "./AddArgument.css"
+import { useContext } from 'react'
+import UserContext from '../context/user'
+import styles from "../styles/AddArgument.module.css"
 
-const AddArgument = ({ topic, type, setTopic, user, setAdding }) => {
+const AddArgument = ({ topic, type, setTopic, setAdding }) => {
 
     const [argument, setArgument] = useState("")
+    const [user, setUser] = useContext(UserContext);
     const [error, setError] = useState(null)
 
     const onSubmitHandler = (e) => {
@@ -34,28 +37,25 @@ const AddArgument = ({ topic, type, setTopic, user, setAdding }) => {
 
 
     return (
-        <div className="argument">
+        <div className={styles["argument"]}>
             <div style={{ width: "85%" }}>
                 <form onSubmit={onSubmitHandler}>
-                    <p className="argument-username"> {user?.username || "Anonymous"} </p>
-                    <div className="argument-input-wrapper">
+                    <p className={styles["argument-username"]}> {user?.username || "Anonymous"} </p>
+                    <div className={styles["argument-input-wrapper"]}>
                         <textarea 
                             autoFocus 
                             maxLength="250"
-                            className="argument-input" 
+                            className={styles["argument-input"]} 
                             value={argument} 
                             onChange={inputChangeHandler} />
                     </div>
-                    <p className="argument-length-counter"> {argument.length} / 250 </p>
-                    {error && <p className="text-error" style={{marginBottom: "20px"}}> {error} </p>}
+                    <p className={styles["argument-length-counter"]}> {argument.length} / 250 </p>
+                    {error && <p className={styles["text-error"]} style={{marginBottom: "20px"}}> {error} </p>}
                     <div>
-                        <button type="submit" className="button-add-argument"> {type === "cons" ? "Add con" : "Add pro"} </button>
-                        <button onClick={() => {setArgument(""); setAdding(false)}} className="button-delete-argument"> Delete </button>
+                        <button type="submit" className={styles["button-add-argument"]}> {type === "cons" ? "Add con" : "Add pro"} </button>
+                        <button onClick={() => {setArgument(""); setAdding(false)}} className={styles["button-delete-argument"]}> Delete </button>
                     </div>
                 </form>
-            </div>
-            <div>
-
             </div>
         </div>
     )

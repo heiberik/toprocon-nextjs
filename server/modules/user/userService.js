@@ -1,19 +1,24 @@
 import generateToken from '../../utils/generateToken.js'
-import Token from '../token/tokenModel.js';
+import Token from '../token/tokenModel.js'
 import User from './userModel.js'
 import crypto from 'crypto'
 import templates from "../../utils/templates.js"
 import mailer from '../../utils/sendMail.js'
-import Argument from '../argument/argumentModel.js';
-import Topic from '../topic/topicModel.js';
+import Argument from '../argument/argumentModel.js'
+import Topic from '../topic/topicModel.js'
+import dayjs from "dayjs"
+import cookie from "cookie"
+import jwt from 'jsonwebtoken'
+
+
 //import profanity from "@2toad/profanity"
 
 class UserService {
 
-    authUser = async (username, password) => {
+    authUser = async (username, password, res) => {
 
         const user = await User.findOne({ username })
-        if (!user) throw new Error('Invalid email or password.');
+        if (!user) throw new Error('Invalid email or password.');   
 
         const passwordMatch = await user.matchPassword(password)
         if (!passwordMatch) throw new Error('Invalid email or password.');
@@ -21,14 +26,52 @@ class UserService {
         if (user.banned) throw new Error('User is banned.');
         if (!user.active) throw new Error('Email has not been verified.');
 
+        const token = generateToken(user._id)
+
+        res.cookie("jwt", JSON.stringify(token), {
+            secure: process.env.NODE_ENV !== "development",
+            httpOnly: true,
+            expires: dayjs().add(30, "days").toDate(),
+        });
+
         return {
             _id: user._id,
             username: user.username,
             email: user.email,
             isAdmin: user.isAdmin,
             isMod: user.isMod,
-            token: generateToken(user._id),
+            token: token
         }
+    }
+
+    logoutUser = async (res) => {
+        res.clearCookie("jwt")
+        return {
+            success: true
+        }
+    }
+
+    getUser = async (cookies) => {
+
+        if (!cookies) return null
+
+        const parsedCookies = cookie.parse(cookies)
+
+        try {
+            const decoded = await jwt.verify(JSON.parse(parsedCookies.jwt), process.env.JWT_SECRET)
+            const user = await User.findById(decoded.id)
+            return JSON.stringify({
+                _id: user._id,
+                username: user.username,
+                email: user.email,
+                isAdmin: user.isAdmin,
+                isMod: user.isMod,
+            })
+        }
+        catch(e){
+            console.log(e);
+            return null
+        }   
     }
 
     banUser = async (username) => {

@@ -1,7 +1,7 @@
 import React from 'react'
 import ReportButton from './ReportButton'
 import Link from "next/link"
-import styles from "./Topic.module.css"
+import styles from "../styles/Topic.module.css"
 
 const Topic = ({ topic }) => {
 

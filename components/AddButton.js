@@ -1,7 +1,7 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
-import styles from "./AddButton.module.css"
+import styles from "../styles/AddButton.module.css"
 
 const AddButton = ({ clickHandler, text }) => {
 
