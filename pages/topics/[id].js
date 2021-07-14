@@ -35,7 +35,7 @@ const TopicPage = ({ user, idSet, topicServer }) => {
                     />
                 </div>
                 <p className={styles["topic-desc"]}> {topic.description} </p>
-                {false && <Resources topic={topic} />}
+                {/*<Resources topic={topic} /> */}
                 <div className={styles["container-pie-chart"]}>
                     <PieChart
                         reveal

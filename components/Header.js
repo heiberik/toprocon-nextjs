@@ -25,7 +25,7 @@ const Header = ({ }) => {
             .catch(error => {
                 console.log(error);
             })
-    }, [])
+    }, [setUser])
 
 
     const handleFrontPage = () => {
@@ -39,6 +39,7 @@ const Header = ({ }) => {
 
     const handleRegister = () => {
         setShowDropdown(false)
+        router.push("/register")
     }
 
     const toggleDropdown = () => {
@@ -49,8 +50,11 @@ const Header = ({ }) => {
         <div className={styles["container-header"]}>
             <div className={styles["wrapper-header"]}>
                 <div style={{ display: "flex", alignItems: "center" }}>
-                    <Image src={icon} alt="icon" />
-                    <h1 onClick={handleFrontPage} className={styles["header-name"]}> Toprocon </h1>
+                    <div className={styles["icon-container"]}>
+                        <Image src={icon} alt="icon" />
+                        <h1 onClick={handleFrontPage} className={styles["header-name"]}> Toprocon </h1>
+                    </div>
+
                     <Link href={`/`} className={styles["header-link"]}> Topics </Link>
                     <Link href={`/leaderboards`} className={styles["header-link"]}> Leaderboards </Link>
                     <Link href={`/moderate`} className={styles["header-link"]}> Moderate </Link>

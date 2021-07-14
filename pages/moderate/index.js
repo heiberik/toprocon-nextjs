@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import AuthProtect from '../../hoc/AuthProtect'
 import { decreaseReport, getReport, increaseReport } from '../../services/reportService'
-import TopicPage from './TopicPage'
-import { Ouroboro } from 'react-spinners-css';
+import TopicPage from '../topics/[id]'
 import Argument from '../../components/Argument'
 import { getArgument } from '../../services/argumentService'
-import "../../styles/Mod.module.css"
+import styles from "../../styles/Mod.module.css"
 
 
 const ModPage = ({ user }) => {
@@ -120,31 +118,31 @@ const ModPage = ({ user }) => {
             {!fetching && report &&
                 <>
 
-                    <div className="container-mod">
-                        <div className="mod-overlay"></div>
+                    <div className={styles["container-mod"]}>
+                        <div className={styles["mod-overlay"]}></div>
                         {topicId && <TopicPage user={user} idSet={topicId} />}
                         <div style={{ maxWidth: "500px", margin: "auto", marginTop: "20vh" }}>
                             {argumentId && argument && <Argument argument={argument} />}
                         </div>
                     </div>
-                    <div className="mod-chooser">
-                        <button className="button-primary mod-yes" onClick={yesClick}> Yes </button>
-                        <p className="mod-text"> Should this item be deleted / moderated?</p>
-                        <button className="button-primary mod-no" onClick={noClick}> No </button>
+                    <div className={styles["mod-chooser"]}>
+                        <button className={styles["button-primary"] + " " + styles["mod-yes"]} onClick={yesClick}> Yes </button>
+                        <p className={styles["mod-text"]}> Should this item be deleted / moderated?</p>
+                        <button className={styles["button-primary"] + " " + styles["mod-no"]} onClick={noClick}> No </button>
                     </div>
                 </>
             }
 
-            {message && <div className="mod-fetching">
+            {message && <div className={styles["mod-fetching"]}>
                 <h1 style={{ color: "var(--text-2-color)" }}> {message} </h1>
             </div>}
 
-            {fetching && <div className="mod-fetching">
-                <Ouroboro color="var(--primary-1-color)" size={200} />
+            {fetching && <div className={styles["mod-fetching"]}>
+                <h1> FETCHING</h1>
             </div>}
 
         </>
     )
 }
 
-export default AuthProtect(ModPage)
+export default ModPage

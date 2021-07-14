@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { getTopics, searchTopic } from '../services/topicService'
 import { useBottomScrollListener } from 'react-bottom-scroll-listener'
+import { useRouter } from 'next/router'
 import AddButton from './AddButton'
 import Search from './Search'
 import SortBy from './SortBy'
@@ -22,11 +23,12 @@ const Searchbar = ({ topics, setTopics }) => {
     const [pageNew, setPageNew] = useState(limit)
     const [pageControversial, setPageControversial] = useState(limit)
     const [pageSearch, setPageSearch] = useState(limit)
+    const router = useRouter()
+
 
     useBottomScrollListener(() => {
 
         if (!topics) return
-        if (fetching) return
 
         setFetching(true)
 
@@ -112,7 +114,7 @@ const Searchbar = ({ topics, setTopics }) => {
     }
 
     const addClick = () => {
-        history.push("/topics/add")
+        router.push("/topics/add")
     }
 
     const searchForTopic = (e) => {

@@ -14,13 +14,7 @@ const TopicBar = ({ setAddingPro, setAddingCon, setTopic, active, setActive, idS
 
     const [sortBy, setSortBy] = useState("top")
     const [user, setUser] = useContext(UserContext);
-
     const router = useRouter()
-
-    const toggleType = () => {
-        if (active === "pros") setActive("cons")
-        if (active === "cons") setActive("pros")
-    }
 
     const sortClick = (sortBy) => {
         setSortBy(sortBy)

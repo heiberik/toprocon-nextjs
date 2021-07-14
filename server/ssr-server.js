@@ -3,6 +3,8 @@ import topicRoutes from './modules/topic/topicRoutes.js'
 import reportRoutes from "./modules/report/reportRoutes.js"
 import boardRoutes from "./modules/leaderboard/boardRoutes.js"
 import argumentRoutes from './modules/argument/argumentRoutes.js'
+import { notFound, errorHandler } from './middleware/errorMiddleware.js'
+
 import bp from 'body-parser'
 
 
@@ -29,7 +31,7 @@ app.prepare()
         server.use('/api/arguments', argumentRoutes)
         server.use('/api/reports', reportRoutes)
         server.use("/api/leaderboards", boardRoutes)
-    
+
 
         server.get('*', (req, res) => {
             return handle(req, res)
@@ -39,6 +41,9 @@ app.prepare()
             if (err) throw err
             console.log('> Ready on http://localhost:3000')
         })
+
+        server.use(notFound)
+        server.use(errorHandler)
     })
     .catch((ex) => {
         console.error(ex.stack)

@@ -1,18 +1,13 @@
 :root {
 
     --background-1-color: #ffffff;
-    --background-1-color: #FBFEF9;
-    --background-2-color: #00000008;    
     --background-2-color: #00000034;    
-
     --background-3-color: rgb(16, 23, 34); 
+
     --background-4-color: rgba(148, 148, 148, 0.034); 
 
-    --primary-1-color: #4c3288;
-    --primary-1-color: #eb801c;
-    --primary-1-color: #f03939;
     --primary-1-color: #713e92;
-
+    --primary-2-color: #4c3288;
 
 
     --card-1-color: rgb(47, 48, 54);
@@ -21,7 +16,6 @@
     --card-1-color: #272931;
 
 
-    --primary-2-color: #4c3288;
 
 
 

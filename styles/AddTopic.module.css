@@ -1,0 +1,46 @@
+.text-error {
+    color: var(--text-error-color);
+    font-size: 12px;
+}
+
+.container-new-topic {
+    margin-top: 20px;
+    max-width: 600px;
+    background-color: var(--card-1-color);
+    border: solid 1px var(--text-2-color);
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.header-new-topic {
+    color: var(--background-1-color);
+}
+
+.new-topic-input {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.new-topic-input input {
+    background-color: var(--background-3-color);
+    border: solid 1px var(--text-2-color);
+    padding: 20px;
+    font-size: 1em;
+    color: var(--background-1-color);
+}
+
+.new-topic-input textarea {
+    background-color: var(--background-3-color);
+    border: solid 1px var(--text-2-color);
+    padding: 20px;
+    font-size: 1em;
+
+    color: var(--background-1-color);
+}
+
+.new-topic-input label {
+    color: var(--background-1-color);
+    font-size: 1.1em;
+    margin-bottom: 5px;
+}

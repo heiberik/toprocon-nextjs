@@ -10,6 +10,10 @@
     padding-right: 80px;
 }
 
+.container-sortby button {
+    box-shadow: none;
+}
+
 .container-sortby svg {
     position: absolute;
     right: 15px;

@@ -9,9 +9,7 @@ import Topic from '../topic/topicModel.js'
 import dayjs from "dayjs"
 import cookie from "cookie"
 import jwt from 'jsonwebtoken'
-
-
-//import profanity from "@2toad/profanity"
+import profanity from "@2toad/profanity"
 
 class UserService {
 
@@ -53,9 +51,10 @@ class UserService {
 
     getUser = async (cookies) => {
 
+    
         if (!cookies) return null
-
         const parsedCookies = cookie.parse(cookies)
+        if (!parsedCookies.jwt) return null
 
         try {
             const decoded = await jwt.verify(JSON.parse(parsedCookies.jwt), process.env.JWT_SECRET)

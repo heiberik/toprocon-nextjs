@@ -26,7 +26,7 @@ class TopicService {
         let topics = null
 
         if (search) {
-            topics = await Topic.find({ name: { $regex: search, $options: "i" },  active: true })
+            topics = await Topic.find({ name: { $regex: search, $options: "i" }, active: true })
                 .sort({ "_id": -1 })
                 .skip(skip)
                 .limit(limit)
@@ -55,19 +55,44 @@ class TopicService {
 
     getTopicsNew = async (limit, skip) => {
 
-        return await Topic.find({ active: true })
+        let topics = await Topic.find({ active: true })
             .sort({ "_id": -1 })
             .skip(skip)
             .limit(limit)
             .populate({ path: 'user', model: 'User', select: 'username' })
+
+        topics = topics.map(topic => {
+            return {
+                _id: topic._id,
+                name: topic.name,
+                username: topic.user.username,
+                prosLength: topic.pros.length,
+                consLength: topic.cons.length
+            }
+        })
+
+        return topics
     }
 
     getTopicsControversial = async (limit, skip) => {
-        return await Topic.find({ active: true })
+        
+        let topics = await Topic.find({ active: true })
             .sort({ "ratioProsCons": 1, "_id": -1 })
             .skip(skip)
             .limit(limit)
             .populate({ path: 'user', model: 'User', select: 'username' })
+
+        topics = topics.map(topic => {
+            return {
+                _id: topic._id,
+                name: topic.name,
+                username: topic.user.username,
+                prosLength: topic.pros.length,
+                consLength: topic.cons.length
+            }
+        })
+
+        return topics
     }
 
     deleteTopic = async (id) => {
@@ -94,7 +119,7 @@ class TopicService {
             })
             .populate({ path: 'user', model: 'User', select: 'username' })
 
-      
+
 
         return topic
     }

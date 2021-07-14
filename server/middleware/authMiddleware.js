@@ -1,9 +1,11 @@
 import jwt from 'jsonwebtoken'
 import asyncHandler from 'express-async-handler'
 import User from '../modules/user/userModel.js'
+import cookie from "cookie"
 
 
-const protectSocket = (socket, next) =>{
+
+const protectSocket = (socket, next) => {
     if (socket.handshake.query && socket.handshake.query.token) {
         jwt.verify(socket.handshake.query.token, process.env.JWT_SECRET, function (err, decoded) {
             if (err) return next(new Error('Authentication error'));
@@ -16,27 +18,26 @@ const protectSocket = (socket, next) =>{
 
 
 const protect = asyncHandler(async (req, res, next) => {
-    
+
     let token
 
-    if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')){
-        try {
-            token = req.headers.authorization.split(' ')[1]
+    try {
 
-            const decoded = jwt.verify(token, process.env.JWT_SECRET)
+        const parsedCookies = cookie.parse(req.cookie)
 
-            req.user = await User.findById(decoded.id).select('-password')
+        const decoded = await jwt.verify(JSON.parse(parsedCookies.jwt), process.env.JWT_SECRET)
 
-            if (!req.user) throw new Error('User does not exist')
-            if (req.user.banned) throw new Error('User is banned')
-            if (!req.user.active) throw new Error('User must confirm email address')
+        req.user = await User.findById(decoded.id).select('-password')
 
-            next()
-            
-        } catch (error) {
-            res.status(401)
-            throw new Error('Not authorized, token failed')
-        }
+        if (!req.user) throw new Error('User does not exist')
+        if (req.user.banned) throw new Error('User is banned')
+        if (!req.user.active) throw new Error('User must confirm email address')
+
+        next()
+    }
+    catch (e) {
+        res.status(401)
+        throw new Error('Not authorized, token failed')
     }
 
     if (!token) {

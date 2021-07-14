@@ -91,15 +91,14 @@ const LoginPage = ({ location }) => {
                         icon={<FontAwesomeIcon icon={faLock} color="white" />} />
 
 
-                    <div className="container-loader">
+                    <div>
                         <button type="submit" className="button-primary" style={{marginBottom: "20px", marginTop: "15px"}}> Login </button>
                         {message && <p className="text-message"> {message} </p>}
                         {error && <p className="text-error"> {error} </p>}
                     </div>
 
-                    <p style={{ marginBottom: "15px" }}> Don't have an account? <Link href="/register">Register</Link> here.</p>
+                    <p style={{marginBottom: "15px"}}>Don&apos;t have an account?<Link href="/register">Register</Link> here.</p>
                     <p> Forgot password? <Link href="/password/reset">Reset password</Link> here.</p>
-
                 </form>
             </div>
 
