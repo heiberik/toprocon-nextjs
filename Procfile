@@ -1,1 +1,1 @@
-web: node ./server/ssr-server.js
+web: node ./server/server.js

@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 import Info from '../../components/Info';
 import { addTopic } from '../../services/topicService'
 import styles from '../../styles/AddTopic.module.css'
-import Head from 'next/head'
 
 
 const AddTopicPage = () => {
@@ -92,12 +91,6 @@ const AddTopicPage = () => {
     }
     else return (
         <div className="container-normal">
-
-            <Head>
-                <html lang="en" />
-                <title> Toprocon | New topic</title>
-                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-            </Head>
 
             <h1 className={styles["header-new-topic"]}> Creating a new topic </h1>
             <div className={styles["container-new-topic"]}>

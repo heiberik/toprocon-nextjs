@@ -1,67 +1,49 @@
-import path from 'path'
-import express from 'express'
-import dotenv from 'dotenv'
-import { createServer } from 'http'
-import { notFound, errorHandler } from './middleware/errorMiddleware.js'
-import connectDB from './config/db.js'
-import socketIO from './config/socketio.js'
 import userRoutes from './modules/user/userRoutes.js'
-import reportRoutes from "./modules/report/reportRoutes.js"
 import topicRoutes from './modules/topic/topicRoutes.js'
+import reportRoutes from "./modules/report/reportRoutes.js"
 import boardRoutes from "./modules/leaderboard/boardRoutes.js"
 import argumentRoutes from './modules/argument/argumentRoutes.js'
-import helmet from "helmet"
-import rateLimit from "express-rate-limit"
-import cors from "cors"
+import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 
-/*
-
-TODOS: 
+import bp from 'body-parser'
 
 
+import connectDB from './config/db.js'
+import express from 'express'
+import next from 'next'
 
-*/
+const dev = process.env.NODE_ENV !== 'production'
+const app = next({ dev })
+const handle = app.getRequestHandler()
 
-dotenv.config()
+app.prepare()
+    .then(() => {
 
-connectDB()
+        const server = express()
 
-const app = express()
-app.use(cors());
+        server.use(bp.json())
+        server.use(bp.urlencoded({ extended: true }))
 
-const server = createServer(app)
+        connectDB()
 
-//socketIO(server)
-
-app.use(express.json())
-app.use(express.static('./client/build'))
-
-//app.use(helmet())
-app.use("/api/", rateLimit({
-    windowMs: 60 * 1000,
-    max: 600
-}))
-
-app.use('/api/users', userRoutes)
-app.use('/api/topics', topicRoutes)
-app.use('/api/arguments', argumentRoutes)
-app.use('/api/reports', reportRoutes)
-app.use("/api/leaderboards", boardRoutes)
+        server.use('/api/topics', topicRoutes)
+        server.use('/api/users', userRoutes)
+        server.use('/api/arguments', argumentRoutes)
+        server.use('/api/reports', reportRoutes)
+        server.use("/api/leaderboards", boardRoutes)
 
 
+        server.get('*', (req, res) => {
+            return handle(req, res)
+        })
 
-const __dirname = path.resolve()
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.resolve(__dirname, "./client/build")));
-    app.get("*", function (request, response) {
-        response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
-    });
-}
+        const PORT = process.env.PORT || 3000
+        server.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`))
 
-app.use(notFound)
-app.use(errorHandler)
-
-
-const PORT = process.env.PORT || 5000
-
-server.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`))
+        server.use(notFound)
+        server.use(errorHandler)
+    })
+    .catch((ex) => {
+        console.error(ex.stack)
+        process.exit(1)
+    })

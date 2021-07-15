@@ -68,7 +68,7 @@
 }
 
 .container-best-arguments {
-    padding: 20px;
+    padding: 10px;
     background-color: var(--background-2-color);
     background-color: var(--background-4-color);
     background-color: var(--background-2-color);
@@ -108,17 +108,17 @@
 }
 
 
-.container-best-arguments .argument {
+.container-best-arguments div div:first-child {
     position: relative;
 }
 
-.container-best-arguments .argument:after {
+.container-best-arguments div div:first-of-type:after {
     position: absolute;
     top: 0px;
     right: 0px;
     width: 100%;
     border-radius: 5px;
-    cursor: pointer;
+    cursor: pointer !important;
     height: 100%;
     content: "";
     background-color: transparent;

@@ -4,7 +4,6 @@ import TopicPage from '../topics/[id]'
 import Argument from '../../components/Argument'
 import { getArgument } from '../../services/argumentService'
 import styles from "../../styles/Mod.module.css"
-import Head from 'next/head'
 
 
 const ModPage = ({ user }) => {
@@ -116,12 +115,6 @@ const ModPage = ({ user }) => {
 
     return (
         <>
-            <Head>
-                <html lang="en" />
-                <title> Toprocon | Moderate </title>
-                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-            </Head>
-
             {!fetching && report &&
                 <>
 

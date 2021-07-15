@@ -9,8 +9,6 @@ import styles from "../../styles/Login.module.css"
 import { useRouter } from 'next/router'
 import { useContext } from 'react';
 import UserContext from '../../context/user';
-import Head from 'next/head'
-
 
 const LoginPage = ({ location }) => {
 
@@ -26,7 +24,6 @@ const LoginPage = ({ location }) => {
     const router = useRouter()
 
     useEffect(() => {
-
 
 
     }, [])
@@ -71,12 +68,6 @@ const LoginPage = ({ location }) => {
 
     return (
         <div className="container-normal">
-
-            <Head>
-                <html lang="en" />
-                <title> Toprocon | Login </title>
-                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-            </Head>
 
             <div className={styles["container-auth-card"]}>
                 <h1> Login </h1>

@@ -127,7 +127,7 @@ textarea {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    min-height: calc(100vh - 12em);   
+    min-height: calc(100vh - 15em);   
 }
 
 .container-relative {
@@ -175,7 +175,7 @@ button:hover {
 }
 
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1000px) {
 
     .container-app {
         padding-top: 8em;

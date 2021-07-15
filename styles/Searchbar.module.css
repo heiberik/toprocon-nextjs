@@ -173,6 +173,9 @@
         margin-bottom: 10px;
     } 
 
+    .container-part {
+        justify-content: flex-start;
+    }
 
     .header-name {
         padding-right: 0px;

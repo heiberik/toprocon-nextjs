@@ -5,9 +5,6 @@ import Input from '../../components/Input';
 import validator from "email-validator"
 import { resetPassword } from '../../services/userService'
 import styles2 from "../../styles/Login.module.css"
-import Head from 'next/head'
-
-
 
 const EmailPage = () => {
 
@@ -52,13 +49,6 @@ const EmailPage = () => {
 
     return (
         <div className="container-normal">
-
-            <Head>
-                <html lang="en" />
-                <title> Toprocon | Reset password</title>
-                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-            </Head>
-
             <div className={styles2["container-auth-card"]}>
 
                 <h1> Reset password </h1>

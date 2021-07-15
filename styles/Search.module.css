@@ -61,3 +61,11 @@
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
+
+
+@media screen and (max-width: 1000px) {
+
+    .search-form-container {
+        display: none;
+    }
+}

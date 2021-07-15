@@ -3,17 +3,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons"
 import { faGithub } from "@fortawesome/free-brands-svg-icons"
 
-import "../styles/Footer.module.css"
+import styles from "../styles/Footer.module.css"
 
 
 const Footer = () => {
 
     return (
-        <div className="container-footer">
+        <div className={styles["container-footer"]}>
 
 
-            <div className="footer">
-                <div className="footer-part">
+            <div className={styles["footer"]}>
+                <div className={styles["footer-part"]}>
                     <p> Toprocon</p>
                     <p> admin@toprocon.com</p>
                     <p> by Henrik Heiberg</p>
@@ -23,7 +23,7 @@ const Footer = () => {
                         
                     </div>
                 </div>
-                <div className="footer-part">
+                <div className={styles["footer-part"]}>
 
                 </div>
             </div>

@@ -1,31 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import Argument from '../../components/Argument'
-import { getPublicUserInfo, banUser } from '../../services/userService'
+import { banUser } from '../../services/userService'
 import { useRouter } from 'next/router'
 import styles from "../../styles/Profile.module.css"
+import UserContext from '../../context/user'
+import { useContext } from 'react'
+import UserService from "../../server/modules/user/userService"
 
-const ProfilePage = ({ user }) => {
+const ProfilePage = ({ userInfoServer, username }) => {
 
-    let username = "hehe"
-    const [userInfo, setUserInfo] = useState(null)
+    const [user, setUser] = useContext(UserContext);
+    const [userInfo, setUserInfo] = useState(userInfoServer)
     const [error, setError] = useState(null)
-    const router = useRouter()
-    
-
-    useEffect(() => {
-
-        /*
-        if (!userInfo) {
-            getPublicUserInfo(username)
-                .then(res => {
-                    setUserInfo(res.data)
-                })
-                .catch(error => {
-                    setError(error.response.data)
-                })
-        }
-        */
-    }, [])
+    const router = useRouter()    
 
     const goToTopic = (id) => {
         router.push("/topics/" + id)
@@ -41,69 +28,73 @@ const ProfilePage = ({ user }) => {
             })
     }
 
-    if (!userInfo) return (
-        <div className="container-normal">
-            <div className="userInfo-meta">
-                <h1 className="userInfo-username"> {username} </h1>
-            </div>
-            {error && <p className="text-error"> {error} </p>}
-        </div>
-    )
-    else return (
-        <div className="container-normal">
-            <div className="userInfo-meta">
-                <h1 className="userInfo-username"> {username} </h1>
+    return (
+        <div className={styles["container-normal"]}>
+            <div className={styles["userInfo-meta"]}>
+                <h1 className={styles["userInfo-username"]}> {userInfo.username} </h1>
             </div>
 
             {user && user.isAdmin &&
-                <button onClick={banThisUser} className="button-primary ban-button"> {userInfo.banned ? "Unban user" : "Ban user"} </button>}
+                <button onClick={banThisUser} className={"button-primary " + styles["ban-button"]}> {userInfo.banned ? "Unban user" : "Ban user"} </button>}
 
-            <h2 className="userInfo-header"> Top arguments </h2>
-            <div className="container-best-arguments">
-                {userInfo.bestArguments.length === 0 && <p className="infoNumber"> {username} has not added any arguments</p>}
+            <h2 className={styles["userInfo-header"]}> Top arguments </h2>
+            <div className={styles["container-best-arguments"]}>
+                {userInfo.bestArguments.length === 0 && <p className={styles["infoNumber"]}> {username} has not added any arguments</p>}
                     {userInfo.bestArguments.map(arg => {
-                        return <div onClick={() => goToTopic(arg.topic)} key={arg._id}>
+                        return <div onClick={() => goToTopic(arg.topic)} key={arg._id} style={{margin: "10px"}}>
                             <Argument type={"pro"} user={username} setTopic={null} argument={arg} />
                         </div>
                     })}
             </div>
 
 
-            <h2 className="userInfo-header"> User statistics </h2>
-            <div className="container-userInfo">
-                <div className="box">
-                    <p className="infoText"> Upvotes given : </p>
-                    <p className="infoText"> Upvotes received : </p>
+            <h2 className={styles["userInfo-header"]}> User statistics </h2>
+            <div className={styles["container-userInfo"]}>
+                <div className={styles["box"]}>
+                    <p className={styles["infoText"]}> Upvotes given : </p>
+                    <p className={styles["infoText"]}> Upvotes received : </p>
                     <br></br>
-                    <p className="infoText"> Downvotes given : </p>
-                    <p className="infoText"> Downvotes received : </p>
+                    <p className={styles["infoText"]}> Downvotes given : </p>
+                    <p className={styles["infoText"]}> Downvotes received : </p>
                     <br></br>
-                    <p className="infoText"> Arguments added : </p>
+                    <p className={styles["infoText"]}> Arguments added : </p>
                 </div>
-                <div className="box">
-                    <p className="infoNumber"> {userInfo.totalUpvotes}  </p>
-                    <p className="infoNumber"> {userInfo.receivedUpvotes}  </p>
+                <div className={styles["box"]}>
+                    <p className={styles["infoNumber"]}> {userInfo.totalUpvotes}  </p>
+                    <p className={styles["infoNumber"]}> {userInfo.receivedUpvotes}  </p>
                     <br></br>
-                    <p className="infoNumber"> {userInfo.totalDownvotes} </p>
-                    <p className="infoNumber"> {userInfo.receivedDownvotes}  </p>
+                    <p className={styles["infoNumber"]}> {userInfo.totalDownvotes} </p>
+                    <p className={styles["infoNumber"]}> {userInfo.receivedDownvotes}  </p>
                     <br></br>
-                    <p className="infoNumber"> {userInfo.totalArgumentsAdded}  </p>
+                    <p className={styles["infoNumber"]}> {userInfo.totalArgumentsAdded}  </p>
                 </div>
             </div>
 
-
-
-            <h2 className="userInfo-header"> Created topics </h2>
-            <div className="container-topics-added">
-                {userInfo.addedTopics.length === 0 && <p className="infoNumber"> {username} has not added any topics</p>}
+            <h2 className={styles["userInfo-header"]}> Created topics </h2>
+            <div className={styles["container-topics-added"]}>
+                {userInfo.addedTopics.length === 0 && <p className={styles["infoNumber"]}> {username} has not added any topics</p>}
                 {userInfo.addedTopics.map(topic => {
-                    return <p key={topic.id} onClick={() => goToTopic(topic.id)} className="topic-topic"> {topic.name} </p>
+                    return <p key={topic.id} onClick={() => goToTopic(topic.id)} className={styles["topic-topic"]}> {topic.name} </p>
                 })}
             </div>
-
-
         </div>
     )
 }
+
+export async function getServerSideProps(context) {
+
+    const { username } = context.query
+
+    let userInfo = await UserService.getPublicUserInfo(username)
+    userInfo = JSON.parse(JSON.stringify(userInfo))
+
+    return {
+        props: {
+            username: username,
+            userInfoServer: userInfo
+        }
+    }
+}
+
 
 export default ProfilePage

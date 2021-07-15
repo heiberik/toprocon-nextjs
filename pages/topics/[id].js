@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import AddArgument from '../../components/AddArgument'
 import Argument from '../../components/Argument'
-import Head from 'next/head'
 import TopicBar from '../../components/TopicBar'
 import { PieChart } from 'react-minimal-pie-chart'
 import ReportButton from '../../components/ReportButton'
 import { useRouter } from 'next/router'
 import TopicService from "../../server/modules/topic/topicService"
 import styles from "../../styles/TopicPage.module.css"
-
+import Meta from "../../components/Meta"
 
 const TopicPage = ({ user, idSet, topicServer }) => {
 
@@ -26,10 +25,9 @@ const TopicPage = ({ user, idSet, topicServer }) => {
     else return (
         <div className="container-normal">
 
-            <Head>
-                <title> Toprocon | {topic.name} </title>
-                <description> Pros and Cons of {topic.name}. </description>
-            </Head>
+            <Meta 
+                desc={"Top pros and cons of " + topic.name + ". Read the best arguments for " + topic.name + "."}
+                title={"Pros and cons of " + topic.name} />
 
             <div className={styles["container-desc"]}>
                 <div className={styles["topic-name-container"]}>

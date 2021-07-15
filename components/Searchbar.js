@@ -128,9 +128,6 @@ const Searchbar = ({ topics, setTopics }) => {
             })
     }
 
-
-
-
     return (
         <div className={styles['container-searchbar']} >
             <div className={styles["container-part"]} style={{ width: "100%" }}>
@@ -149,22 +146,6 @@ const Searchbar = ({ topics, setTopics }) => {
             </div>
         </div>
     )
-    /*
-    else {
-        return (
-            <div className="container-searchbar" style={{flexWrap: "wrap"}}>
-                <div className="container-part" style={{ marginTop: "10px", width: "100%", justifyContent: "space-between"  }}>
-
-                    <AddButton
-                        clickHandler={addClick}
-                        text="Add topic" />
-
-                    <SortBy sortClick={sortClick} sortBy={sortBy} />
-                </div>
-            </div>
-        )
-    }
-    */
 }
 
 export default Searchbar
