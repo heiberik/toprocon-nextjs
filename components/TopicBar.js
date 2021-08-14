@@ -10,7 +10,7 @@ import styles from "../styles/TopicBar.module.css"
 
 
 
-const TopicBar = ({ setAddingPro, setAddingCon, setTopic, active, setActive, idSet }) => {
+const TopicBar = ({ setAdding, setTopic, active, setActive, topicSet }) => {
 
     const [sortBy, setSortBy] = useState("top")
     const [user, setUser] = useContext(UserContext);
@@ -18,42 +18,28 @@ const TopicBar = ({ setAddingPro, setAddingCon, setTopic, active, setActive, idS
 
     const sortClick = (sortBy) => {
         setSortBy(sortBy)
-    }
-
-    useEffect(() => {
-
         const id = window.location.pathname.split("/").pop()
-        getTopicById(idSet ? idSet : id, sortBy)
+        getTopicById(topicSet ? topicSet._id : id, sortBy)
             .then(res => {
                 setTopic(res.data)
             })
             .catch(error => {
                 console.log(error);
             })
+    }
 
-    }, [sortBy, setTopic, idSet])
 
-    const setAdding = (type) => {
-        if (!user) history.push("/login")
-        else {
-            if (type === "pro") {
-                setAddingPro(p => !p)
-                setAddingCon(false)
-            }
-            if (type === "con") {
-                setAddingCon(c => !c)
-                setAddingPro(false)
-            }
-        }
+    const setAdd = () => {
+        if (!user) router.push("/login")
+        else setAdding(a => !a)
     }
 
     return (
         <div className={styles["container-topicbar"]}>
-            <button className="button-primary" onClick={() => setAdding("pro")}> Add pro argument </button>
+            <button className="button-primary" onClick={() => setAdd()}> Add argument </button>
             <div className={styles["container-part-topic"]}>
                 <SortBy sortClick={sortClick} sortBy={sortBy} />
             </div>
-            <button className="button-primary" onClick={() => setAdding("con")}> Add con argument </button>
         </div>
     )
 }

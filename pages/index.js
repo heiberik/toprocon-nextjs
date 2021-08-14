@@ -3,6 +3,8 @@ import Topic from '../components/Topic'
 import { useState } from 'react'
 import useragent from 'useragent'
 import TopicService from '../server/modules/topic/topicService'
+import cookie from "cookie"
+
 
 const TopicsPage = ({ topicsServer }) => {
 
@@ -24,7 +26,7 @@ export async function getServerSideProps(context) {
 
     let agent = useragent.parse(context.req.headers['user-agent']);
     let topics = []
-
+    
     if (agent.device.toJSON().family === 'Spider'){
         topics = await TopicService.getTopics(1000000000000, 0, "")
     }

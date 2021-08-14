@@ -15,12 +15,13 @@
     color: inherit;
     margin-left: 10px;
     font-size: 1em;
+    font-weight: 600;
 }
 
 .button-component-add svg {
     margin: 0px;
-    height: 18px;
-    width: 18px;
+    height: 15px;
+    width: 15px;
 }
 
 .container-alternatives .alternative .button-component-add {

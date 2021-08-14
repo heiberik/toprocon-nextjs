@@ -4,16 +4,21 @@
 }
 
 .container-new-topic {
+    margin: 0px auto;
     margin-top: 20px;
-    max-width: 600px;
+    max-width: 70ch;
     background-color: var(--card-1-color);
-    border: solid 1px var(--text-2-color);
-    padding: 30px;
-    border-radius: 10px;
+    padding: 60px 40px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.3);
 }
 
 .header-new-topic {
-    color: var(--background-1-color);
+    color: var(--text-1-color);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 50px;
+
 }
 
 .new-topic-input {
@@ -23,24 +28,33 @@
 }
 
 .new-topic-input input {
-    background-color: var(--background-3-color);
-    border: solid 1px var(--text-2-color);
+    background-color: inherit;
+    border: none;
+    border-radius: 0px;
+    border-bottom: solid var(--text-5-color) 1px;
     padding: 20px;
-    font-size: 1em;
-    color: var(--background-1-color);
+    font-size: 1.2rem;
+    color: var(--text-1-color);
 }
 
 .new-topic-input textarea {
-    background-color: var(--background-3-color);
-    border: solid 1px var(--text-2-color);
+    background-color: inherit;
+    border: none;
+    border-radius: 0px;
+    border: solid var(--text-5-color) 1px;
+    font-size: 1.2rem;
     padding: 20px;
-    font-size: 1em;
+    font-weight: 500;
+    color: var(--text-1-color);
+    resize: vertical;
+}
 
-    color: var(--background-1-color);
+.new-topic-input textarea::-webkit-scrollbar {
+    display: none;
 }
 
 .new-topic-input label {
-    color: var(--background-1-color);
+    color: var(--text-1-color);
     font-size: 1.1em;
     margin-bottom: 5px;
 }

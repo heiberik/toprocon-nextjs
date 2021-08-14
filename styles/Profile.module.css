@@ -3,11 +3,9 @@
     padding: 30px;
     border-radius: 5px;
     max-width: 680px;
-    background-color: var(--background-2-color);
-    background-color: var(--background-4-color);
+    background-color: var(--background-1-color);
     border-top-left-radius: 0px;
-    background-color: var(--card-1-color);
-    border: solid 2px var(--text-2-color);
+    border: solid 2px var(--primary-1-color);
 }
 
 .ban-button {
@@ -34,18 +32,16 @@
     padding: 15px;
     margin-top: 40px;
     margin-bottom: 1px;
-    background-color: var(--background-2-color);
-    background-color: var(--background-4-color);
-    background-color: var(--card-1-color);
-    border: solid 2px var(--text-2-color);
+    background-color: var(--primary-2-color);
+    border: solid 2px var(--primary-1-color);
     border-bottom: none;
-    color: var(--background-1-color);
+    color: var(--text-1-color);
     max-width: fit-content;
-    font-size: 1em;
+    font-size: 1.1em;
 }
 
 .userInfo-username {
-    color: var(--background-1-color);
+    color: var(--text-1-color);
     word-wrap: break-word;
     max-width: 100%;
     font-size: 4em;
@@ -56,23 +52,21 @@
 }
 
 .container-userInfo .infoText {
-    color: var(--text-3-color);
+    color: var(--text-1-color);
     font-size: 1em;
     margin: 5px 0px;
 }
 
 .container-userInfo .infoNumber {
-    color: var(--text-3-color);
+    color: var(--text-1-color);
     font-size: 1em;
     margin: 5px 0px;
 }
 
 .container-best-arguments {
-    padding: 10px;
+    padding: 20px;
     background-color: var(--background-2-color);
-    background-color: var(--background-4-color);
-    background-color: var(--background-2-color);
-    border: solid 2px var(--text-2-color);
+    border: solid 2px var(--primary-1-color);
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -83,10 +77,8 @@
 .container-topics-added {
     flex-wrap: wrap;
     padding: 20px;
-    background-color: var(--background-2-color);
-    background-color: var(--background-4-color);
-    background-color: var(--card-1-color);
-    border: solid 2px var(--text-2-color);
+    background-color: var(--background-1-color);
+    border: solid 2px var(--primary-1-color);
     border-radius: 5px;
     display: flex;
     max-width: 100%;
@@ -94,15 +86,13 @@
 }
 
 .container-topics-added .topic-topic {
-    color: var(--background-1-color);
     margin: 5px 0px;
     font-size: 1em;
     padding: 20px;
     border-radius: 5px;
     margin-right: 10px;
-    background-color: var(--card-1-color);
     background-color: var(--background-3-color);
-    color: var(--background-1-color);
+    color: var(--text-1-color);
     transition: all 0.4s;
     cursor: pointer;
 }

@@ -28,7 +28,7 @@
     padding: 0.5em 1.5em;
     background-color: var(--background-2-color);
     border: solid 1px var(--text-2-color);
-    color: var(--background-1-color);
+    color: var(--text-1-color);
     white-space: nowrap;
     transition: all 0.5s;
 }
@@ -38,13 +38,13 @@
     padding: 0.5em 1.5em;
     background-color: var(--background-2-color);
     border: solid 1px var(--text-2-color);
-    color: var(--background-1-color);
+    color: var(--text-1-color);
     white-space: nowrap;
     transition: all 0.5s;
 }
 
 .argument-input {
-    color: var(--background-1-color);
+    color: var(--text-1-color);
     border: none;
     font-size: 1em;
     padding: 0px;
@@ -65,5 +65,5 @@
 .argument-length-counter {
     margin-bottom: 8px;
     text-align: end;
-    color: var(--background-1-color);
+    color: var(--text-1-color);
 }

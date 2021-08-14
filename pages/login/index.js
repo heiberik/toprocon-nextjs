@@ -77,7 +77,7 @@ const LoginPage = ({ location }) => {
                         handler={usernameChangeHandler}
                         value={username}
                         type="text"
-                        placeholder="Enter username"
+                        placeholder="Username"
                         validation={v => false}
                         icon={<FontAwesomeIcon icon={faUser} color="white" />} />
                     <Input
@@ -85,19 +85,22 @@ const LoginPage = ({ location }) => {
                         handler={passwordChangeHandler}
                         value={password}
                         type="password"
-                        placeholder="Enter password"
+                        placeholder="Password"
                         validation={v => false}
                         icon={<FontAwesomeIcon icon={faLock} color="white" />} />
 
 
+                    
+
+                    <p className="text-auth">Don&apos;t have an account? <Link href="/register">Sign up!</Link></p>
+                    
                     <div>
-                        <button type="submit" className="button-primary" style={{ marginBottom: "20px", marginTop: "15px" }}> Login </button>
+                        <button type="submit" className="button-primary button-full-width"> Login </button>
                         {message && <p className="text-message"> {message} </p>}
                         {error && <p className="text-error"> {error} </p>}
                     </div>
 
-                    <p style={{ marginBottom: "15px" }}>Don&apos;t have an account?<Link href="/register">Register</Link> here.</p>
-                    <p> Forgot password? <Link href="/password/reset">Reset password</Link> here.</p>
+                    <p className="text-auth" style={{marginBottom: "0px"}}> Forgot password? <Link href="/password/reset">Reset password</Link> here.</p>
                 </form>
             </div>
 

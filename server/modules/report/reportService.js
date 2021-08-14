@@ -2,6 +2,7 @@ import Report from './reportModel.js'
 import Topic from '../topic/topicModel.js'
 import Argument from '../argument/argumentModel.js'
 import points from '../../utils/points.js'
+import topicService from '../topic/topicService.js'
 
 
 
@@ -82,7 +83,7 @@ class ReportService {
             else return null
         }
         if (type === "topic") {
-            const topic = await Topic.findById(reportedId)
+            const topic = await topicService.getTopicById(reportedId)
             if (topic) return topic
             else return null
         }

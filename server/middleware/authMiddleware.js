@@ -19,16 +19,13 @@ const protectSocket = (socket, next) => {
 
 const protect = asyncHandler(async (req, res, next) => {
 
-    let token
-
     try {
 
-        const parsedCookies = cookie.parse(req.cookie)
+        var cookies = cookie.parse(req.headers.cookie);
 
-        const decoded = await jwt.verify(JSON.parse(parsedCookies.jwt), process.env.JWT_SECRET)
-
+        const decoded = await jwt.verify(JSON.parse(cookies.jwt), process.env.JWT_SECRET)
         req.user = await User.findById(decoded.id).select('-password')
-
+       
         if (!req.user) throw new Error('User does not exist')
         if (req.user.banned) throw new Error('User is banned')
         if (!req.user.active) throw new Error('User must confirm email address')
@@ -36,13 +33,9 @@ const protect = asyncHandler(async (req, res, next) => {
         next()
     }
     catch (e) {
+        console.log(e);
         res.status(401)
         throw new Error('Not authorized, token failed')
-    }
-
-    if (!token) {
-        res.status(401)
-        throw new Error('Not authorized, no token')
     }
 })
 

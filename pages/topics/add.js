@@ -10,7 +10,6 @@ const AddTopicPage = () => {
     const [showInfo, setShowInfo] = useState(true)
     const [name, setName] = useState("")
     const [description, setDescription] = useState("")
-    const [resources, setResources] = useState("")
     const [error, setError] = useState(null)
     const router = useRouter()
 
@@ -20,22 +19,15 @@ const AddTopicPage = () => {
         e.preventDefault()
         setError(null);
 
-        if (name.length.trim() < 2) {
-            setError("Name must be at least 2 characters")
+        if (name.trim().length < 2) {
+            setError("Topic name must be at least 2 characters")
         }
-        else if (description.length.trim() < 6) {
-            setError("Description must be at least 6 characters")
-        }
-        else if (!validURLs(resources)) {
-            setError("You must add one or more valid resources. Separate resources by using a comma.")
+        else if (description.trim().length < 6) {
+            setError("Topic description must be at least 6 characters")
         }
         else {
 
-            let resourcesList = resources.trim().split(",")
-            resourcesList = resourcesList.map(url => url.replace("\n", ""))
-            resourcesList = resourcesList.filter(url => { return url })
-
-            addTopic(name.replace(/\s+/g, ' ').trim(), description.replace(/\s+/g, ' ').trim(), resourcesList)
+            addTopic(name.replace(/\s+/g, ' ').trim(), description.replace(/\s+/g, ' ').trim(), [])
                 .then(res => {
                     router.push("/topics/" + res.data._id)
                 })
@@ -52,8 +44,12 @@ const AddTopicPage = () => {
         setError(null)
         switch (e.target.name) {
             case "name": setName(e.target.value); break;
-            case "description": setDescription(e.target.value); break;
-            case "resources": setResources(e.target.value); break;
+            case "description": {
+                e.target.style.height = "";
+                e.target.style.height = e.target.scrollHeight + "px";
+                setDescription(e.target.value);
+                break;
+            }
             default: break;
         }
     }
@@ -84,7 +80,6 @@ const AddTopicPage = () => {
     if (showInfo) {
         return (
             <div className="container-normal">
-                <h1 className={styles["header-new-topic"]}> Creating a new topic </h1>
                 <Info showInfo={showInfo} setShowInfo={setShowInfo} />
             </div>
         )
@@ -92,45 +87,35 @@ const AddTopicPage = () => {
     else return (
         <div className="container-normal">
 
-            <h1 className={styles["header-new-topic"]}> Creating a new topic </h1>
             <div className={styles["container-new-topic"]}>
+
+                <h1 className={styles["header-new-topic"]}> Creating a new topic </h1>
+
                 <form onSubmit={onSubmitHandler}>
 
                     <div className={styles["new-topic-input"]}>
-                        <label htmlFor="name"> Topic name</label>
                         <input
-                            placeholder="'Facebook'"
+                            placeholder="Topic name"
+                            autoComplete="off"
                             onChange={inputChangeHandler}
                             name="name"
+                            type="text"
                             value={name} />
                     </div>
 
                     <div className={styles["new-topic-input"]}>
-                        <label htmlFor="description"> Topic description</label>
                         <textarea
-                            placeholder="'An American online social media and social networking service'"
+                            placeholder="Topic description"
+                            autoComplete="off"
                             onChange={inputChangeHandler}
                             name="description"
                             value={description} />
                     </div>
 
-
-                    <div className={styles["new-topic-input"]}>
-                        <label htmlFor="resources"> Topic resources</label>
-                        <textarea
-
-                            placeholder={
-                                `https://www.facebook.com, 
-https://www.en.wikipedia.org/wiki/Facebook`}
-                            onChange={inputChangeHandler}
-                            name="resources"
-                            value={resources} />
-                    </div>
-
                     {error && <p className="text-error" > {error} </p>}
 
                     <div>
-                        <button type="submit" className="button-primary" style={{ marginBottom: "0px", marginRight: "20px" }}> Create topic </button>
+                        <button type="submit" className="button-primary button-full-width" style={{ marginBottom: "0px", marginTop: "30px" }}> Create topic </button>
                         <Info showInfo={showInfo} setShowInfo={setShowInfo} />
                     </div>
                 </form>

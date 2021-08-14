@@ -7,7 +7,7 @@ class ReportService {
 
         const users = await User.find({ active: true, banned: false, isAdmin: false })
             .sort({ "pointsTotal": -1 })
-            .limit(50)
+            .limit(500)
 
         return users.map(user => {
             return {
@@ -22,7 +22,7 @@ class ReportService {
 
         const users = await User.find({ active: true, banned: false, isAdmin: false })
             .sort({ "modPoints": -1 })
-            .limit(50)
+            .limit(500)
 
         return users.map(user => {
             return {
@@ -37,7 +37,7 @@ class ReportService {
 
         const users = await User.find({ active: true, banned: false, isAdmin: false })
             .sort({ "topicPoints": -1 })
-            .limit(50)
+            .limit(500)
 
         return users.map(user => {
             return {
@@ -52,7 +52,7 @@ class ReportService {
 
         const users = await User.find({ active: true, banned: false, isAdmin: false })
             .sort({ "argumentPoints": -1 })
-            .limit(50)
+            .limit(500)
 
         return users.map(user => {
             return {

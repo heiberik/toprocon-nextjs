@@ -1,18 +1,21 @@
 .container-auth-card {
-    padding: 40px 50px;
-    background-color: var(--text-2-color);
+    padding: 80px 50px;
     background-color: var(--card-1-color);
-    border: solid 2px var(--text-2-color);
     width: 100%;
-    max-width: 500px;
-    border-radius: 10px;
-    margin: 0px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    max-width: 450px;
+    border-radius: 20px;
+    margin: 0px auto;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.3);
 }
 
 .container-auth-card h1 {
     text-align: center;
+    width: fit-content;
+    margin: 0px auto;
+    padding: 0px 20px;
     margin-bottom: 40px;
+    padding-bottom: 20px;
+    font-size: 2.5rem;
 }
 
 .button-margin {

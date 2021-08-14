@@ -6,7 +6,8 @@
     "dev": "node ./server/server.js",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "data:import": "node server/seeder"
   },
   "browser": {
     "fs": false,

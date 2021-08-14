@@ -6,10 +6,13 @@ import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import { useRouter } from 'next/router'
 import ReportButton from './ReportButton.js'
 import styles from "../styles/Argument.module.css"
+import { useContext } from 'react'
+import UserContext from '../context/user'
 
 
-const Argument = ({ argument, type, setTopic, user }) => {
+const Argument = ({ argument, type, setTopic }) => {
 
+    const [user, setUser] = useContext(UserContext);
     const router = useRouter()
 
     const addVoteClick = (e, voteType) => {
@@ -22,8 +25,7 @@ const Argument = ({ argument, type, setTopic, user }) => {
             .then(res => {
                 setTopic(topic => {
                     let topicCopy = { ...topic }
-                    if (type === "con") topicCopy.cons = topicCopy.cons.map(arg => arg._id === res.data._id ? res.data : arg)
-                    if (type === "pro") topicCopy.pros = topicCopy.pros.map(arg => arg._id === res.data._id ? res.data : arg)
+                    topicCopy.args = topicCopy.args.map(arg => arg._id === res.data._id ? { type , ...res.data} : arg)
                     return topicCopy
                 })
             })
@@ -39,18 +41,7 @@ const Argument = ({ argument, type, setTopic, user }) => {
     return (
         <div className={styles["argument"]} >
 
-            <div style={{ maxWidth: "85%" }}>
-                <div style={{ display: "flex", alignItems: "flex-start" }}>
-                    <ReportButton
-                        type="argument"
-                        reportedId={argument._id}
-                    />
-                    <p className={styles["argument-username"]} onClick={usernameClicked}> {argument.user.username} </p>
-
-                </div>
-                <p className={styles["argument-text"]}> {argument.message} </p>
-            </div>
-            <div>
+            <div className={styles["container-voting"]}>
                 <div className={styles["wrapper-upvote"]} onClick={(e) => addVoteClick(e, "upvote")}>
                     <FontAwesomeIcon icon={faCaretUp} size="1x" color="white" />
                     <p className={styles["upvote"]}> {argument.upvotes} </p>
@@ -60,6 +51,18 @@ const Argument = ({ argument, type, setTopic, user }) => {
                     <FontAwesomeIcon icon={faCaretDown} size="1x" color="white" />
                 </div>
             </div>
+
+            <div className={styles["container-text"]}>
+                <p className={styles["argument-type"]}> {argument.type && argument.type} </p>
+                <p className={styles["argument-text"]}> {argument.message} </p>
+                <p className={styles["argument-username"]} onClick={usernameClicked}> {argument.user.username} </p>
+            </div>
+
+            <ReportButton
+                type="argument"
+                reportedId={argument._id}
+            />
+
         </div>
     )
 }

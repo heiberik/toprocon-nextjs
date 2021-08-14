@@ -5,14 +5,11 @@
 .container-sortby .sortby-button {
     height: 100%;
     min-height: 52px;
-    background-color: var(--card-1-color);
-    border: solid 2px var(--text-2-color);
+    background-color: var(--primary-2-color);
+    border: solid 2px var(--primary-1-color);
     padding-right: 80px;
 }
 
-.container-sortby button {
-    box-shadow: none;
-}
 
 .container-sortby svg {
     position: absolute;
@@ -27,13 +24,13 @@
 
 .container-sortby .sortby-dropdown {
     position: absolute;
-    background-color: var(--background-3-color);
+    background-color: var(--card-1-color);
     padding: 5px;
     z-index: 999;
     right: 0px;
     top: 60px;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-    border: solid 2px var(--text-2-color);
+    border: solid 2px var(--text-3-color);
     border-radius: 5px;
 }
 
@@ -41,22 +38,24 @@
     position: relative;
     width: 200px;
     background-color: inherit;
-    color: var(--text-3-color);
+    color: var(--text-1-color);
     outline: none;
     text-align: start;
     margin: 5px;
-    border: solid 1px transparent;
+    border: solid 2px transparent;
+    box-shadow: none;
 }
 
 .sortby-dropdown .sortby:hover {
-    border: solid 1px var(--text-2-color);
+    border: solid 2px var(--text-3-color);
     opacity: 1;
 }
 
 .sortby-dropdown .sortby-active {
-    color: var(--background-1-color);
-    background-color: var(--card-1-color);
-    border: solid 1px var(--text-2-color);
+    color: var(--text-1-color);
+    background-color: var(--text-3-color);
+    box-shadow: none;
+
 }
 
 .sortby-dropdown .sortby svg {
@@ -66,8 +65,6 @@
     top: 10px;
     width: 20px;
     height: 20px;
- 
     color: white;
-    
     cursor: pointer;
 }

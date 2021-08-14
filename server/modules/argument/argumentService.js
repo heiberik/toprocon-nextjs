@@ -1,6 +1,7 @@
 import Argument from './argumentModel.js'
 import Topic from '../topic/topicModel.js'
 import points from '../../utils/points.js'
+import TopicService from '../topic/topicService.js'
 
 
 class ArgumentService {
@@ -19,27 +20,14 @@ class ArgumentService {
                 topic
             })
 
-            if (type === "cons") topic.cons.push(newArgument)
-            else if (type === "pros") topic.pros.push(newArgument)
+            if (type === "con") topic.cons.push(newArgument)
+            else if (type === "pro") topic.pros.push(newArgument)
 
-            await topic.save();
+            await topic.save()
 
             await points.addTopicArgumentPoints(user, topic.user)
 
-            return await Topic.findById(topicId)
-                .populate({
-                    path: 'cons',
-                    populate: { path: 'user', model: 'User', select: 'username' },
-                    match: { active: true },
-                    options: { sort: { _id: -1 }, limit: 100 }
-                })
-                .populate({
-                    path: 'pros',
-                    populate: { path: 'user', model: 'User', select: 'username' },
-                    match: { active: true },
-                    options: { sort: { _id: -1 }, limit: 100 }
-                })
-                .populate({ path: 'user', model: 'User', select: 'username' })
+            return await TopicService.getTopicByIdNew(topicId)
 
         }
         catch (error) {

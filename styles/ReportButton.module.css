@@ -2,26 +2,16 @@
     position: absolute;
     right: 10px;
     top: 10px;
-    color: #797986;
+    color: #b7b7c5;
     padding: 10px;
-}
-
-.report-argument {
-    position: relative;
-    margin-top: -12px;
-    margin-left: -5px;
-    margin-right: -10px;
     cursor: pointer;
 }
 
 .container-report svg {
     height: 20px;
-    color: var(--text-2-color);
+    color: var(--text-3-color);
 }
 
-.report-argument svg {
-    color: var(--card-2-color);
-}
 
 .container-report .dummy-popup {
     z-index: 998;
@@ -34,16 +24,6 @@
     background-color: transparent;
 }   
 
-.report-argument .dummy-popup {
-    z-index: 998;
-    padding: 10px;
-    width: 180px;
-    height: 140px;
-    position: absolute;
-    top: 0px;
-    right: -180px;
-    background-color: transparent;
-}
 
 
 .container-report .container-popup {
@@ -52,10 +32,10 @@
     z-index: 9999;
     padding: 20px;
     width: 200px;
-    height: 140px;
+    height: 180px;
     position: absolute;
     top: 40px;
-    right: 0px;
+    right: 10px;
     display: flex;
     flex-direction: column;
     background-color: var(--background-3-color);
@@ -64,29 +44,17 @@
     overflow: visible;
 }
 
-.report-argument .container-popup {
-    z-index: 9999999;
-    padding: 12px;
-    
-    position: absolute;
-    top: 40px;
-    right: -180px;
-    overflow: visible;
-}  
 
-.container-report .container-popup .report-alt {
-    color: rgba(255, 255, 255, 0.7);
-    width: fit-content;
+.container-report .report-alt {
+    color: var(--text-4-color);
     white-space: nowrap;
-    padding: 3px;
-}
-
-.container-report .container-popup .report-alt::before {
-    content: "- "
+    padding: 3px 10px;
+    margin: 2px 0px;
+    border-radius: 5px;
 }
 
 .container-report .container-popup .thank-you {
-    color: var(--background-1-color);
+    color: var(--text-1-color);
     text-align: center;
     margin: auto;
     font-weight: 900;
@@ -98,20 +66,15 @@
     font-weight: 900;
 }
 
-
 .container-report .container-popup .report-header {
-    color: var(--background-1-color);
-    margin-bottom: 5px;
-    margin-left: 2px;
+    color: var(--text-1-color);
     width: fit-content;
-    background-color: var(--card-1-color);
-    border: solid 1px var(--text-2-color);
     border-radius: 5px;
-    padding: 6px 15px;
-    padding-top: 8px;
+    padding: 3px 10px;
+    margin: 5px 0px;
 }
 
-
 .container-report .container-popup .report-alt:hover {
-    color: var(--background-1-color);
+    background-color: var(--primary-1-color);
+    color: var(--text-1-color);
 }

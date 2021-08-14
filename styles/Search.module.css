@@ -17,9 +17,8 @@
 }
 
 .search-form-container .button-search, .search-form-container .button-search-open {
-    background-color: var(--text-2-color);
-    background-color: var(--card-1-color);
-    border: solid 2px var(--text-2-color);
+    background-color: var(--primary-2-color);
+    border: solid 2px var(--primary-1-color);
 }
 
 
@@ -34,17 +33,21 @@
 
 .search-form-container .input-search {
     width: calc(100% - 25px);
-    border: solid 2px var(--text-2-color);
+    border: solid 2px var(--primary-1-color);
     border-left: none;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
     background-color: rgba(0, 0, 0, 0.1);
-    color: var(--background-1-color);
+    color: var(--text-1-color);
     opacity: 1;
     padding: 0.9em;
     padding-left: 20px;
     padding-right: 0px;
     font-size: 1em;
+}
+
+.search-form-container .input-search::placeholder {
+    color: var(--text-4-color) !important;
 }
 
 .search-form-container .submit-search {
@@ -53,10 +56,10 @@
     top: 50%;
     transform: translateY(-50%);
     border-radius: 0px;
-    background-color: var(--card-1-color);
-    color: var(--background-1-color);
+    background-color: var(--primary-2-color);
+    color: var(--text-1-color);
     outline: none;
-    border: solid 2px var(--text-2-color);
+    border: solid 2px var(--primary-1-color);
     height: 100%;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;

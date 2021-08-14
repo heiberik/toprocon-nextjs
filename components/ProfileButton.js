@@ -19,13 +19,15 @@ const ProfileButton = ({ toggleDropdown }) => {
     const handleLogout = async () => {
         if (toggleDropdown) toggleDropdown()
         await logoutUser()
-        setUser(null)
         router.push("/")
+        setUser(null)
+        
     }
 
     return (
         <div className={styles["settings"]} onMouseEnter={() => setShowDropdown(true)} onMouseLeave={() => setShowDropdown(false)}>
             <FontAwesomeIcon icon={faUser} size="1x" color="white" />
+            <p className={styles["settings-username"]}> {user.username} </p>
 
             {showDropdown &&
                 <div className={styles["dummy-path"]}> </div>

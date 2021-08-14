@@ -15,11 +15,9 @@
     display: flex;
     margin-bottom: 12px;
     border-radius: 5px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
     background-color: var(--card-1-color);
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
-    background-color: var(--card-1-color);
-    border: solid 1px var(--text-2-color);
-    padding: 5px;
+    padding: 3px;
 }
 
 .container-leaderboard .leaderboard-user-card p {
@@ -27,21 +25,26 @@
 }
 
 .container-leaderboard .leaderboard-user-card p:first-of-type {
-    border-right: solid 1px var(--text-2-color);
-    color: var(--text-3-color);
+    border-right: solid 1px var(--text-3-color);
+    color: var(--text-1-color);
     cursor: pointer;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     max-width: 220px;
-    min-width: 170px;
-    text-align: end;
-    font-weight: 400;
+    min-width: 200px;
+    text-align: center;
+    font-weight: 500;
     transition: all 0.3s;
     background-color: var(--background-2-color);
 }
 
+.container-leaderboard .leaderboard-user-card p:last-of-type {
+    color: var(--text-1-color);
+    font-weight: 500;
+}
+
 .container-leaderboard .leaderboard-user-card p:first-of-type:hover {
-    color: var(--background-1-color);
+    color: var(--text-1-color);
 }
 
 .searchbar-leaderboard button:hover:before{

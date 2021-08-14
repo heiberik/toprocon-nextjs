@@ -47,8 +47,8 @@ const ReportButton = ({ type, reportedId }) => {
     }
 
     return (
-        <div className={type==="argument" ? styles["container-report"] + " " + styles["report-argument"] : styles["container-report"]} onClick={handleClick} onMouseLeave={handleMouseLeave}>
-            <FontAwesomeIcon icon={type==="argument" ? faEllipsisH : faEllipsisV} size="2x" color="red" />
+        <div className={styles["container-report"]} onClick={handleClick} onMouseLeave={handleMouseLeave}>
+            <FontAwesomeIcon icon={faEllipsisV} size="2x" color="red" />
             {active && <div className={styles["dummy-popup"]}> </div>}
             {active && <div className={styles["container-popup"]} onClick={(e) => e.stopPropagation()}>
                 {!reported && !error && <p className={styles["report-header"]}> Report this item for: </p>}
@@ -56,7 +56,7 @@ const ReportButton = ({ type, reportedId }) => {
                     return <p
                         key={reason}
                         onClick={(e) => handleReport(e, reason)}
-                        className="report-alt">
+                        className={styles["report-alt"]}>
                         {reason} </p>
                 })}
                 {reported && !error && <p className={styles["thank-you"]}> Thank you for reporting! </p>}
@@ -65,7 +65,6 @@ const ReportButton = ({ type, reportedId }) => {
             </div>}
         </div>
     )
-
 }
 
 export default ReportButton

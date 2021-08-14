@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { removeToken, getToken } from './tokenService'
 
 const url = "/api/users"
 
@@ -15,7 +14,6 @@ export const getUser = () => {
     return axios.get(`${url}`)
 }
 
-
 export const logoutUser = () => {
     return axios.post(`${url}/logout`)
 }
@@ -25,7 +23,7 @@ export const checkIfUsernameTaken = (username) => {
 }
 
 export const banUser = (username) => {
-    return axios.post(`${url}/${username}/ban`, {} ,{ headers: { Authorization: `Bearer ${getToken("userInfo").token}` }})
+    return axios.post(`${url}/${username}/ban`, {} )
 }
 
 export const getPublicUserInfo = (username) => {

@@ -1,12 +1,11 @@
 .input-wrapper {
-    margin-top: 35px;
+    margin-top: 25px;
     margin-bottom: 10px;
     position: relative;
 }
 
 .container-input {
     position: relative;
-    border-radius: 5px;
     max-width: 45em;
     padding: 12px 20px;
     padding-right: 5px;
@@ -14,12 +13,12 @@
     justify-content: flex-start;
     align-items: center;
     margin-top: 5px;
-    background-color: var(--background-3-color);
-    border: solid var(--text-2-color) 2px;
+    background-color: inherit;
+    border-bottom: solid var(--text-5-color) 1px;
 }
 
 .container-input svg {
-    color: var(--background-1-color);
+    color: var(--text-1-color);
 }
 
 .container-input .icon-valid {
@@ -40,7 +39,7 @@
     border: none;
     width: 100%;
     margin-bottom: 0px;
-    font-size: 1em;
+    font-size: 1.2rem;
     padding-left: 15px;
     margin-left: 15px;
     background-color: inherit;
@@ -94,7 +93,7 @@
 .input-button {
     padding: 0.8em 1.5em;
     border: solid 2px var(--text-1-color);
-    background-color: var(--background-1-color);
+    background-color: var(--text-1-color);
     box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
     color: var(--text-2-color);
     font-weight: 500;

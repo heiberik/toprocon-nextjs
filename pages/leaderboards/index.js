@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { getLeaderboard } from '../../services/leaderboardService'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar } from '@fortawesome/free-solid-svg-icons'
-import { faBaby } from '@fortawesome/free-solid-svg-icons'
-import { faBomb } from '@fortawesome/free-solid-svg-icons'
 import { useRouter } from 'next/router'
 import SortBy from '../../components/SortBy'
 import LeaderboardService from "../../server/modules/leaderboard/boardService"
@@ -15,8 +11,20 @@ const Leaderboard = ({ leaderboardServer }) => {
 
     const [leaderboard, setLeaderboard] = useState(leaderboardServer)
     const [sortBy, setSortBy] = useState("total")
-
     const router = useRouter()
+
+    useEffect(() => {
+        if (sortBy === "total") setLeaderboard(leaderboardServer)
+        else {
+            getLeaderboard(sortBy)
+                .then(res => {
+                    setLeaderboard(res.data)
+                })
+                .catch(e => {
+                    console.log(e);
+                })
+        }
+    }, [sortBy, leaderboardServer])
 
     const sortClick = (type) => {
         setSortBy(type)

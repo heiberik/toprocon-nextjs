@@ -5,7 +5,7 @@ const giveUpvote = 1
 const getDownvote = -3
 const giveDownvote = -1
 
-const argumentAdded = 20
+const argumentAdded = 10
 const argumentAddedToYourTopic = 1
 
 const goodMod = 20;
@@ -14,7 +14,9 @@ const madeDeletedItem = -100;
 
 const addUpvotePoints = async (fromUser, toUserId) => {
 
-    const toUser = await User.findById(toUserId).select('-password')
+    if (toUserId.equals(fromUser._id)) return
+
+    const toUser = await User.findById(toUserId)
 
     toUser.argumentPoints += getUpvote
     toUser.pointsTotal += getUpvote
@@ -27,7 +29,9 @@ const addUpvotePoints = async (fromUser, toUserId) => {
 
 const removeUpvotePoints = async (fromUser, toUserId) => {
 
-    const toUser = await User.findById(toUserId).select('-password')
+    if (toUserId.equals(fromUser._id)) return
+
+    const toUser = await User.findById(toUserId)
 
     toUser.argumentPoints -= getUpvote
     toUser.pointsTotal -= getUpvote
@@ -40,7 +44,9 @@ const removeUpvotePoints = async (fromUser, toUserId) => {
 
 const addDownvotePoints = async (fromUser, toUserId) => {
 
-    const toUser = await User.findById(toUserId).select('-password')
+    if (toUserId.equals(fromUser._id)) return
+
+    const toUser = await User.findById(toUserId)
 
     toUser.argumentPoints += getDownvote
     toUser.pointsTotal += getDownvote
@@ -53,7 +59,9 @@ const addDownvotePoints = async (fromUser, toUserId) => {
 
 const removeDownvotePoints = async (fromUser, toUserId) => {
 
-    const toUser = await User.findById(toUserId).select('-password')
+    if (toUserId.equals(fromUser._id)) return
+
+    const toUser = await User.findById(toUserId)
 
     toUser.argumentPoints -= getDownvote
     toUser.pointsTotal -= getDownvote
@@ -66,16 +74,25 @@ const removeDownvotePoints = async (fromUser, toUserId) => {
 
 const addTopicArgumentPoints = async (addUser, TopicOwnerId) => {
 
-    const toUser = await User.findById(TopicOwnerId).select('-password')
+    if (TopicOwnerId.equals(addUser._id)) {
 
-    toUser.topicPoints += argumentAddedToYourTopic
-    toUser.pointsTotal += argumentAddedToYourTopic
+        addUser.argumentPoints += argumentAdded
+        addUser.pointsTotal += argumentAdded
+        await addUser.save()
+    }
+    else {
+        
+        const toUser = await User.findById(TopicOwnerId)
 
-    addUser.argumentPoints += argumentAdded
-    addUser.pointsTotal += argumentAdded
+        toUser.topicPoints += argumentAddedToYourTopic
+        toUser.pointsTotal += argumentAddedToYourTopic
 
-    await toUser.save()
-    await addUser.save()
+        addUser.argumentPoints += argumentAdded
+        addUser.pointsTotal += argumentAdded
+
+        await toUser.save()
+        await addUser.save()
+    }
 }
 
 
@@ -127,13 +144,13 @@ const AddModPoints = async (report, deleted, itemCreator) => {
     if (deleted && itemCreator) {
 
         const creator = await User.findById(itemCreator)
-        if (report.type === "topic"){
-             creator.topicPoints += madeDeletedItem
-             creator.pointsTotal += madeDeletedItem
+        if (report.type === "topic") {
+            creator.topicPoints += madeDeletedItem
+            creator.pointsTotal += madeDeletedItem
         }
-        if (report.type === "argument"){
-             creator.argumentPoints += madeDeletedItem
-             creator.pointsTotal += madeDeletedItem
+        if (report.type === "argument") {
+            creator.argumentPoints += madeDeletedItem
+            creator.pointsTotal += madeDeletedItem
         }
         creator.save()
     }

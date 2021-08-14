@@ -1,17 +1,17 @@
 .argument {
     max-width: 100%;
     display: flex;
-    justify-content: space-between;
-    padding: 15px;
+    padding: 25px;
     padding-right: 0px;
-    border-radius: 5px;
+    border-radius: 10px;
     margin-bottom: 10px;
     background-color: var(--text-2-color);
     background-color: var(--card-1-color);
     border: solid 1px var(--text-2-color);
     max-height: 100%;   
-    transition: all 0.5s;
     cursor: default;
+    position: relative;
+    padding-right: 45px;
 }
 
 .argument .container-report svg {
@@ -26,40 +26,61 @@
     margin-bottom: 0px;
 }
 
+.container-text {
+    margin-left: 25px;
+}
+
 .argument-username {
-    margin-top: 8px;
-    margin-bottom: 20px;
+    margin-top: 5px;
     width: fit-content;
+    text-align: end;
     color: var(--primary-1-color);
     color: rgb(149, 145, 149);
     font-size: 0.9em;
     font-weight: 400;
     cursor: pointer;
+   
 } 
 
 .argument-text {
     max-width: 100%;   
-    color: var(--background-1-color);
+    color: var(--text-1-color);
     text-overflow: ellipsis;
     white-space: normal;
     overflow: hidden;
     transition: all 1s;
-    font-size: 1em;
-    line-height: 1.5em;
+    font-size: 1.2rem;
+    line-height: 1.5em;    
+    max-width: 80ch;
+}
+
+.argument-type {
+    margin-bottom: 5px;
+    color: rgb(149, 145, 149);
+    font-size: 0.9em;
+    font-weight: 400;
+    text-transform: capitalize;
 }
 
 .argument-text-expanded {
     white-space: pre-line;
 }
 
+.container-voting {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    margin: auto 0px;
+}
+
 .wrapper-upvote {
-    width: 5em;
+    width: 2em;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
-    margin-bottom: 8px;
+    margin-bottom: 3px;
     cursor: pointer;
 }
 
@@ -84,10 +105,10 @@
 }
 
 .wrapper-downvote {
-    margin-top: 8px;
+    margin-top: 3px;
     flex-direction: column;
     border-radius: 5px;
-    width: 5em;
+    width: 2em;
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -105,3 +126,76 @@
     text-align: right;
 }
 
+
+.chooser {
+    justify-content: space-between;
+    border: solid 2px var(--primary-1-color);
+}
+
+.button-choose {
+    width: 49%;
+    border: solid 2px var(--primary-1-color);
+    background-color: var(--primary-1-color);
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    color: var(--text-1-color);
+    white-space: nowrap;
+}
+
+.argument-input {
+    color: var(--text-1-color);
+    border: none;
+    font-size: 1em;
+    padding: 0px;
+    font-weight: 500;
+    background-color: inherit;
+    height: 30px;
+    resize: none;
+    min-height: 0px;
+    font-size: 1.2rem;
+    line-height: 1.5em;    
+    margin-bottom: 0px;
+    max-width: 80ch;
+    width: 100%;
+}
+
+.argument-input::placeholder {
+    color: var(--text-2-color);;
+    font-size: 1.2rem;
+    line-height: 1.5em;    
+    max-width: 80ch;
+    height: 20px;
+}
+
+.argument-length-counter {
+    margin-bottom: 8px;
+    text-align: end;
+    color: var(--text-1-color);
+}
+
+.full-width {
+    width: 100%;
+}
+
+.container-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.button-add {
+    width: 49%;
+    border: solid 2px var(--primary-1-color);
+    background-color: var(--primary-1-color);
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    color: var(--text-1-color);
+    white-space: nowrap;
+}
+
+.button-delete {
+    width: 49%;
+    border: solid 2px var(--primary-1-color);
+    background-color: var(--primary-2-color);
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    color: var(--text-1-color);
+    white-space: nowrap;
+}

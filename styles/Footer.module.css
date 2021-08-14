@@ -21,14 +21,14 @@
 }
 
 .footer p {
-    color: var(--text-3-color);
+    color: var(--text-4-color);
     margin: 15px 0px;
 }
 
 .footer-part svg {
     height: 35px !important;
     width: 35px !important;
-    color: var(--text-3-color);
+    color: var(--text-1-color);
     margin-right: 10px;
     margin-top: 10px;
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import AddArgument from '../../components/AddArgument'
 import Argument from '../../components/Argument'
 import TopicBar from '../../components/TopicBar'
@@ -8,13 +8,19 @@ import { useRouter } from 'next/router'
 import TopicService from "../../server/modules/topic/topicService"
 import styles from "../../styles/TopicPage.module.css"
 import Meta from "../../components/Meta"
+import { getTopicById } from '../../services/topicService'
 
-const TopicPage = ({ user, idSet, topicServer }) => {
+const TopicPage = ({ user, topicSet, topicServer }) => {
 
     const [topic, setTopic] = useState(topicServer)
-    const [addingPro, setAddingPro] = useState(false)
-    const [addingCon, setAddingCon] = useState(false)
+    const [adding, setAdding] = useState(false)
     const router = useRouter()
+
+    useEffect(() => {
+        if (topicSet) {
+            setTopic(topicSet)
+        }
+    }, [topicSet])
 
 
     const usernameClicked = () => {
@@ -25,7 +31,7 @@ const TopicPage = ({ user, idSet, topicServer }) => {
     else return (
         <div className="container-normal">
 
-            <Meta 
+            <Meta
                 desc={"Top pros and cons of " + topic.name + ". Read the best arguments for " + topic.name + "."}
                 title={"Pros and cons of " + topic.name} />
 
@@ -38,7 +44,6 @@ const TopicPage = ({ user, idSet, topicServer }) => {
                     />
                 </div>
                 <p className={styles["topic-desc"]}> {topic.description} </p>
-                {/*<Resources topic={topic} /> */}
                 <div className={styles["container-pie-chart"]}>
                     <PieChart
                         reveal
@@ -49,34 +54,18 @@ const TopicPage = ({ user, idSet, topicServer }) => {
                         ]}
                     />
                 </div>
-                <p className={styles["topic-time"]}> Created at <span> {topic.createdAt.substring(8, 10)}-{topic.createdAt.substring(5, 7)}/{topic.createdAt.substring(2, 4)} - {topic.createdAt.substring(11, 16)} </span></p>
-                <p className={styles["topic-user"]}> Created by <span onClick={usernameClicked}> {topic.user.username} </span> </p>
+                <p className={styles["topic-user"]}> Topic created by <span onClick={usernameClicked}> {topic.user.username} </span> </p>
             </div>
 
 
-            <TopicBar setAddingPro={setAddingPro} idSet={idSet} setAddingCon={setAddingCon} setTopic={setTopic} topic={topic} user={user} />
+            <TopicBar adding={adding} topicSet={topicSet} setAdding={setAdding} setTopic={setTopic} topic={topic} user={user} />
 
 
             <div className={styles["container-arguments"]}>
-
-                <div className={styles["container-part-arguments"]}>
-                    <div className={styles["container-args"]}>
-                        {addingPro && <AddArgument user={user} topic={topic} setTopic={setTopic} setAdding={setAddingPro} type="pros" />}
-                        {topic.pros.map(pro => {
-                            return <Argument type={"pro"} key={pro._id} user={user} setTopic={setTopic} argument={pro} />
-                        })}
-                    </div>
-                </div>
-
-                <div className={styles["container-part-arguments"]}>
-                    <div className={styles["container-args"]}>
-                        {addingCon && <AddArgument user={user} topic={topic} setTopic={setTopic} setAdding={setAddingCon} type="cons" />}
-                        {topic.cons.map(con => {
-                            return <Argument type={"con"} key={con._id} user={user} setTopic={setTopic} argument={con} />
-                        })}
-                    </div>
-                </div>
-
+                {adding && <AddArgument user={user} topic={topic} setTopic={setTopic} setAdding={setAdding} />}
+                {topic.args && topic.args.map(arg => {
+                    return <Argument type={arg.type} key={arg._id} user={user} setTopic={setTopic} argument={arg} />
+                })}
             </div>
         </div>
     )

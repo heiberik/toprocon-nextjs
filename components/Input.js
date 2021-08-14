@@ -37,7 +37,6 @@ const Input = ({ label, icon, handler, value, type, placeholder, name, validatio
     }
     else return (
         <div className={styles["input-wrapper"]}>
-            <label className={styles["input-label"]} htmlFor={name}> {label} </label>
             <div className={styles["container-input"]}>
                 <div> {valid ? <FontAwesomeIcon icon={faCheck} className="icon-valid" color="rgb(253, 193, 19)"/> : icon} </div>
                 <input

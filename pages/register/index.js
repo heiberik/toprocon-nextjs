@@ -97,7 +97,7 @@ const RegisterPage = () => {
                         handler={inputChangeHandler}
                         value={username}
                         type="text"
-                        placeholder="Minimum 5 characters"
+                        placeholder="Username"
                         validation={checkIfUsernameIsTaken}
                         icon={<FontAwesomeIcon icon={faUser} color="white" />} />
                     <Input
@@ -106,7 +106,7 @@ const RegisterPage = () => {
                         handler={inputChangeHandler}
                         value={email}
                         type="email"
-                        placeholder="example@example.com"
+                        placeholder="Email"
                         validation={(v) => validator.validate(v)}
                         icon={<FontAwesomeIcon icon={faEnvelope} color="white" />} />
                     <Input
@@ -115,7 +115,7 @@ const RegisterPage = () => {
                         handler={inputChangeHandler}
                         value={password1}
                         type="password"
-                        placeholder="Minimum 6 characters"
+                        placeholder="Password"
                         validation={(v) => v.length >= 6}
                         icon={<FontAwesomeIcon icon={faLock} color="white" />} />
                     <Input
@@ -124,20 +124,20 @@ const RegisterPage = () => {
                         handler={inputChangeHandler}
                         value={password2}
                         type="password"
-                        placeholder="Reenter password"
+                        placeholder="Confirm password"
                         validation={(v) => v === password1 && v.length >= 6}
                         icon={<FontAwesomeIcon icon={faLock} color="white" />} />
 
 
+                    <p className="text-auth"> Already have an account? <Link href="/login">Login</Link> here.</p>
 
 
                     <div>
-                        <button type="submit" className="button-primary" style={{marginBottom: "20px", marginTop: "15px"}}> Register </button>
-                        {message && <p className="text-message" style={{color: "white"}}> {message} </p>}
+                        <button type="submit" className="button-primary button-full-width"> Register </button>
+                        {message && <p className="text-message" style={{ color: "white" }}> {message} </p>}
                         {error && <p className="text-error"> {error} </p>}
                     </div>
-                    
-                    <p> Already have an account? <Link href="/login">Login</Link> here.</p>
+
                 </form>
             </div>
         </div>

@@ -59,12 +59,12 @@ const EmailPage = () => {
                         handler={emailChangeHandler}
                         value={email}
                         type="email"
-                        placeholder="example@example.com"
+                        placeholder="Email"
                         validation={(v) => validator.validate(v)}
                         icon={<FontAwesomeIcon icon={faEnvelope} color="white" />} />
 
                     <div>
-                        <button type="submit" className="button-primary" style={{ marginBottom: "20px", marginTop: "15px" }}> Submit </button>
+                        <button type="submit" className="button-primary button-full-width" style={{ marginBottom: "0px", marginTop: "20px" }}> Submit </button>
                         {message && <p className="text-message"> {message} </p>}
                         {error && <p className="text-error"> {error} </p>}
                     </div>

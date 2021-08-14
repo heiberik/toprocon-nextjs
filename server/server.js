@@ -16,33 +16,31 @@ const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
-app.prepare()
-    .then(() => {
+app.prepare().then(() => {
 
-        const server = express()
+    const server = express()
 
-        server.use(bp.json())
-        server.use(bp.urlencoded({ extended: true }))
+    server.use(bp.json())
+    server.use(bp.urlencoded({ extended: true }))
 
-        connectDB()
+    connectDB()
 
-        server.use('/api/topics', topicRoutes)
-        server.use('/api/users', userRoutes)
-        server.use('/api/arguments', argumentRoutes)
-        server.use('/api/reports', reportRoutes)
-        server.use("/api/leaderboards", boardRoutes)
+    server.use('/api/topics', topicRoutes)
+    server.use('/api/users', userRoutes)
+    server.use('/api/arguments', argumentRoutes)
+    server.use('/api/reports', reportRoutes)
+    server.use("/api/leaderboards", boardRoutes)
+    //server.use(notFound)
+    //server.use(errorHandler)
 
-
-        server.get('*', (req, res) => {
-            return handle(req, res)
-        })
-
-        const PORT = process.env.PORT || 3000
-        server.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`))
-
-        server.use(notFound)
-        server.use(errorHandler)
+    server.get('*', (req, res) => {
+        return handle(req, res)
     })
+
+    const PORT = process.env.PORT || 3000
+    server.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`))
+
+})
     .catch((ex) => {
         console.error(ex.stack)
         process.exit(1)

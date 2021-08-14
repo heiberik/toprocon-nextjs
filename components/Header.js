@@ -60,7 +60,7 @@ const Header = ({ }) => {
 
     return (
         <div className={styles["container-header"]}>
-            <div className={styles["wrapper-header"]}>
+            <header className={styles["wrapper-header"]}>
 
                 <div className={styles["icon-container"]}>
                     <Image src={icon} alt="icon" />
@@ -71,7 +71,7 @@ const Header = ({ }) => {
                     <FontAwesomeIcon icon={faBars} size="2x" color="white" />
                 </div>
 
-                <div className={styles["header-items"]} id="dropdown">
+                <nav className={styles["header-items"]} id="dropdown">
 
                     <Link href={`/`} className={styles["header-link"]}> Topics </Link>
                     <Link href={`/leaderboards`} className={styles["header-link"]}> Leaderboards </Link>
@@ -85,8 +85,8 @@ const Header = ({ }) => {
                         <button onClick={handleLogin} className={styles["header-button-first"]}> Login </button>
                         <button onClick={handleRegister} className={styles["button-primary"] + " " + styles["button-register"]}> Register </button>
                     </div>}
-                </div>
-            </div>
+                </nav>
+            </header>
         </div>
     )
 }

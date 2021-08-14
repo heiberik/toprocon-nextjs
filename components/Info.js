@@ -7,6 +7,9 @@ const Info = ({ showInfo, setShowInfo}) => {
     if (showInfo) return (
         <div className={styles["container-info"]} >
 
+            <h1 className={styles["header-new-topic"]}> Creating a new topic </h1>
+
+
             <div className={styles["info-text"]}>
                 <p>Thank you for considering adding a new topic!</p>
                 <p>
@@ -34,11 +37,11 @@ const Info = ({ showInfo, setShowInfo}) => {
                 </p>
             </div>
 
-            <button className={styles["info-button"]} onClick={() => setShowInfo(false)}> I understand! </button>
+            <button style={{minWidth: "100%", borderRadius: "10px"}} className={styles["info-button"]} onClick={() => setShowInfo(false)}> I understand! </button>
         </div>
     )
     else return (
-        <button className={styles["info-button-white"]} onClick={() => setShowInfo(true)} style={{marginTop: "20px"}}> Read rules </button>
+        <button className={styles["info-button-white"]} style={{width: "100%", borderRadius: "10px", marginTop: "20px"}} onClick={() => setShowInfo(true)}> Read rules </button>
     )
 }
 

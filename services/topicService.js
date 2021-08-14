@@ -1,10 +1,9 @@
 import axios from 'axios'
-import { getToken } from './tokenService'
 
 const url = "/api/topics"
 
 export const addTopic = (name, description, resources) => {
-    return axios.post(`${url}`, { name, description, resources }, { headers: { Authorization: `Bearer ${getToken("userInfo").token}` } })
+    return axios.post(`${url}`, { name, description, resources })
 }
 
 export const getTopics = (sortBy, skip, limit) => {
@@ -19,7 +18,7 @@ export const searchTopic = (query, skip, limit) => {
 
 
 export const deleteTopic = (id) => {
-    return axios.delete(`${url}/${id}`, { headers: { Authorization: `Bearer ${getToken("userInfo").token}` } })
+    return axios.delete(`${url}/${id}`)
 }
 
 export const getTopicById = (id, sortBy) => {
@@ -30,5 +29,5 @@ export const getTopicById = (id, sortBy) => {
 }
 
 export const updateTopic = (id, name, description, resources) => {
-    return axios.put(`${url}/${id}`, { name, description, resources },{ headers: { Authorization: `Bearer ${getToken("userInfo").token}` } })
+    return axios.put(`${url}/${id}`, { name, description, resources })
 }
