@@ -13,7 +13,7 @@ const SortBy = ({ sortClick, sortBy, leaderboard }) => {
 
     if (leaderboard) return (
         <div className={styles["container-sortby"]}>
-            <button className={styles["sortby-button"] + " " +  "button-primary"} onClick={toggleDropdown}> Sort by</button>
+            <button className={styles["sortby-button"] + " " +  "button-primary"} onClick={toggleDropdown}> Sort by </button>
             <FontAwesomeIcon icon={faCaretDown} size="2x" />
             {showDropdown && <div className={styles["sortby-dropdown"]}>
                 <button onClick={() => { toggleDropdown(); sortClick("total") }} className={sortBy === "total" ? styles["sortby-active"] + " " + styles["sortby"] : styles["sortby"]}>
@@ -33,7 +33,7 @@ const SortBy = ({ sortClick, sortBy, leaderboard }) => {
     )
     else return (
         <div className={styles["container-sortby"]}>
-            <button className={styles["sortby-button"] + " " + "button-primary"} onClick={toggleDropdown}> Sort by</button>
+            <button className={styles["sortby-button"] + " " + "button-primary"} onClick={toggleDropdown}> Sort by </button>
             <FontAwesomeIcon icon={faCaretDown} size="2x" />
             {showDropdown && <div className={styles["sortby-dropdown"]}>
                 <button onClick={() => { toggleDropdown(); sortClick("top") }} className={sortBy === "top" ? styles["sortby-active"] + " " + styles["sortby"] : styles["sortby"]}>

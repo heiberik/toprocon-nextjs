@@ -26,6 +26,7 @@
 .icon-container {
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .wrapper-header svg {
@@ -66,10 +67,12 @@
 }
 
 .button-register {
-    background-color: var(--primary-1-color) !important;
-    border: solid 2px transparent !important;
-    color: var(--text-1-color) !important;
-    box-shadow: unset !important;
+    background-color: var(--primary-1-color);
+    border: solid 2px transparent;
+    color: var(--text-1-color);
+    box-shadow: unset;
+    background-color: var(--primary-4-color);
+    border-color: var(--primary-3-color);
 }
 
 .wrapper-header {
@@ -90,8 +93,11 @@
     width: auto;
 }
 
-.wrapper-header a {
+.header-link {
     color: var(--text-1-color);
+    background-color: inherit;
+    box-shadow: none;
+    border: none;
     margin-right: 12px;
     font-weight: 600;
     font-size: 1.1rem;
@@ -107,8 +113,7 @@
     transition: all 0.2s;
 }
 
-.wrapper-header a:hover {
-    color: var(--text-4-color);
+.header-links:hover {
     background-color: var(--background-2-color);
 }
 
@@ -134,6 +139,10 @@
 .hamburger {
     display: none;
     margin-right: -10px;
+}
+
+.hamburger svg {
+    color: var(--text-4-color);
 }
 
 @media screen and (min-width: 1000px) {
@@ -163,31 +172,38 @@
 
     .icon-container {
         margin-left: -12px;
+        cursor: pointer;
     }
  
     .header-items {
-        background-color: var(--background-3-color);
+        background-image: linear-gradient(to right, var(--background-1-color), var(--background-3-color));
         flex-direction: column;
         position: absolute;
         left: 0;
         top: 5em;
+        height: calc(100vh - 5em);
         width: calc(100% - 20px);
         padding: 10px;
         visibility: hidden;
     }
 
-    .wrapper-header a {
+    .header-link {
         margin-right: 0px;
         margin-bottom: 15px;
         padding: 15px 20px;
         border: solid 1px var(--text-3-color);
+        background-color: var(--background-4-color);
+        text-align: left;
+        display: flex;
+        justify-content: left;
+        color: var(--text-1-color);
+        box-shadow: none;
     }
 
     .container-buttons {
         display: flex;
-        margin-top: 10px;
+        margin-top: 5px;
         margin-bottom: 15px;
-        justify-content: center;
         margin-left: 0px;
     }
 

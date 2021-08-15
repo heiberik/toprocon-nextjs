@@ -17,11 +17,11 @@ class ArgumentService {
             const newArgument = await Argument.create({
                 message: argument,
                 user: user,
+                type,
                 topic
             })
 
-            if (type === "con") topic.cons.push(newArgument)
-            else if (type === "pro") topic.pros.push(newArgument)
+            topic.arguments.push(newArgument)
 
             await topic.save()
 

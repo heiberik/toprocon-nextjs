@@ -3,7 +3,6 @@ import Topic from '../components/Topic'
 import { useState } from 'react'
 import useragent from 'useragent'
 import TopicService from '../server/modules/topic/topicService'
-import cookie from "cookie"
 
 
 const TopicsPage = ({ topicsServer }) => {
@@ -15,6 +14,7 @@ const TopicsPage = ({ topicsServer }) => {
             <Searchbar topics={topics} setTopics={setTopics} />
             <div className="container-topics">
                 {topics && topics.map(topic => <Topic key={topic._id} topic={topic} />)}
+                {topics.length === 0 && <p style={{margin: "5px", fontSize: "1.2rem"}}> No topics matching search </p>}
             </div>
         </div>
     )

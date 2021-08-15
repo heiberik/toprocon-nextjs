@@ -45,8 +45,8 @@ class TopicService {
                 _id: topic._id,
                 name: topic.name,
                 username: topic.user.username,
-                prosLength: topic.pros.length,
-                consLength: topic.cons.length
+                numPros: topic.numPros,
+                numCons: topic.numCons
             }
         })
 
@@ -67,8 +67,8 @@ class TopicService {
                 _id: topic._id,
                 name: topic.name,
                 username: topic.user.username,
-                prosLength: topic.pros.length,
-                consLength: topic.cons.length
+                numPros: topic.numPros,
+                numCons: topic.numCons
             }
         })
 
@@ -88,8 +88,8 @@ class TopicService {
                 _id: topic._id,
                 name: topic.name,
                 username: topic.user.username,
-                prosLength: topic.pros.length,
-                consLength: topic.cons.length
+                numPros: topic.numPros,
+                numCons: topic.numCons
             }
         })
 
@@ -104,9 +104,8 @@ class TopicService {
     }
 
     formatArgument = (argument, type) => {
-
         return {
-            type: type,
+            type: argument.type,
             upvotes: argument.upvotes,
             downvotes: argument.downvotes,
             user: argument.user,
@@ -117,46 +116,11 @@ class TopicService {
     }
 
 
-    mergeArguments = (topic) => {
-
-        let merged = []
-
-        let prosIndex = 0
-        let consIndex = 0
-
-        for (let i = 0; i < (topic.cons.length + topic.pros.length); i++) {
-
-            let pro = topic.pros[prosIndex]
-            let con = topic.cons[consIndex]
-
-            if (!pro) {
-                merged.push(this.formatArgument(con, "con"))
-                consIndex++
-            }
-            else if (!con) {
-                merged.push(this.formatArgument(pro, "pro"))
-                prosIndex++
-            }
-            else {
-
-                let proSum = pro.upvotes - pro.downvotes
-                let conSum = con.upvotes - con.downvotes
-
-                if (proSum >= conSum) {
-                    merged.push(this.formatArgument(pro, "pro"))
-                    prosIndex++
-                }
-                else {
-                    merged.push(this.formatArgument(con, "con"))
-                    consIndex++
-                }
-            }
-        }
-
+    filterTopic = (topic) => {
         return {
-            args: merged,
-            pros: topic.pros,
-            cons: topic.cons,
+            args: topic.arguments,
+            numPros: topic.numPros,
+            numCons: topic.numCons,
             createdAt: topic.createdAt,
             user: topic.user,
             description: topic.description,
@@ -165,65 +129,68 @@ class TopicService {
         }
     }
 
+    getRandomTopicId = async () => {
+
+        let count = await Topic.countDocuments()
+        let random = Math.floor(Math.random() * count)
+        let topic = await Topic.findOne({ active: true }).skip(random)
+        return topic._id
+    }
+
+
+    getHotTopicId = async () => {
+
+        let count = await Topic.countDocuments()
+        let random = Math.floor(Math.random() * count)
+        let topic = await Topic.findOne({ active: true }).skip(random)
+
+        console.log(topic);
+
+        return topic._id
+    }
+
+
     getTopicById = async (id) => {
 
         const topic = await Topic.findById(id)
             .populate({
-                path: 'cons',
+                path: 'arguments',
                 populate: { path: 'user', model: 'User', select: 'username' },
                 match: { active: true },
-                options: { sort: { totalPositiveNumber: -1 }, limit: 100 }
-            })
-            .populate({
-                path: 'pros',
-                populate: { path: 'user', model: 'User', select: 'username' },
-                match: { active: true },
-                options: { sort: { totalPositiveNumber: -1 }, limit: 100 }
+                options: { sort: { totalPositiveNumber: -1 }, limit: 1000 }
             })
             .populate({ path: 'user', model: 'User', select: 'username' })
 
-        return this.mergeArguments(topic)
+        return this.filterTopic(topic)
     }
 
     getTopicByIdNew = async (id) => {
 
         const topic = await Topic.findById(id)
             .populate({
-                path: 'cons',
+                path: 'arguments',
                 populate: { path: 'user', model: 'User', select: 'username' },
                 match: { active: true },
-                options: { sort: { _id: -1 }, limit: 100 }
-            })
-            .populate({
-                path: 'pros',
-                populate: { path: 'user', model: 'User', select: 'username' },
-                match: { active: true },
-                options: { sort: { _id: -1 }, limit: 100 }
+                options: { sort: { _id: -1 }, limit: 1000 }
             })
             .populate({ path: 'user', model: 'User', select: 'username' })
 
-        return this.mergeArguments(topic)
+        return this.filterTopic(topic)
     }
 
     getTopicByIdControversial = async (id) => {
 
         const topic = await Topic.findById(id)
             .populate({
-                path: 'cons',
+                path: 'arguments',
                 populate: { path: 'user', model: 'User', select: 'username' },
                 match: { active: true },
-                options: { sort: { totalPositiveNumber: 1 }, limit: 100 }
-            })
-            .populate({
-                path: 'pros',
-                populate: { path: 'user', model: 'User', select: 'username' },
-                match: { active: true },
-                options: { sort: { totalPositiveNumber: 1 }, limit: 100 }
+                options: { sort: { ratioUpvotesDownvotes: 1 }, limit: 100 }
             })
             .populate({ path: 'user', model: 'User', select: 'username' })
 
 
-        return this.mergeArguments(topic)
+        return this.filterTopic(topic)
     }
 
     updateTopic = async (id, name, description, resources) => {

@@ -2,13 +2,15 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.9em 0.9em;
+    padding: 1em 0.9em;
     padding-right: 1.5em;
     margin-right: 10px;
     white-space: nowrap;
     transition: width 1s ease-in-out;
     text-align: center;
     transition: all 0.4s;
+    background-color: var(--primary-4-color);
+    border-color: var(--primary-3-color);
 }
 
 .button-component-add p {

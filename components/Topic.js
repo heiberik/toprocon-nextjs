@@ -13,12 +13,13 @@ const Topic = ({ topic }) => {
                         type="topic"
                         reportedId={topic._id}
                     />
-
-                    <p className={styles["topic-card-name"]}> {topic.name} </p>
+                    
                     <div>
-                        <p className={styles["topic-card-info"]}> {topic.prosLength}</p>
-                        <p className={styles["topic-card-info"]}> {topic.consLength}</p>
+                        <p className={styles["topic-card-info"] + " " + styles["info-pros"]}> {topic.numPros + topic.numCons}</p>
+                        {false && <p className={styles["topic-card-info"] + " " + styles["info-cons"]}> {topic.numCons}</p>}
                     </div>
+                    <p className={styles["topic-card-name"]}> {topic.name} </p>
+
                 </div>
             </a>
         </Link>

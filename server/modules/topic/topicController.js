@@ -59,6 +59,29 @@ const getTopicsControversial = asyncHandler(async (req, res) => {
 })
 
 
+const getRandomTopicId = asyncHandler(async (req, res) => {
+
+    TopicService.getRandomTopicId()
+        .then(topic => {
+            res.json(topic)
+        })
+        .catch(error => {
+            res.status(401).send(error.message)
+        })
+})
+
+const getHotTopicId = asyncHandler(async (req, res) => {
+
+    TopicService.getHotTopicId()
+        .then(topic => {
+            res.json(topic)
+        })
+        .catch(error => {
+            res.status(401).send(error.message)
+        })
+})
+
+
 const deleteTopic = asyncHandler(async (req, res) => {
     
     TopicService.deleteTopic(req.params.id)
@@ -131,5 +154,7 @@ export {
     getTopicsNew,
     getTopicsControversial,
     getTopicByIdNew,
-    getTopicByIdControversial
+    getTopicByIdControversial,
+    getRandomTopicId,
+    getHotTopicId
 }

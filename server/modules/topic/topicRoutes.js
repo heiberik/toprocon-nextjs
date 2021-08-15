@@ -12,7 +12,9 @@ import {
     getTopicsNew,
     getTopicsControversial,
     getTopicByIdNew,
-    getTopicByIdControversial
+    getTopicByIdControversial,
+    getRandomTopicId,
+    getHotTopicId
 } from './topicController.js'
 
 import { protect, admin } from '../../middleware/authMiddleware.js'
@@ -26,6 +28,12 @@ router.route('/new')
 
 router.route('/controversial')
     .get(getTopicsControversial)
+
+router.route('/randomId')
+    .get(getRandomTopicId)
+
+router.route('/hotId')
+    .get(getHotTopicId)
 
 router.route('/:id')
     .delete(protect, admin, deleteTopic)

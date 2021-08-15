@@ -2,16 +2,17 @@
     padding: 30px;
     border-radius: 10px;
     background-color: var(--card-1-color);
+    border: solid 2px var(--text-3-color);
     cursor: pointer;
     display: flex;
-    flex-direction: column;
     position: relative;
     transition: all 0.1s;
-    box-shadow: 0px 0px 15px rgba(0,0,0,0.4);
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.4);
     margin-bottom: 15px;
 }
 
 .container-card-topic:hover {
+    border: solid 2px var(--primary-1-color);
 }
 
 .container-card-topic .container-report {
@@ -24,8 +25,8 @@
 .topic-card-name {
     color: var(--text-1-color);
     font-weight: 600;
-    font-size: 2em;
-    margin-bottom: 15px;
+    font-size: 2rem;
+    margin-left: 15px;
 }
 
 .topic-card-username {
@@ -42,19 +43,18 @@
 }
 
 .topic-card-info {
-    color: rgba(255, 255, 255, 0.8);
-    padding: 5px 15px;
-    border: solid 2px rgb(121, 121, 134);
-    border-radius: 5px;
-    font-size: 0.9em;
+    color: white;
+    padding: 12px;
+    font-size: 1em;
     white-space: nowrap;
     margin-right: 10px;
+    border-radius: 10px;
+    font-weight: 500;
+    background-color: var(--background-2-color);
 }
 
 .info-pros {
-    border: solid 2px rgb(121, 121, 134);
 }
 
 .info-cons {
-    border: solid 2px rgb(121, 121, 134);
 }

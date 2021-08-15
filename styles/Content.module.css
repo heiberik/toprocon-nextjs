@@ -1,0 +1,113 @@
+.search-container {
+    padding: 0px;
+    margin: 0px auto;
+    margin-bottom: 12vh;
+    display: flex;
+    max-width: 70%;
+}
+
+
+.logo-container {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 10vh;
+}
+
+
+.logo-container h1 {
+    text-align: center;
+    font-size: 5rem;
+    margin-bottom: 20px;
+}
+
+.button-container {
+    display: flex;
+}
+
+.button-search-big {
+    border: solid 2px var(--primary-1-color);
+    background-color: var(--primary-2-color);
+    height: 100%;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    color: var(--text-1-color);
+    white-space: nowrap;
+    border-radius: 15px;
+    padding: 25px;
+    margin-left: 10px;
+    padding: 0px 40px;
+}
+
+.submit-search {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    height: 100%;
+    padding: 0px 40px;
+    border: none;
+    border-left: solid 2px var(--primary-1-color);
+    background-color: var(--primary-2-color);
+
+    color: white;
+    border-radius: 15px;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+    box-shadow: none;
+}
+
+
+.form-search {
+    background-color: var(--background-3-color);
+    border-radius: 15px;
+    position: relative;
+    border: solid 2px var(--primary-1-color);
+    width: 100%;
+}
+
+.form-search svg {
+    height: 20px;
+    width: 20px;
+}
+
+.input-search {
+    border: none;
+    background-color: inherit;
+    padding: 20px;
+    width: calc(100% - 50px);
+    color: var(--text-1-color);
+    border-radius: 15px;
+    font-size: 1.3rem;
+}
+
+
+
+@media screen and (max-width: 1000px) {
+
+    .search-container {
+        flex-direction: column;
+        max-width: 100%;
+        margin-top: 0px;
+    }
+
+    .button-search-big {
+       
+        width: 100%;
+        margin-right: 0px;
+        margin-left: auto;
+        margin-top: 10px;
+        padding: 20px 40px;
+    }
+
+    .form-search {
+        width: calc(100% - 4px);
+    }
+
+    .input-search {
+        padding: 20px;
+    }
+
+    .logo-container h1 {
+        font-size: 4rem;
+    }
+}

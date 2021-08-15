@@ -29,7 +29,7 @@ const ProfilePage = ({ userInfoServer, username }) => {
     }
 
     return (
-        <div className={styles["container-normal"]}>
+        <div className="container-normal">
             <div className={styles["userInfo-meta"]}>
                 <h1 className={styles["userInfo-username"]}> {userInfo.username} </h1>
             </div>

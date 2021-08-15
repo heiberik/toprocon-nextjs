@@ -36,10 +36,8 @@ const TopicBar = ({ setAdding, setTopic, active, setActive, topicSet }) => {
 
     return (
         <div className={styles["container-topicbar"]}>
-            <button className="button-primary" onClick={() => setAdd()}> Add argument </button>
-            <div className={styles["container-part-topic"]}>
-                <SortBy sortClick={sortClick} sortBy={sortBy} />
-            </div>
+            <button className={"button-primary" + " " + styles["button-add"]} style={{marginRight: "10px"}} onClick={() => setAdd()}> Add argument </button>
+            <SortBy sortClick={sortClick} sortBy={sortBy} />
         </div>
     )
 }

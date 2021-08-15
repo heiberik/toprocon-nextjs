@@ -85,9 +85,9 @@
     color: var(--text-3-color);
     font-size: 1.1em;
     margin: 12px 0px;
-    text-align: end;
+    text-align: start;
     font-weight: 400;
-    color: var(--text-3-color);
+    color: var(--text-4-color);
     width: 100%;
     max-width: calc(100% - 40px);
     border-radius: 5px;

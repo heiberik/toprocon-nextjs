@@ -2,11 +2,16 @@ import React, { useEffect, useState } from 'react'
 import { decreaseReport, getReport, increaseReport } from '../../services/reportService'
 import TopicPage from '../topics/[id]'
 import Argument from '../../components/Argument'
-import { getArgument } from '../../services/argumentService'
 import styles from "../../styles/Mod.module.css"
+import { useContext } from 'react'
+import UserContext from '../../context/user'
+import { useRouter } from 'next/router'
 
 
-const ModPage = ({ user }) => {
+const ModPage = () => {
+
+    const [user, setUser] = useContext(UserContext);
+    const router = useRouter()
 
     const [report, setReport] = useState(null)
     const [argument, setArgument] = useState(null)
@@ -33,13 +38,19 @@ const ModPage = ({ user }) => {
     }
 
     useEffect(() => {
-        if (report || fetching || message) return
 
-        setFetching(true)
+        if (!user) {
+            router.push("/login")
+        }
+        else {
+            if (report || fetching || message) return
 
-        setTimeout(() => {
-            fetchReport()
-        }, 1000)
+            setFetching(true)
+
+            setTimeout(() => {
+                fetchReport()
+            }, 1000)
+        }
     }, [fetchReport, report, fetching, message])
 
 
@@ -54,7 +65,7 @@ const ModPage = ({ user }) => {
             setTopic(null)
             setArgument(report?.item)
         }
-        
+
     }, [report])
 
     const yesClick = () => {

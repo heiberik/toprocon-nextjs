@@ -19,9 +19,9 @@ const Argument = ({ argument, type, setTopic }) => {
 
         e.stopPropagation();
 
-        if (!user) return;
-
-        addVote(argument._id, voteType)
+        if (!user) router.push("/login")
+        else {
+            addVote(argument._id, voteType)
             .then(res => {
                 setTopic(topic => {
                     let topicCopy = { ...topic }
@@ -32,6 +32,7 @@ const Argument = ({ argument, type, setTopic }) => {
             .catch(error => {
                 console.log(error);
             })
+        }
     }
 
     const usernameClicked = () => {

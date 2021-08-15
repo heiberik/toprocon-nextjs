@@ -16,8 +16,22 @@ const Header = ({ }) => {
     const [user, setUser] = useContext(UserContext);
     const router = useRouter()
 
+    const toggleDropdown = (t) => {
 
+        let menu = document.getElementById("dropdown")
+
+        if (menu.style.visibility !== "visible" && t !== false) {
+            menu.style.opacity = 1
+            menu.style.visibility = "visible"
+        }
+        else {
+            menu.style.opacity = 0
+            menu.style.visibility = "hidden"
+        }
+    }
+  
     useEffect(() => {
+        toggleDropdown(false)
         getUser()
             .then(res => {
                 setUser(JSON.parse(res.data))
@@ -33,6 +47,11 @@ const Header = ({ }) => {
         router.push("/")
     }
 
+    const handleClick = (e, path) => {
+        router.push(path)
+        toggleDropdown(false)
+    }
+
     const handleLogin = () => {
         toggleDropdown(false)
         router.push("/login")
@@ -43,28 +62,15 @@ const Header = ({ }) => {
         router.push("/register")
     }
 
-    const toggleDropdown = (e) => {
-
-
-        let menu = document.getElementById("dropdown")
-        
-        if (menu.style.visibility !== "visible"){
-            menu.style.opacity = 1
-            menu.style.visibility = "visible"
-        }
-        else {
-            menu.style.opacity = 0
-            menu.style.visibility = "hidden"
-        }
-    }
+    
 
     return (
         <div className={styles["container-header"]}>
             <header className={styles["wrapper-header"]}>
 
-                <div className={styles["icon-container"]}>
+                <div className={styles["icon-container"]} onClick={handleFrontPage}>
                     <Image src={icon} alt="icon" />
-                    <h1 onClick={handleFrontPage} className={styles["header-name"]}> Toprocon </h1>
+                    <h1 className={styles["header-name"]}> Toprocon </h1>
                 </div>
 
                 <div className={styles["hamburger"]} onClick={(e) => toggleDropdown(e)}>
@@ -73,9 +79,9 @@ const Header = ({ }) => {
 
                 <nav className={styles["header-items"]} id="dropdown">
 
-                    <Link href={`/`} className={styles["header-link"]}> Topics </Link>
-                    <Link href={`/leaderboards`} className={styles["header-link"]}> Leaderboards </Link>
-                    <Link href={`/moderate`} className={styles["header-link"]}> Moderate </Link>
+                    <button onClick={(e) => handleClick(e, "/")} className={styles["header-link"]}> Topics </button>
+                    <button onClick={(e) => handleClick(e, "/leaderboards")} className={styles["header-link"]}> Leaderboards </button>
+                    <button onClick={(e) => handleClick(e, "/moderate")} className={styles["header-link"]}> Moderate </button>
 
                     {user && <div className={styles["container-buttons"]}>
                         <ProfileButton user={user} setUser={setUser} />

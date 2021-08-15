@@ -7,6 +7,10 @@ const argumentSchema = mongoose.Schema({
         max: 250,
         required: true
     },
+    type: {
+        type: String,
+        required: true
+    },
     upvotes : {
         type: Number,
         default: 0

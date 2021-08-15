@@ -1,10 +1,6 @@
 .container-topicbar {
     padding-top: 40px;
-    padding-bottom: 20px;
-    border-bottom: solid 3px var(--card-1-color);
-    margin-bottom: 20px;
     display: flex;
-    justify-content: space-between;
     background-color: inherit;
     position: relative;
 }
@@ -74,4 +70,15 @@
 
 .container-alternatives .button-submit-topic {
     padding: .5em .7em;
+}
+
+.button-add {
+    background-color: var(--primary-4-color);
+    border-color: var(--primary-3-color);
+}
+
+@media screen and (max-width: 1000px) {
+    .container-topicbar {
+        justify-content: space-between;
+    }
 }

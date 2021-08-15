@@ -24,8 +24,6 @@
     background-color: transparent;
 }   
 
-
-
 .container-report .container-popup {
     border-radius: 10px;
     border: solid 2px var(--text-2-color);
@@ -77,4 +75,14 @@
 .container-report .container-popup .report-alt:hover {
     background-color: var(--primary-1-color);
     color: var(--text-1-color);
+}
+
+
+
+@media screen and (max-width: 1000px) {
+    .container-report {
+        right: 5px;
+        top: 5px;
+        padding: 8px;
+    }
 }

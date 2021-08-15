@@ -5,14 +5,14 @@
     --background-3-color: rgb(39, 41, 46); 
     --background-4-color: rgba(148, 148, 148, 0.034); 
 
-    --primary-1-color: #713e92;
-    --primary-1-color: #0f728b;
 
 
-    --primary-2-color: #162d33;
+    --primary-1-color: #768181;
+    --primary-2-color: #454746;
+    --primary-3-color: #11a3bd;
+    --primary-4-color: #1e4e5a;
 
 
-    --card-1-color: #272931;
     --card-1-color: #2d2f36;
 
 
@@ -33,7 +33,6 @@
 * {
     margin: 0px;
     padding: 0px;
-    font-family: 'Roboto', sans-serif;
     font-family: 'Quicksand', sans-serif;    
     letter-spacing: 0.5px;
 }
@@ -150,7 +149,7 @@ button {
     outline: none;
     cursor: pointer;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 1rem;
     min-height: 52px;
     box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
     transition: all 0.5s;

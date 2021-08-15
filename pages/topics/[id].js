@@ -49,8 +49,8 @@ const TopicPage = ({ user, topicSet, topicServer }) => {
                         reveal
                         startAngle={70}
                         data={[
-                            { title: 'Pros', value: topic.pros.length || 1, color: 'var(--upvote-color)' },
-                            { title: 'Cons', value: topic.cons.length || 1, color: 'var(--downvote-color)' }
+                            { title: 'Pros', value: topic.numPros || 1, color: 'var(--upvote-color)' },
+                            { title: 'Cons', value: topic.numCons || 1, color: 'var(--downvote-color)' }
                         ]}
                     />
                 </div>

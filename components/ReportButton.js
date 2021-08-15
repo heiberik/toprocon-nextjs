@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons'
-import { faEllipsisH } from '@fortawesome/free-solid-svg-icons'
 import { addReport } from '../services/reportService'
 import styles from "../styles/ReportButton.module.css"
+import { useContext } from 'react'
+import UserContext from '../context/user'
 
 const ReportButton = ({ type, reportedId }) => {
 
     const [active, setActive] = useState(false)
     const [reported, setReported] = useState(false)
     const [error, setError] = useState(null)
+    const [user, setUser] = useContext(UserContext);
 
     const reasons = [
         "Bad language",
@@ -32,17 +34,21 @@ const ReportButton = ({ type, reportedId }) => {
     const handleReport = (e, reason) => {
         e.stopPropagation()
         e.preventDefault()
-        try {
-            addReport(type, reportedId, reason)
-            .then(res => {
-                setReported(true)
-            })
-            .catch(error => {
-                setError(error.response.data)
-            })
-        }
-        catch(e){
-            setError("Must be logged in")
+
+        if (!user) setError("Login to moderate and earn points.")
+        else {
+            try {
+                addReport(type, reportedId, reason)
+                .then(res => {
+                    setReported(true)
+                })
+                .catch(error => {
+                    setError(error.response.data)
+                })
+            }
+            catch(e){
+                setError("Must be logged in")
+            }
         }
     }
 

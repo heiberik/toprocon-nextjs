@@ -25,8 +25,16 @@ export const getTopicById = (id, sortBy) => {
     if (sortBy === "top") return axios.get(`${url}/${id}`)
     if (sortBy === "new") return axios.get(`${url}/${id}/new`)
     if (sortBy === "controversial") return axios.get(`${url}/${id}/controversial`)
-    
 }
+
+export const getRandomTopicId = () => {
+    return axios.get(`${url}/randomId`)
+}
+
+export const getHotTopicId = () => {
+    return axios.get(`${url}/hotId`)
+}
+
 
 export const updateTopic = (id, name, description, resources) => {
     return axios.put(`${url}/${id}`, { name, description, resources })

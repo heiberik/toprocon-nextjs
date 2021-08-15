@@ -1,5 +1,6 @@
 .container-sortby {
     position: relative;
+    margin-left: 10px;
 }
 
 .container-sortby .sortby-button {
@@ -7,14 +8,16 @@
     min-height: 52px;
     background-color: var(--primary-2-color);
     border: solid 2px var(--primary-1-color);
-    padding-right: 80px;
+    width: 170px;
+    padding-right: 70px;
+    padding-left: 5px;
 }
 
 
 .container-sortby svg {
     position: absolute;
     right: 15px;
-    top: 13px;
+    top: 14px;
     color: white;
     width: 25px;
     height: 25px;
@@ -24,13 +27,13 @@
 
 .container-sortby .sortby-dropdown {
     position: absolute;
-    background-color: var(--card-1-color);
+    background-color: var(--primary-2-color);
     padding: 5px;
     z-index: 999;
     right: 0px;
     top: 60px;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-    border: solid 2px var(--text-3-color);
+    border: solid 2px var(--primary-1-color);
     border-radius: 5px;
 }
 
@@ -47,13 +50,13 @@
 }
 
 .sortby-dropdown .sortby:hover {
-    border: solid 2px var(--text-3-color);
+    border: solid 2px var(--primary-1-color);
     opacity: 1;
 }
 
 .sortby-dropdown .sortby-active {
     color: var(--text-1-color);
-    background-color: var(--text-3-color);
+    background-color: var(--primary-1-color);
     box-shadow: none;
 
 }
@@ -67,4 +70,10 @@
     height: 20px;
     color: white;
     cursor: pointer;
+}
+
+@media screen and (max-width: 1000px) {
+    .container-sortby {
+        margin-right: 0px;
+    }
 }

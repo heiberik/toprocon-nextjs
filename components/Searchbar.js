@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import { getTopics, searchTopic } from '../services/topicService'
+import { getRandomTopicId, getTopics, searchTopic } from '../services/topicService'
 import { useBottomScrollListener } from 'react-bottom-scroll-listener'
 import { useRouter } from 'next/router'
 import AddButton from './AddButton'
 import Search from './Search'
 import SortBy from './SortBy'
 import styles from "../styles/Searchbar.module.css"
+import { useContext } from 'react'
+import UserContext from '../context/user'
+import Content from './Content'
 
 const Searchbar = ({ topics, setTopics }) => {
 
     let limit = 40
+    const [user, setUser] = useContext(UserContext);
 
     const [sortBy, setSortBy] = useState("top")
     const [searchText, setSearchText] = useState("")
@@ -108,7 +112,8 @@ const Searchbar = ({ topics, setTopics }) => {
     }
 
     const addClick = () => {
-        router.push("/topics/add")
+        if (user) router.push("/topics/add")
+        else router.push("/login")
     }
 
     const searchForTopic = (e) => {
@@ -128,23 +133,52 @@ const Searchbar = ({ topics, setTopics }) => {
             })
     }
 
-    return (
-        <div className={styles['container-searchbar']} >
-            <div className={styles["container-part"]} style={{ width: "100%" }}>
-                <AddButton
-                    clickHandler={addClick}
-                    text="Add topic" />
-                <Search
-                    submitHandler={searchForTopic}
-                    inputChangeHandler={textChangeHandler}
-                    searchText={searchText}
-                />
-            </div>
+    const randomTopicClick = () => {
+        getRandomTopicId()
+            .then(res => {
+                router.push(`/topics/${res.data}`)
+            })
+            .catch(e => {
+                console.log(e);
+            })
+    }
 
-            <div className={styles["container-part"]} style={{ position: "relative", width: "fit-content" }}>
-                <SortBy sortClick={sortClick} sortBy={sortBy} />
+    return (
+        <div>
+            <Content
+                setSortBy={setSortBy}
+                setPageSearch={setPageSearch}
+                limit={limit}
+                searchText={searchText}
+                setSearchText={setSearchText}
+                setTopicsSearch={setTopicsSearch}
+                setTopics={setTopics}
+            />
+
+
+            <div className={styles['container-searchbar']} >
+                <div className={styles['container-part']}>
+
+                    <AddButton
+                        clickHandler={addClick}
+                        text="Add topic" />
+
+
+                    <button className={styles['button-random']} onClick={randomTopicClick}> View a random topic</button>
+                </div>
+                <div>
+                    <SortBy sortClick={sortClick} sortBy={sortBy} />
+                </div>
+
+                {false &&
+                    <Search
+                        submitHandler={searchForTopic}
+                        inputChangeHandler={textChangeHandler}
+                        searchText={searchText}
+                    />}
             </div>
         </div>
+
     )
 }
 
