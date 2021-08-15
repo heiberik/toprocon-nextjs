@@ -1,6 +1,7 @@
 .container-topicbar {
     padding-top: 40px;
     display: flex;
+    justify-content: space-between;
     background-color: inherit;
     position: relative;
 }
