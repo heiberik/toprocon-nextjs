@@ -101,13 +101,26 @@
 
     .form-search {
         width: calc(100% - 4px);
+        border-radius: 5px;
     }
 
     .input-search {
-        padding: 20px;
+        padding: 15px;
     }
 
     .logo-container h1 {
         font-size: 4rem;
+    }
+
+    .logo-container {
+        margin-top: 2vh;
+    }
+
+    .submit-search {
+        
+        padding: 0px 20px;
+        border-radius: 5px;
+        border-bottom-left-radius: 0px;
+        border-top-left-radius: 0px;
     }
 }

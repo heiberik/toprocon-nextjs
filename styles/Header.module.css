@@ -159,9 +159,7 @@
     }
 
     .header-name {
-        padding-right: 0px;
-        margin-right: 0px;
-        border-right: none;
+        display: none;
     }
 
     .wrapper-header {

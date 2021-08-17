@@ -26,6 +26,7 @@
     color: var(--text-1-color);
     font-weight: 600;
     font-size: 2rem;
+    line-height: 2.7rem;
     margin-left: 15px;
 }
 
@@ -57,4 +58,17 @@
 }
 
 .info-cons {
+}
+
+@media screen and (max-width: 1000px) {
+
+    .container-card-topic {
+        padding: 20px;
+    }
+
+    .topic-card-name {
+        font-size: 1.5rem;
+        line-height: 2.7rem;
+        margin-left: 10px;
+    }
 }

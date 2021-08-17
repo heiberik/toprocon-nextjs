@@ -24,6 +24,10 @@
     transition: all 0.4s;
     background-color: var(--primary-4-color);
     border: solid 2px var(--primary-3-color);
+
+    background-color: var(--primary-3-color);
+    border: solid 2px transparent; 
+
     color: white;
     margin-left: 10px;
 }
@@ -184,6 +188,7 @@
 
     .container-searchbar {
         justify-content: space-between;
+        padding-bottom: 10px;
     }
 
     .button-random {
