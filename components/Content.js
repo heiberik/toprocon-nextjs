@@ -64,8 +64,8 @@ const Content = ({ setSortBy, setPageSearch, limit, searchText, setSearchText, s
             <div className={styles["search-container"]} >
 
                 <form onSubmit={searchForTopic} className={styles["form-search"]}>
-                    <input value={searchText} id="input-search" autoComplete="off" data-lpignore="true" onChange={inputChangeHandler} placeholder="" className={styles["input-search"]} />
-                    <button type="submit" className={styles["submit-search"]}> <FontAwesomeIcon icon={faSearch} size="2x" /> </button>
+                    <input value={searchText} aria-labelledBy="Search for topic." id="input-search" autoComplete="off" data-lpignore="true" onChange={inputChangeHandler} placeholder="" className={styles["input-search"]} />
+                    <button type="submit" aria-label="Search" className={styles["submit-search"]}> <FontAwesomeIcon icon={faSearch} size="2x" /> </button>
                 </form>
 
                 {false &&
