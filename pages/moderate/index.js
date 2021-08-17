@@ -48,10 +48,22 @@ const ModPage = () => {
             setFetching(true)
 
             setTimeout(() => {
-                fetchReport()
+                if (fetching || message || report) return
+
+                setFetching(true)
+                getReport()
+                    .then(res => {
+                        setReport(res.data)
+                        console.log(res.data);
+                        setFetching(false)
+                    })
+                    .catch(error => {
+                        setMessage("Nothing more to moderate.")
+                        setFetching(false)
+                    })
             }, 1000)
         }
-    }, [fetchReport, report, fetching, message])
+    }, [report, fetching, message, router, user])
 
 
     useEffect(() => {
