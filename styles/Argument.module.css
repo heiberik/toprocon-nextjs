@@ -16,6 +16,7 @@
     word-break: break-all;
     border: solid 2px var(--text-3-color);
     box-shadow: 0px 0px 10px rgba(0,0,0,0.4);
+    overflow: hidden;
 
 }
 
@@ -39,15 +40,13 @@
     margin-top: 5px;
     width: fit-content;
     text-align: end;
-    color: var(--primary-1-color);
-    color: rgb(149, 145, 149);
+    color: rgb(255, 255, 255, 0.7);
     font-size: 0.9em;
     font-weight: 400;
     cursor: pointer;
 }
 
 .argument-text {
-    max-width: 100%;
     color: var(--text-1-color);
     transition: all 1s;
     font-size: 1.2rem;
@@ -55,9 +54,17 @@
     max-width: 80ch;
 }
 
-.argument-type {
+.argument-type-pro {
     margin-bottom: 5px;
-    color: rgb(149, 145, 149);
+    color: rgb(255, 255, 255, 0.7);
+    font-size: 0.9em;
+    font-weight: 400;
+    text-transform: capitalize;
+}
+
+.argument-type-con {
+    margin-bottom: 5px;
+    color: rgb(255, 255, 255, 0.7);
     font-size: 0.9em;
     font-weight: 400;
     text-transform: capitalize;
@@ -123,18 +130,38 @@
     text-align: right;
 }
 
+
 .chooser {
     justify-content: space-between;
     border: solid 2px var(--primary-1-color);
 }
 
 .button-choose {
-    width: 49%;
-    border: solid 2px var(--primary-1-color);
-    background-color: var(--primary-1-color);
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 0px;
+    height: fit-content;
+    min-height: 0px;
+    background-color: inherit;
+    box-shadow: none;
+    border: none;
     color: var(--text-1-color);
     white-space: nowrap;
+
+    background-color: var(--primary-2-color);
+    border: solid 2px var(--primary-1-color);
+
+
+    z-index: 99999999999999;
+    margin-bottom: 5px;
+    margin-right: 10px;
+    color: rgb(255, 255, 255, 1);
+    font-size: 0.9em;
+    font-weight: 400;
+    text-transform: capitalize;
+    padding: 8px 30px;
+}
+
+.button-choose:hover {
+    background-color: var(--primary-1-color);
 }
 
 .argument-input {
@@ -144,7 +171,7 @@
     padding: 0px;
     font-weight: 500;
     background-color: inherit;
-    height: 30px;
+    height: 28px;
     resize: none;
     min-height: 0px;
     font-size: 1.2rem;
@@ -156,7 +183,6 @@
 
 .argument-input::placeholder {
     color: var(--text-2-color);
-    ;
     font-size: 1.2rem;
     line-height: 1.5em;
     max-width: 80ch;
@@ -182,7 +208,7 @@
 .button-add {
     width: 49%;
     border: solid 2px var(--primary-1-color);
-    background-color: var(--primary-1-color);
+    background-color: var(--primary-2-color);
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
     color: var(--text-1-color);
     white-space: nowrap;

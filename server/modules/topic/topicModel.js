@@ -44,10 +44,6 @@ const topicSchema = mongoose.Schema({
 
 topicSchema.pre('save', async function (next) {
 
-    const pros = this.arguments.filter(a => a.type === "pro")
-    this.numPros = pros.length
-    this.numCons = this.arguments.length - this.numPros
-
     this.ratioProsCons = (this.numPros || 1) / (this.numCons || 1)
     this.totalProsCons = this.numPros + this.numCons
 

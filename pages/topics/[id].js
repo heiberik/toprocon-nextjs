@@ -8,7 +8,6 @@ import { useRouter } from 'next/router'
 import TopicService from "../../server/modules/topic/topicService"
 import styles from "../../styles/TopicPage.module.css"
 import Meta from "../../components/Meta"
-import { getTopicById } from '../../services/topicService'
 
 const TopicPage = ({ user, topicSet, topicServer }) => {
 
@@ -32,7 +31,7 @@ const TopicPage = ({ user, topicSet, topicServer }) => {
         <div className="container-normal">
 
             <Meta
-                desc={"Top pros and cons of " + topic.name + ". Read the best arguments for " + topic.name + "."}
+                desc={"Top pros and cons of " + topic.name + ". " + topic.description}
                 title={"Pros and cons of " + topic.name} />
 
             <div className={styles["container-desc"]}>

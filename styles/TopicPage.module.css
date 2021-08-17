@@ -5,7 +5,7 @@
 }
 
 .container-desc {
-    padding: 30px;
+    padding: 50px;
     background-color: var(--background-4-color);
     border: solid 2px var(--text-2-color);
     border-radius: 5px;
@@ -95,9 +95,5 @@
     .topic-name {
         font-size: 2em;  
         padding-right: 20px;     
-    }
-
-    .container-desc {
-        max-width: 100%;
     }
 }

@@ -156,11 +156,16 @@ button {
 }
 
 .button-primary {
-    border: solid 1px transparent;
+    border: solid 2px transparent;
     background-color: var(--primary-1-color);
     box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
     color: var(--text-1-color);
     white-space: nowrap;
+}
+
+.button-color {
+    background-color: var(--primary-4-color);
+    border:solid 2px var(--primary-3-color);
 }
 
 .button-full-width {

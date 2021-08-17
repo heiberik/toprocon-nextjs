@@ -10,7 +10,7 @@
     text-align: center;
     transition: all 0.4s;
     background-color: var(--primary-4-color);
-    border-color: var(--primary-3-color);
+    border:solid 2px var(--primary-3-color);
 }
 
 .button-component-add p {

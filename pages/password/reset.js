@@ -63,8 +63,10 @@ const EmailPage = () => {
                         validation={(v) => validator.validate(v)}
                         icon={<FontAwesomeIcon icon={faEnvelope} color="white" />} />
 
+                    <p className="text-auth"> Open your email to proceed in resetting your password.</p>
+
                     <div>
-                        <button type="submit" className="button-primary button-full-width" style={{ marginBottom: "0px", marginTop: "20px" }}> Submit </button>
+                        <button type="submit" className="button-primary button-full-width button-color" style={{ marginBottom: "0px", marginTop: "0px" }}> Submit </button>
                         {message && <p className="text-message"> {message} </p>}
                         {error && <p className="text-error"> {error} </p>}
                     </div>

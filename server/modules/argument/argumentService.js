@@ -23,6 +23,9 @@ class ArgumentService {
 
             topic.arguments.push(newArgument)
 
+            if (type === "con") topic.numCons++;
+            else topic.numPros++;
+
             await topic.save()
 
             await points.addTopicArgumentPoints(user, topic.user)

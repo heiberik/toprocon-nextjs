@@ -22,16 +22,16 @@ const Argument = ({ argument, type, setTopic }) => {
         if (!user) router.push("/login")
         else {
             addVote(argument._id, voteType)
-            .then(res => {
-                setTopic(topic => {
-                    let topicCopy = { ...topic }
-                    topicCopy.args = topicCopy.args.map(arg => arg._id === res.data._id ? { type , ...res.data} : arg)
-                    return topicCopy
+                .then(res => {
+                    setTopic(topic => {
+                        let topicCopy = { ...topic }
+                        topicCopy.args = topicCopy.args.map(arg => arg._id === res.data._id ? { type, ...res.data } : arg)
+                        return topicCopy
+                    })
                 })
-            })
-            .catch(error => {
-                console.log(error);
-            })
+                .catch(error => {
+                    console.log(error);
+                })
         }
     }
 
@@ -54,7 +54,7 @@ const Argument = ({ argument, type, setTopic }) => {
             </div>
 
             <div className={styles["container-text"]}>
-                <p className={styles["argument-type"]}> {argument.type && argument.type} </p>
+                <p className={argument.type === "pro" ? styles["argument-type-pro"] : styles["argument-type-con"]}> {argument.type && argument.type} </p>
                 <p className={styles["argument-text"]}> {argument.message} </p>
                 <p className={styles["argument-username"]} onClick={usernameClicked}> {argument.user.username} </p>
             </div>
