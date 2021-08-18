@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "../styles/globals.css"
 import Header from "../components/Header.js"
 import Footer from "../components/Footer.js"
 import { UserProvider } from '../context/user';
 import Meta from "../components/Meta"
+import { useRouter } from 'next/router';
 
 
 
@@ -26,6 +27,21 @@ const Layout = ({ children }) => {
 
 
 const MyApp = ({ Component, pageProps }) => {
+
+    const router = useRouter();
+
+    const handleRouteChange = (url) => {
+        window.gtag('config', 'G-ZR2QVBL1EL', {
+            page_path: url,
+        });
+    };
+
+    useEffect(() => {
+        router.events.on('routeChangeComplete', handleRouteChange);
+        return () => {
+            router.events.off('routeChangeComplete', handleRouteChange);
+        };
+    }, [router.events]);
 
     return (
         <UserProvider>
