@@ -1,5 +1,4 @@
 import Topic from './topicModel.js'
-import points from '../../utils/points.js'
 
 
 class TopicService {
@@ -26,11 +25,25 @@ class TopicService {
         let topics = null
 
         if (search) {
+
             topics = await Topic.find({ name: { $regex: search, $options: "i" }, active: true })
-                .sort({ "_id": -1 })
-                .skip(skip)
-                .limit(limit)
+                .sort({ "totalProsCons": -1 })
+                .limit(100)
                 .populate({ path: 'user', model: 'User', select: 'username' })
+
+            let descSearchTopics = await Topic.find({ description: { $regex: search, $options: "i" }, active: true })
+                .sort({ "totalProsCons": -1 })
+                .limit(100)
+                .populate({ path: 'user', model: 'User', select: 'username' })
+
+
+            topics = topics.concat(descSearchTopics)
+
+            topics = topics.filter((thing, index, self) =>
+                index === self.findIndex((t) => (
+                    t.place === thing.place && t.name === thing.name
+                ))
+            );
         }
         else {
             topics = await Topic.find({ active: true })

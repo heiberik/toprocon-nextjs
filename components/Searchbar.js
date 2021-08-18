@@ -32,7 +32,7 @@ const Searchbar = ({ topics, setTopics }) => {
 
     useBottomScrollListener(() => {
 
-        if (!topics) return
+        if (!topics || searchText.trim().length > 0) return
 
         if (sortBy === "top" && topicsTop) {
             getTopics(sortBy, pageTop, limit)
@@ -104,34 +104,16 @@ const Searchbar = ({ topics, setTopics }) => {
     }, [sortBy, setTopics, topicsTop, topicsNew, topicsControversial, limit])
 
     const sortClick = (sortBy) => {
+        setSearchText("")
         setSortBy(sortBy)
     }
 
-    const textChangeHandler = (e) => {
-        setSearchText(e.target.value)
-    }
 
     const addClick = () => {
         if (user) router.push("/topics/add")
         else router.push("/login")
     }
 
-    const searchForTopic = (e) => {
-
-        e.preventDefault()
-        setSortBy("")
-        setPageSearch(limit)
-
-        searchTopic(searchText, 0, limit)
-            .then(res => {
-                console.log(res);
-                setTopicsSearch(res.data)
-                setTopics(res.data)
-            })
-            .catch(error => {
-                console.log(error);
-            })
-    }
 
     const randomTopicClick = () => {
         getRandomTopicId()
@@ -169,13 +151,6 @@ const Searchbar = ({ topics, setTopics }) => {
                 <div>
                     <SortBy sortClick={sortClick} sortBy={sortBy} />
                 </div>
-
-                {false &&
-                    <Search
-                        submitHandler={searchForTopic}
-                        inputChangeHandler={textChangeHandler}
-                        searchText={searchText}
-                    />}
             </div>
         </div>
 
