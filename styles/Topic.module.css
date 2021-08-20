@@ -1,8 +1,8 @@
 .container-card-topic {
     padding: 15px;
     background-color: var(--card-1-color);
-    margin-bottom: 10px;
-    border-radius: 5px;
+    margin-bottom: 15px;
+    border-radius: 10px;
     cursor: pointer;
     display: flex;
     position: relative;
@@ -77,7 +77,7 @@
 
     .topic-card-name {
         font-size: 1.5rem;
-        line-height: 2.7rem;
+        line-height: 3.8rem;
         margin-left: 10px;
     }
 }

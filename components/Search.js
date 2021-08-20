@@ -15,8 +15,6 @@ const Search = ({ setSortBy, setPageSearch, limit, searchText, setSearchText, se
     const searchForTopic = (e) => {
 
         e.preventDefault()
-
-        if (searchText.trim() === "") return;
         
         setSortBy("")
         setPageSearch(limit)

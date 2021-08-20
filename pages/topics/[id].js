@@ -65,6 +65,7 @@ const TopicPage = ({ user, topicSet, topicServer }) => {
                 {topic.args && topic.args.map(arg => {
                     return <Argument type={arg.type} key={arg._id} user={user} setTopic={setTopic} argument={arg} />
                 })}
+                {topic.args.length === 0 && !adding && <p>No arguments added to this topic yet. You could be the first!</p>}
             </div>
         </div>
     )
@@ -74,13 +75,19 @@ export async function getServerSideProps(context) {
 
     const { id } = context.query
 
-    let topic = await TopicService.getTopicById(id)
-    topic = JSON.parse(JSON.stringify(topic))
-
-    return {
-        props: {
-            topicServer: topic
+    try {
+        let topic = await TopicService.getTopicById(id)
+        topic = JSON.parse(JSON.stringify(topic))
+        return {
+            props: {
+                topicServer: topic
+            }
         }
+    }
+    catch (e) {
+        return {
+            notFound: true
+        };
     }
 }
 

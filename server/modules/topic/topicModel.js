@@ -4,12 +4,15 @@ import Argument from '../argument/argumentModel.js'
 const topicSchema = mongoose.Schema({
     name: {
         type: String,
-        min: 1,
-        max: 1000,
+        min: 2,
+        max: 100,
         required: true
     },
     description: {
-        type: String
+        type: String,
+        min: 30,
+        max: 2000,
+        required: true
     },
     resources: [],
     user: {
@@ -21,16 +24,19 @@ const topicSchema = mongoose.Schema({
         ref: 'Argument'
     }],
     numPros: {
-        type: Number
+        type: Number,
+        default: 0
     },
     numCons: {
-        type: Number
+        type: Number,
+        default: 0
     },
     ratioProsCons: {
         type: Number
     },
     totalProsCons: {
-        type: Number
+        type: Number,
+        default: 0,
     }, 
     active: {
         type: Boolean,

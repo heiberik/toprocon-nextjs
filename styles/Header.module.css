@@ -5,7 +5,7 @@
     width: 100%;
     min-width: 100%;
     z-index: 200000;
-    background-image: linear-gradient(to right, var(--background-1-color), var(--background-2-color));
+    background-image: linear-gradient(to right, var(--background-1-color), var(--background-3-color));
 }
 
 .header-items {
@@ -71,7 +71,7 @@
 
 
 .header-smaller {
-    height: 4.5em;
+    height: 4.8em;
 }
 
 .wrapper-header img {

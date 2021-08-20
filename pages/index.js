@@ -4,7 +4,6 @@ import { useState } from 'react'
 import useragent from 'useragent'
 import TopicService from '../server/modules/topic/topicService'
 import styles from "../styles/Topics.module.css"
-import Image from 'next/image'
 import Content from '../components/Content'
 
 
@@ -37,7 +36,7 @@ export async function getServerSideProps(context) {
         topics = await TopicService.getTopics(1000000000000, 0, "")
     }
     else {
-        topics = await TopicService.getTopics(40, 0, "")
+        topics = await TopicService.getTopics(60, 0, "")
     }
 
     return {

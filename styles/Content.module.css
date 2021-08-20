@@ -8,7 +8,7 @@
     padding-bottom: 6em;
     justify-content: center;    
     margin-bottom: 45px;
-    background-color: rgba(75, 75, 75, 0.089);
+    background-color: var(--background-3-color);
     position: absolute;
     left: 0px;
     top: 6.5em;
@@ -50,6 +50,12 @@
 
 @media screen and (max-width: 1000px) {
 
+    .container-search {
+        top: 5em;
+        padding-bottom: 5em;
+        padding-top: 4em;
+    }
+
     .search-container {
         flex-direction: column;
         max-width: 100%;
@@ -76,6 +82,11 @@
 
     .logo-container h1 {
         font-size: 4rem;
+        margin-left: 20px;
+    }
+
+    .logo-container p {
+        margin-left: 20px;
     }
 
     .logo-container {

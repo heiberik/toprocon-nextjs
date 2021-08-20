@@ -22,8 +22,14 @@ const AddTopicPage = () => {
         if (name.trim().length < 2) {
             setError("Topic name must be at least 2 characters")
         }
-        else if (description.trim().length < 6) {
-            setError("Topic description must be at least 6 characters")
+        else if (name.length > 100) {
+            setError("Topic name can't be more than 100 characters")
+        }
+        else if (description.length < 30) {
+            setError("Topic description must be at least 30 characters")
+        }
+        else if (description.length > 1000) {
+            setError("Topic description can't be more than 2000 characters")
         }
         else {
 

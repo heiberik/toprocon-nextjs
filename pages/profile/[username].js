@@ -12,7 +12,7 @@ const ProfilePage = ({ userInfoServer, username }) => {
     const [user, setUser] = useContext(UserContext);
     const [userInfo, setUserInfo] = useState(userInfoServer)
     const [error, setError] = useState(null)
-    const router = useRouter()    
+    const router = useRouter()
 
     const goToTopic = (id) => {
         router.push("/topics/" + id)
@@ -40,11 +40,11 @@ const ProfilePage = ({ userInfoServer, username }) => {
             <h2 className={styles["userInfo-header"]}> Top arguments </h2>
             <div className={styles["container-best-arguments"]}>
                 {userInfo.bestArguments.length === 0 && <p className={styles["infoNumber"]}> {username} has not added any arguments</p>}
-                    {userInfo.bestArguments.map(arg => {
-                        return <div onClick={() => goToTopic(arg.topic)} key={arg._id} style={{margin: "10px"}}>
-                            <Argument type={"pro"} user={username} setTopic={null} argument={arg} />
-                        </div>
-                    })}
+                {userInfo.bestArguments.map(arg => {
+                    return <div onClick={() => goToTopic(arg.topic)} key={arg._id} style={{ margin: "10px" }}>
+                        <Argument type={"pro"} user={username} setTopic={null} argument={arg} />
+                    </div>
+                })}
             </div>
 
 
@@ -85,15 +85,23 @@ export async function getServerSideProps(context) {
 
     const { username } = context.query
 
-    let userInfo = await UserService.getPublicUserInfo(username)
-    userInfo = JSON.parse(JSON.stringify(userInfo))
+    try {
+        let userInfo = await UserService.getPublicUserInfo(username)
+        userInfo = JSON.parse(JSON.stringify(userInfo))
 
-    return {
-        props: {
-            username: username,
-            userInfoServer: userInfo
+        return {
+            props: {
+                username: username,
+                userInfoServer: userInfo
+            }
         }
     }
+    catch(e) {
+        return {
+            notFound: true
+        };
+    }
+    
 }
 
 

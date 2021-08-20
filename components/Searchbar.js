@@ -7,11 +7,10 @@ import SortBy from './SortBy'
 import styles from "../styles/Searchbar.module.css"
 import { useContext } from 'react'
 import UserContext from '../context/user'
-import Content from './Content'
 
 const Searchbar = ({ topics, setTopics }) => {
 
-    let limit = 40
+    let limit = 60
     const [user, setUser] = useContext(UserContext);
 
     const [sortBy, setSortBy] = useState("top")

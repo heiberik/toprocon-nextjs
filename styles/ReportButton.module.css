@@ -35,7 +35,7 @@
     right: 10px;
     display: flex;
     flex-direction: column;
-    background-color: var(--background-3-color);
+    background-color: var(--background-1-color);
     justify-content: center;
     align-items: flex-start;
     overflow: visible;

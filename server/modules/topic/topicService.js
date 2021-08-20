@@ -164,7 +164,6 @@ class TopicService {
 
 
     getTopicById = async (id) => {
-
         const topic = await Topic.findById(id)
             .populate({
                 path: 'arguments',
