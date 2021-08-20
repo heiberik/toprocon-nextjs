@@ -12,6 +12,7 @@
     --primary-3-color: #11a3bd;
     --primary-4-color: #1e4e5a;
 
+    
 
     --card-1-color: #2d2f36;
 
@@ -144,28 +145,30 @@ textarea {
 
 
 button {
-    padding: 0.9em 1.5em;
+    padding: 0.8em 1.2em;
     border-radius: 5px;
     outline: none;
     cursor: pointer;
     font-weight: 600;
     font-size: 1rem;
-    min-height: 52px;
     box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
     transition: all 0.5s;
-}
-
-.button-primary {
-    border: solid 2px transparent;
-    background-color: var(--primary-1-color);
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
     color: var(--text-1-color);
     white-space: nowrap;
 }
 
-.button-color {
+.button-primary {
     background-color: var(--primary-4-color);
     border:solid 2px var(--primary-3-color);
+}
+
+.button-secondary {
+    background-color: var(--primary-2-color);
+    border:solid 2px var(--primary-1-color);
+}
+
+.button-color {
+    
 }
 
 .button-full-width {
@@ -184,9 +187,9 @@ button:hover {
 }
 
 .text-auth {
-    font-size: 1.2rem;
-    margin-bottom: 40px;
-    margin-top: 40px;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    margin-top: 30px;
 }
 
 

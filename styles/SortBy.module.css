@@ -4,20 +4,14 @@
 }
 
 .container-sortby .sortby-button {
-    height: 100%;
-    min-height: 52px;
-    background-color: var(--primary-2-color);
-    border: solid 2px var(--primary-1-color);
-    width: 170px;
     padding-right: 70px;
-    padding-left: 5px;
 }
 
 
 .container-sortby svg {
     position: absolute;
     right: 15px;
-    top: 14px;
+    top: 12px;
     color: white;
     width: 25px;
     height: 25px;
@@ -31,7 +25,7 @@
     padding: 5px;
     z-index: 999;
     right: 0px;
-    top: 60px;
+    top: 55px;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
     border: solid 2px var(--primary-1-color);
     border-radius: 5px;

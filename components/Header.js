@@ -87,8 +87,8 @@ const Header = ({ }) => {
                     </div>}
 
                     {!user && <div className={styles["container-buttons"]}>
-                        <button onClick={handleLogin} className={styles["header-button-first"]}> Login </button>
-                        <button onClick={handleRegister} className={styles["button-primary"] + " " + styles["button-register"]}> Register </button>
+                        <button onClick={handleLogin} className="button-secondary" style={{marginRight: "10px"}}> Login </button>
+                        <button onClick={handleRegister} className="button-primary"> Register </button>
                     </div>}
                 </nav>
             </header>

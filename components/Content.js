@@ -46,7 +46,7 @@ const Content = ({ setSortBy, setPageSearch, limit, searchText, setSearchText, s
 
     return (
 
-        <div>   
+        <div className={styles["container-search"]}>   
 
             <div className={styles["logo-container"]}>
                 <h1> Toprocon </h1>

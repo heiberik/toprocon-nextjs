@@ -1,5 +1,5 @@
 .container-auth-card {
-    padding: 80px 50px;
+    padding: 50px;
     background-color: var(--card-1-color);
     width: 100%;
     max-width: 450px;
@@ -13,14 +13,14 @@
     width: fit-content;
     margin: 0px auto;
     padding: 0px 20px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     padding-bottom: 20px;
     font-size: 2.5rem;
 }
 
 .button-margin {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 

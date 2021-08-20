@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { getRandomTopicId, getTopics, searchTopic } from '../services/topicService'
 import { useBottomScrollListener } from 'react-bottom-scroll-listener'
 import { useRouter } from 'next/router'
-import AddButton from './AddButton'
 import Search from './Search'
 import SortBy from './SortBy'
 import styles from "../styles/Searchbar.module.css"
@@ -140,13 +139,8 @@ const Searchbar = ({ topics, setTopics }) => {
 
             <div className={styles['container-searchbar']} >
                 <div className={styles['container-part']}>
-
-                    <AddButton
-                        clickHandler={addClick}
-                        text="Add topic" />
-
-
-                    <button className={styles['button-random']} onClick={randomTopicClick}> View a random topic</button>
+                    <button className='button-primary' onClick={addClick} style={{marginRight: "10px"}}> Add topic </button>
+                    <button className={'button-primary' + " " + styles["button-random"]} onClick={randomTopicClick}> View a random topic</button>
                 </div>
                 <div>
                     <SortBy sortClick={sortClick} sortBy={sortBy} />

@@ -1,6 +1,6 @@
 .container-searchbar {
     display: flex;
-    padding-bottom: 20px;
+    padding-bottom: 15px;
     justify-content: space-between;
 }
 
