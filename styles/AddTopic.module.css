@@ -6,7 +6,7 @@
 .container-new-topic {
     margin: 0px auto;
     margin-top: 20px;
-    max-width: 70ch;
+    max-width: 60ch;
     background-color: var(--card-1-color);
     padding: 60px 40px;
     border-radius: 20px;
@@ -18,7 +18,6 @@
     font-size: 2.5rem;
     text-align: center;
     margin-bottom: 50px;
-
 }
 
 .new-topic-input {

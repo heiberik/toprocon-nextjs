@@ -26,7 +26,6 @@
 
 .container-report .container-popup {
     border-radius: 10px;
-    border: solid 2px var(--text-2-color);
     z-index: 9999;
     padding: 20px;
     width: 200px;

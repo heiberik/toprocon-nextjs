@@ -125,29 +125,24 @@ const Searchbar = ({ topics, setTopics }) => {
     }
 
     return (
-        <div>
-            <Content
-                setSortBy={setSortBy}
-                setPageSearch={setPageSearch}
-                limit={limit}
-                searchText={searchText}
-                setSearchText={setSearchText}
-                setTopicsSearch={setTopicsSearch}
-                setTopics={setTopics}
-            />
-
-
             <div className={styles['container-searchbar']} >
                 <div className={styles['container-part']}>
-                    <button className='button-primary' onClick={addClick} style={{marginRight: "10px"}}> Add topic </button>
-                    <button className={'button-primary' + " " + styles["button-random"]} onClick={randomTopicClick}> View a random topic</button>
+                    <button className='button-primary' onClick={addClick} style={{ marginRight: "15px" }}> Add topic </button>
+                    <button className={'button-secondary' + " " + styles["button-random"]} style={{ marginRight: "15px" }} onClick={randomTopicClick}> View a random topic</button>
+                    <Search
+                        setSortBy={setSortBy}
+                        setPageSearch={setPageSearch}
+                        limit={limit}
+                        searchText={searchText}
+                        setSearchText={setSearchText}
+                        inputChangeHandler={setSearchText}
+                        setTopicsSearch={setTopicsSearch}
+                        setTopics={setTopics} />
                 </div>
                 <div>
                     <SortBy sortClick={sortClick} sortBy={sortBy} />
                 </div>
             </div>
-        </div>
-
     )
 }
 

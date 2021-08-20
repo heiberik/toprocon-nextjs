@@ -3,19 +3,38 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import styles from "../styles/Search.module.css"
+import { searchTopic } from '../services/topicService'
 
-const Search = ({ submitHandler, inputChangeHandler, searchText, clickHandler }) => {
+const Search = ({ setSortBy, setPageSearch, limit, searchText, setSearchText, setTopicsSearch, setTopics }) => {
 
     const [active, setActive] = useState(false)
 
     const formRef = useRef()
 
 
+    const searchForTopic = (e) => {
+
+        e.preventDefault()
+
+        if (searchText.trim() === "") return;
+        
+        setSortBy("")
+        setPageSearch(limit)
+
+        searchTopic(searchText, 0, limit)
+            .then(res => {
+                setTopicsSearch(res.data)
+                setTopics(res.data)
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
+
     const toggleExpand = ( ) => {
 
         setActive(a => !a)
-
-        if (clickHandler) clickHandler(!active)
 
         if (!active) {
             formRef.current.style.width = "100%"
@@ -46,15 +65,12 @@ const Search = ({ submitHandler, inputChangeHandler, searchText, clickHandler })
 
             </button>
 
-            <form onSubmit={submitHandler} ref={formRef} className={styles["form-search"]}>
-                <input value={searchText} id="input-search" autoComplete="off" data-lpignore="true" onChange={inputChangeHandler} placeholder="Search for a topic..." className={styles["input-search"]} />
+            <form onSubmit={searchForTopic} ref={formRef} className={styles["form-search"]}>
+                <input value={searchText} id="input-search" autoComplete="off" data-lpignore="true" onChange={(e) => setSearchText(e.target.value)} placeholder="Search for a topic..." className={styles["input-search"]} />
                 <button type="submit" className={styles["submit-search"]}> Search </button>
             </form>
         </div>
-
     )
-
-
 }
 
 export default Search

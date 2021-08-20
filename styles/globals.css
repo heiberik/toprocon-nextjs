@@ -1,27 +1,29 @@
 :root {
 
-    --background-1-color: rgb(16, 23, 34);
-    --background-2-color: #00000034;    
+    --background-1-color: #27292e;
+    --background-2-color: #00000049;    
     --background-3-color: rgb(39, 41, 46); 
     --background-4-color: rgba(148, 148, 148, 0.034); 
 
 
 
-    --primary-1-color: #768181;
-    --primary-2-color: #454746;
+    --primary-1-color: #ff7c01;
+    --primary-2-color: #4d4d4d;
     --primary-3-color: #11a3bd;
     --primary-4-color: #1e4e5a;
 
     
 
-    --card-1-color: #2d2f36;
+    --card-1-color: #2b2d35;
 
 
     --text-1-color: #ffffff;
-    --text-2-color: #212529;
+    --text-2-color: #e0e0e0;
     --text-3-color: #4a4a4a;
     --text-4-color: rgba(255,255,255,0.8);
     --text-5-color: rgba(255,255,255,0.5);
+    --text-white: #ffffff;
+
 
 
     --text-error-color: #ff0000;
@@ -40,11 +42,12 @@
 
 html {
     overflow-y: scroll;
-    
+    background-color: var(--background-1-color);
+    background-image: linear-gradient(to right, var(--background-1-color), var(--background-2-color));
 }
 
-body {
-    background-image: linear-gradient(to right, var(--background-1-color), var(--background-3-color));
+html, body {
+    overscroll-behavior: none;
 }
 
 a {
@@ -120,7 +123,7 @@ textarea {
 }
 
 .container-app {
-    padding-top: 15em;
+    padding-top: 12em;
     display: flex;
     flex-direction: column;
     max-width: 1400px;
@@ -153,22 +156,22 @@ button {
     font-size: 1rem;
     box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
     transition: all 0.5s;
-    color: var(--text-1-color);
+    color: var(--text-white);
     white-space: nowrap;
 }
 
 .button-primary {
-    background-color: var(--primary-4-color);
-    border:solid 2px var(--primary-3-color);
+    background-color: var(--primary-1-color);
+    border:solid 2px var(--primary-1-color);
 }
 
 .button-secondary {
     background-color: var(--primary-2-color);
-    border:solid 2px var(--primary-1-color);
+    border:solid 2px var(--primary-2-color);
 }
 
-.button-color {
-    
+.width-120 {
+    width: 120px;
 }
 
 .button-full-width {

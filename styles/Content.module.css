@@ -3,97 +3,49 @@
 .container-search {
     width: 100%;
     display: flex;
-    justify-content: center;
     flex-direction: column;
-    align-items: center;
-    padding-top: 80px;
-    padding-bottom: 80px;
-    margin-bottom: 50px;
-    border-radius: 5px;
-    background-color: rgb(190, 252, 22);
-    background-color: var(--primary-3-color);
-}
-
-.search-container {
-    padding: 0px;
-    margin: 0px auto;
-    display: flex;
-    max-width: 70%;
-    width: 70%;
+    padding-top: 6em;
+    padding-bottom: 6em;
+    justify-content: center;    
+    margin-bottom: 45px;
+    background-color: rgba(75, 75, 75, 0.089);
+    position: absolute;
+    left: 0px;
+    top: 6.5em;
 }
 
 .logo-container {
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0px auto;
 }
 
 
 .logo-container h1 {
-    text-align: center;
-    font-size: 5rem;
-    margin-bottom: 20px;
-}
-
-.button-container {
-    display: flex;
-}
-
-.button-search-big {
-    border: solid 2px var(--primary-1-color);
-    background-color: var(--primary-2-color);
-    height: 100%;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-    color: var(--text-1-color);
-    white-space: nowrap;
-    border-radius: 15px;
-    padding: 25px;
-    margin-left: 10px;
-    padding: 0px 40px;
-}
-
-.submit-search {
-    position: absolute;
-    right: 0px;
-    top: 0px;
-    height: 100%;
-    padding: 0px 30px;
-    border: none;
-    border-left: solid 2px var(--primary-1-color);
-    background-color: var(--primary-2-color);
-
+    font-size: 5.5rem;
+    text-align: left;
     color: white;
-    border-radius: 15px;
-    border-bottom-left-radius: 0px;
-    border-top-left-radius: 0px;
-    box-shadow: none;
+    color: var(--primary-1-color);
+    color: rgb(255, 0, 0);
+    width: fit-content;
+    background: linear-gradient(to right, white 0%, white 25%,var(--primary-1-color)26%, var(--primary-1-color)61%, white 62%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-
-.form-search {
-    background-color: var(--background-3-color);
-    border-radius: 15px;
-    position: relative;
-    border: solid 2px var(--primary-1-color);
-    width: 100%;
-}
-
-.form-search svg {
-    height: 18px;
-    width: 18px;
-}
-
-.input-search {
-    border: none;
-    background-color: inherit;
-    padding: 15px;
-    width: calc(100% - 50px);
-    color: var(--text-1-color);
-    border-radius: 15px;
+.logo-container p {
+    margin-top: 10px;
+    margin-left: 22px;
+    max-width: 70ch;
     font-size: 1.2rem;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.8);
+    width: fit-content;
 }
-
 
 
 @media screen and (max-width: 1000px) {

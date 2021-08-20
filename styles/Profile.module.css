@@ -3,9 +3,9 @@
     padding: 30px;
     border-radius: 5px;
     max-width: 680px;
-    background-color: var(--background-1-color);
+    background-color: var(--background-2-color);
     border-top-left-radius: 0px;
-    border: solid 2px var(--primary-1-color);
+    border: solid 2px var(--text-3-color);
 }
 
 .ban-button {
@@ -33,7 +33,7 @@
     margin-top: 40px;
     margin-bottom: 1px;
     background-color: var(--background-2-color);
-    border: solid 2px var(--primary-1-color);
+    border: solid 2px var(--text-3-color);
     border-bottom: none;
     color: var(--text-1-color);
     max-width: fit-content;
@@ -65,12 +65,11 @@
 
 .container-best-arguments {
     padding: 20px;
-    background-color: var(--background-1-color);
-    border: solid 2px var(--primary-1-color);
+    background-color: var(--background-2-color);
+    border: solid 2px var(--text-3-color);
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    max-width: 700px;
     border-top-left-radius: 0px;
 }
 
@@ -78,7 +77,7 @@
     flex-wrap: wrap;
     padding: 20px;
     background-color: var(--background-1-color);
-    border: solid 2px var(--primary-1-color);
+    border: solid 2px var(--text-3-color);
     border-radius: 5px;
     display: flex;
     max-width: 100%;

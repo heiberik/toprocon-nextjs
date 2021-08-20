@@ -7,25 +7,12 @@
 .container-part {
     display: flex;
     justify-content: flex-end;
-    position: relative;
     width: fit-content;
+    width: 100%;
 }
 
 .button-random {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1em 0.9em;
-    padding-right: 1.5em;
-    margin-right: 10px;
-    white-space: nowrap;
-    transition: width 1s ease-in-out;
-    text-align: center;
-    transition: all 0.4s;
-    background-color: var(--primary-4-color);
-    border: solid 2px var(--primary-3-color);
-    color: white;
-    margin-left: 10px;
+
 }
 
 .button-settings {

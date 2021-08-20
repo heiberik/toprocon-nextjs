@@ -1,4 +1,4 @@
-import {useEffect} from 'react'
+import { useEffect } from 'react'
 import ProfileButton from './ProfileButton'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
@@ -28,7 +28,7 @@ const Header = ({ }) => {
             menu.style.visibility = "hidden"
         }
     }
-  
+
     useEffect(() => {
         toggleDropdown(false)
         getUser()
@@ -61,15 +61,28 @@ const Header = ({ }) => {
         router.push("/register")
     }
 
-    
+    const resizeHeaderOnScroll = () => {
+        const distanceY = window.pageYOffset || document.documentElement.scrollTop,
+            shrinkOn = 400,
+            headerEl = document.getElementById("js-header");
+        
+        if (distanceY > shrinkOn) {
+            headerEl.classList.add(styles["header-smaller"]);
+        } else {
+            headerEl.classList.remove(styles["header-smaller"]);
+        }
+    }
+
+    useEffect(() => {
+        window.addEventListener("scroll", resizeHeaderOnScroll);
+    }, [])
 
     return (
         <div className={styles["container-header"]}>
-            <header className={styles["wrapper-header"]}>
+            <header className={styles["wrapper-header"]} id="js-header">
 
                 <div className={styles["icon-container"]} onClick={handleFrontPage}>
                     <Image src={icon} priority={true} alt="icon" />
-                    <h1 className={styles["header-name"]}> Toprocon </h1>
                 </div>
 
                 <div className={styles["hamburger"]} onClick={(e) => toggleDropdown(e)}>
@@ -87,8 +100,8 @@ const Header = ({ }) => {
                     </div>}
 
                     {!user && <div className={styles["container-buttons"]}>
-                        <button onClick={handleLogin} className="button-secondary" style={{marginRight: "10px"}}> Login </button>
-                        <button onClick={handleRegister} className="button-primary"> Register </button>
+                        <button onClick={handleLogin} className="button-secondary width-120" style={{ marginRight: "10px" }}> Login </button>
+                        <button onClick={handleRegister} className="button-primary width-120"> Register </button>
                     </div>}
                 </nav>
             </header>

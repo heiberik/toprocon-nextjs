@@ -3,6 +3,9 @@ import Topic from '../components/Topic'
 import { useState } from 'react'
 import useragent from 'useragent'
 import TopicService from '../server/modules/topic/topicService'
+import styles from "../styles/Topics.module.css"
+import Image from 'next/image'
+import Content from '../components/Content'
 
 
 const TopicsPage = ({ topicsServer }) => {
@@ -10,13 +13,16 @@ const TopicsPage = ({ topicsServer }) => {
     const [topics, setTopics] = useState(topicsServer)
 
     return (
-        <div className="container-normal">
-            <Searchbar topics={topics} setTopics={setTopics} />
-            <div className="container-topics">
-                {topics && topics.map(topic => <Topic key={topic._id} topic={topic} />)}
-                {topics.length === 0 && <p style={{margin: "5px", fontSize: "1.2rem"}}> No topics matching search </p>}
+        <>
+            <Content />
+            <div className="container-normal" style={{marginTop: "22em"}}>
+                <Searchbar topics={topics} setTopics={setTopics} />
+                <div className={styles["container-topics"]}>
+                    {topics && topics.map(topic => <Topic key={topic._id} topic={topic} />)}
+                    {topics.length === 0 && <p style={{ margin: "5px", fontSize: "1.2rem" }}> No topics matching search </p>}
+                </div>
             </div>
-        </div>
+        </>
     )
 }
 
@@ -26,8 +32,8 @@ export async function getServerSideProps(context) {
 
     let agent = useragent.parse(context.req.headers['user-agent']);
     let topics = []
-    
-    if (agent.device.toJSON().family === 'Spider'){
+
+    if (agent.device.toJSON().family === 'Spider') {
         topics = await TopicService.getTopics(1000000000000, 0, "")
     }
     else {

@@ -11,12 +11,11 @@ const Topic = ({ topic }) => {
                 <div className={styles["container-card-topic"]}>
                     <ReportButton
                         type="topic"
-                        reportedId={topic._id}
-                    />
-                    
-                    <div>
-                        <p className={styles["topic-card-info"] + " " + styles["info-pros"]}> {topic.numPros + topic.numCons}</p>
-                        {false && <p className={styles["topic-card-info"] + " " + styles["info-cons"]}> {topic.numCons}</p>}
+                        reportedId={topic._id} />
+
+                    <div className={styles["info-container"]}>
+                        <p className={styles["topic-card-info"] + " " + styles["info-pros"]}> {topic.numPros}</p>
+                        <p className={styles["topic-card-info"] + " " + styles["info-cons"]}> {topic.numCons}</p>
                     </div>
                     <p className={styles["topic-card-name"]}> {topic.name} </p>
 

@@ -32,12 +32,10 @@
     cursor: pointer;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
-    max-width: 220px;
-    min-width: 200px;
+    width: 180px;
     text-align: center;
     font-weight: 500;
     transition: all 0.3s;
-    background-color: var(--primary-2-color);
 }
 
 .container-leaderboard .leaderboard-user-card p:last-of-type {

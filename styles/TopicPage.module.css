@@ -6,13 +6,12 @@
 
 .container-desc {
     padding: 50px;
-    background-color: var(--background-4-color);
-    border: solid 2px var(--text-2-color);
+    background-color: var(--background-2-color);
     border-radius: 5px;
     width: fit-content;
     max-width: calc(100%-60px);
     min-width: 50vw;
-    margin-bottom: 8vh;
+    margin-bottom: 15px;
 }
 
 .container-arguments {
@@ -73,7 +72,7 @@
     height: 60px;
     margin-right: 20px;
     padding: 20px;
-    background-color: var(--text-2-color);
+    background-color: var(--card-1-color);
     border-radius: 5px;
     transition: all 0.5s;
 }

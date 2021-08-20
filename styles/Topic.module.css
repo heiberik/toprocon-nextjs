@@ -1,18 +1,18 @@
 .container-card-topic {
-    padding: 30px;
-    border-radius: 10px;
+    padding: 15px;
     background-color: var(--card-1-color);
-    border: solid 2px var(--text-3-color);
+    margin-bottom: 10px;
+    border-radius: 5px;
     cursor: pointer;
     display: flex;
     position: relative;
     transition: all 0.1s;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.4);
-    margin-bottom: 15px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+    border: solid 2px var(--text-3-color);
 }
 
 .container-card-topic:hover {
-    border: solid 2px var(--primary-1-color);
+    border: solid 2px var(--text-5-color);
 }
 
 .container-card-topic .container-report {
@@ -23,11 +23,15 @@
 }
 
 .topic-card-name {
-    color: var(--text-1-color);
+    color: var(--text-2-color);
+    color: white;
     font-weight: 600;
-    font-size: 2rem;
-    line-height: 2.7rem;
-    margin-left: 15px;
+    font-size: 1.1rem;
+    line-height: 3.8rem;
+    margin-left: 8px;
+    margin-right: 20px; 
+    border-left: 2px solid var(--primary-2-color);
+    padding-left: 15px;
 }
 
 .topic-card-username {
@@ -43,21 +47,26 @@
     align-items: center;
 }
 
+.info-container {
+    display: flex;
+    flex-direction: column;
+}
 .topic-card-info {
     color: white;
-    padding: 12px;
+    padding: 5px;
     font-size: 1em;
     white-space: nowrap;
     margin-right: 10px;
     border-radius: 10px;
     font-weight: 500;
-    background-color: var(--background-2-color);
 }
 
 .info-pros {
+    color: var(--upvote-color);
 }
 
 .info-cons {
+    color: var(--downvote-color);
 }
 
 @media screen and (max-width: 1000px) {

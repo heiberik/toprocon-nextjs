@@ -27,7 +27,6 @@
     right: 0px;
     top: 55px;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
-    border: solid 2px var(--primary-1-color);
     border-radius: 5px;
 }
 

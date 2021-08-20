@@ -54,9 +54,6 @@ const AddArgument = ({ topic, setTopic, setAdding }) => {
     }
 
 
-    <div className={styles["argument"] + " " + styles["chooser"]} >
-
-    </div>
     if (!selected) {
         return (
             <>
