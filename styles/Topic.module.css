@@ -5,6 +5,7 @@
     border-radius: 10px;
     cursor: pointer;
     display: flex;
+    align-items: center;
     position: relative;
     transition: all 0.1s;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
@@ -15,31 +16,15 @@
     border: solid 2px var(--text-5-color);
 }
 
-.container-card-topic .container-report {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    color: rgb(121, 121, 134);
-}
 
 .topic-card-name {
-    color: var(--text-2-color);
-    color: white;
+    color: var(--text-1-color);
     font-weight: 600;
     font-size: 1.1rem;
-    line-height: 3.8rem;
     margin-left: 8px;
     margin-right: 20px; 
     border-left: 2px solid var(--primary-2-color);
     padding-left: 15px;
-}
-
-.topic-card-username {
-    font-size: 1em;
-    font-weight: 300;
-    color: rgba(255, 255, 255, 0.7);
-    border-radius: 2px;
-    margin-bottom: 15px;
 }
 
 .container-card-topic div {
@@ -51,6 +36,7 @@
     display: flex;
     flex-direction: column;
 }
+
 .topic-card-info {
     color: white;
     padding: 5px;
@@ -71,13 +57,7 @@
 
 @media screen and (max-width: 1000px) {
 
-    .container-card-topic {
-        padding: 20px;
-    }
-
     .topic-card-name {
-        font-size: 1.5rem;
-        line-height: 3.8rem;
-        margin-left: 10px;
+        margin-left: 5px;
     }
 }

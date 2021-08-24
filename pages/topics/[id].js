@@ -35,12 +35,13 @@ const TopicPage = ({ user, topicSet, topicServer }) => {
                 title={"Pros and cons of " + topic.name} />
 
             <div className={styles["container-desc"]}>
+                <ReportButton
+                    type="topic"
+                    reportedId={topic._id}
+                />
                 <div className={styles["topic-name-container"]}>
                     <h1 className={styles["topic-name"]}> {topic.name} </h1>
-                    <ReportButton
-                        type="topic"
-                        reportedId={topic._id}
-                    />
+
                 </div>
                 <p className={styles["topic-desc"]}> {topic.description} </p>
                 <div className={styles["container-pie-chart"]}>

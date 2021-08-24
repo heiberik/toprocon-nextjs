@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
 
     return (
         <div>
-            <div className="container-app">
+            <div className="main-container-app">
                 <Header />
                 <Meta
                     title="Toprocon"

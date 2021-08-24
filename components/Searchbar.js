@@ -139,7 +139,10 @@ const Searchbar = ({ topics, setTopics }) => {
                         setTopics={setTopics} />
                 </div>
                 <div>
-                    <SortBy sortClick={sortClick} sortBy={sortBy} />
+                    <SortBy 
+                        sortClick={sortClick} 
+                        sortBy={sortBy} 
+                        alternatives={["top", "new", "controversial"]} />
                 </div>
             </div>
     )

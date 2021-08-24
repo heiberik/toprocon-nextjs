@@ -8,14 +8,11 @@ import { searchTopic } from '../services/topicService'
 const Search = ({ setSortBy, setPageSearch, limit, searchText, setSearchText, setTopicsSearch, setTopics }) => {
 
     const [active, setActive] = useState(false)
-
     const formRef = useRef()
-
 
     const searchForTopic = (e) => {
 
         e.preventDefault()
-        
         setSortBy("")
         setPageSearch(limit)
 
@@ -30,7 +27,7 @@ const Search = ({ setSortBy, setPageSearch, limit, searchText, setSearchText, se
     }
 
 
-    const toggleExpand = ( ) => {
+    const toggleExpand = () => {
 
         setActive(a => !a)
 
@@ -49,7 +46,6 @@ const Search = ({ setSortBy, setPageSearch, limit, searchText, setSearchText, se
     }
 
     return (
-
         <div className={styles["search-form-container"]} >
             
             <button
@@ -57,7 +53,6 @@ const Search = ({ setSortBy, setPageSearch, limit, searchText, setSearchText, se
                 className={active ? "button-primary" + " " + styles["button-search-open"] : "button-primary" + " " +styles["button-search"]}
                 onClick={toggleExpand} >
                 
-
                 {!active && <FontAwesomeIcon icon={faSearch} size="2x" />}
                 {active && <FontAwesomeIcon icon={faTimes} size="2x" />}
 

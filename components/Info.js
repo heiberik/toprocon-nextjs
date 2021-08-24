@@ -9,20 +9,8 @@ const Info = ({ showInfo, setShowInfo}) => {
 
             <h1 className={styles["header-new-topic"]}> Creating a new topic </h1>
 
-
             <div className={styles["info-text"]}>
                 <p>Thank you for considering adding a new topic!</p>
-                <p>
-                    Interesting topics. Provocative topics. Niché topics.
-                    Every topic is welcomed and a key factor in making this
-                    site a place where thoughts can be shared and steadfast
-                    opinions perhaps can be loosened.
-                </p>
-                <p>
-                    To strive towards these goals we must all adhere to a
-                    few basic rules when making a new topic. Please read them
-                    carefully.
-                </p>
                 <p style={{ marginLeft: "30px" }}> <strong className={styles["info-rule"]}> 1: </strong>
                     Check if a similar topic exists already.
                     </p>
@@ -37,11 +25,11 @@ const Info = ({ showInfo, setShowInfo}) => {
                 </p>
             </div>
 
-            <button style={{minWidth: "100%", borderRadius: "10px"}} className={styles["info-button"]} onClick={() => setShowInfo(false)}> I understand! </button>
+            <button style={{minWidth: "100%", borderRadius: "10px"}} className="button-primary" onClick={() => setShowInfo(false)}> I understand! </button>
         </div>
     )
     else return (
-        <button className={styles["info-button-white"]} style={{width: "100%", borderRadius: "10px", marginTop: "20px"}} onClick={() => setShowInfo(true)}> Read rules </button>
+        <button className="button-secondary" style={{width: "100%", borderRadius: "10px", marginTop: "20px"}} onClick={() => setShowInfo(true)}> Read rules </button>
     )
 }
 

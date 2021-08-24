@@ -39,7 +39,10 @@ const Leaderboard = ({ leaderboardServer }) => {
 
             <div className={styles2["container-searchbar"] + " " + styles["searchbar-leaderboard"]} >
                 <div className={styles["container-part"]} style={{ position: "relative", justifyContent: "flex-end", display: "flex", width: "100%", marginRight: "0px" }}>
-                    <SortBy sortClick={sortClick} sortBy={sortBy} leaderboard={true} />
+                    <SortBy 
+                        sortClick={sortClick} 
+                        sortBy={sortBy} 
+                        alternatives={["total", "topic", "argument", "mod"]} />
                 </div>
             </div>
 

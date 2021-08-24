@@ -3,11 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { logoutUser } from "../services/userService"
 import styles from "../styles/ProfileButton.module.css"
-import  Link  from 'next/link'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useContext } from 'react'
 import UserContext from '../context/user'
-
 
 
 const ProfileButton = ({ toggleDropdown }) => {
@@ -16,22 +15,25 @@ const ProfileButton = ({ toggleDropdown }) => {
     const [user, setUser] = useContext(UserContext);
     const router = useRouter()
 
-    const handleLogout = async () => {
+    const handleLogout = () => {
         if (toggleDropdown) toggleDropdown()
-        await logoutUser()
-        router.push("/")
-        setUser(null)
-        
+        logoutUser()
+            .then(res => {
+                router.push("/")
+                setUser(null)
+            })
+            .catch(e => {
+                console.log(e);
+            })
     }
 
     return (
-        <div className={styles["settings"]} onMouseEnter={() => setShowDropdown(true)} onMouseLeave={() => setShowDropdown(false)}>
+        <div className={styles["settings"] + " " + "button-primary"} onMouseEnter={() => setShowDropdown(true)} onClick={() => setShowDropdown(s => !s)} onMouseLeave={() => setShowDropdown(false)}>
+
             <FontAwesomeIcon icon={faUser} size="1x" color="white" />
             <p className={styles["settings-username"]}> {user.username} </p>
 
-            {showDropdown &&
-                <div className={styles["dummy-path"]}> </div>
-            }
+            {showDropdown && <div className={styles["dummy-path"]}> </div>}
             {showDropdown &&
                 <div className={styles["container-dropdown"]}>
 
@@ -50,40 +52,12 @@ const ProfileButton = ({ toggleDropdown }) => {
                     </div>
 
                     <div className={styles["dropdown-section"]}>
-                        <button className={styles["button-1"] + " " + styles["button-logout"]} onClick={handleLogout}> Logout </button>
+                        <button className="button-secondary" onClick={handleLogout}> Logout </button>
                     </div>
 
-                </div>
-            }
+                </div>}
         </div>
     )
-    /*
-    else return (
-
-        <div>
-
-            <div className="dropdown-section-horizontal">
-                <div style={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
-                    <p className="username-style"> {user.username} </p>
-                    <p className="email-style"> {user.email} </p>
-                </div>
-            </div>
-
-            <div className="dropdown-section">
-                <Link to={`/profile/${user.username}`} onClick={toggleDropdown} className="text-style"> My profile </Link>
-            </div>
-
-            <div className="dropdown-section">
-                <button className="button-1 button-logout" onClick={handleLogout}> Logout </button>
-            </div>
-
-        </div>
-
-    )
-    */
 }
 
 export default ProfileButton
-
-
-

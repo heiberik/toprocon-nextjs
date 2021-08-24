@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import styles from "../styles/SortBy.module.css"
 
-const SortBy = ({ sortClick, sortBy, leaderboard }) => {
+const SortBy = ({ sortClick, sortBy, alternatives }) => {
 
     const [showDropdown, setShowDropdown] = useState(false)
 
@@ -11,42 +11,29 @@ const SortBy = ({ sortClick, sortBy, leaderboard }) => {
         setShowDropdown(s => !s)
     }
 
-    if (leaderboard) return (
-        <div className={styles["container-sortby"]}>
-            <button className={styles["sortby-button"] + " " +  "button-secondary"} onClick={toggleDropdown}> Sort by </button>
-            <FontAwesomeIcon icon={faCaretDown} size="2x" />
-            {showDropdown && <div className={styles["sortby-dropdown"]}>
-                <button onClick={() => { toggleDropdown(); sortClick("total") }} className={sortBy === "total" ? styles["sortby-active"] + " " + styles["sortby"] : styles["sortby"]}>
-                    Total points
-                </button>
-                <button onClick={() => { toggleDropdown(); sortClick("topic") }} className={sortBy === "topic" ? styles["sortby-active"] + " " + styles["sortby"] : styles["sortby"]}>
-                    Topic points
-                </button>
-                <button onClick={() => { toggleDropdown(); sortClick("argument") }} className={sortBy === "argument" ? styles["sortby-active"] + " " + styles["sortby"] : styles["sortby"]}>
-                    Argument points
-                </button>
-                <button onClick={() => { toggleDropdown(); sortClick("mod") }} className={sortBy === "mod" ? styles["sortby-active"] + " " + styles["sortby"] : styles["sortby"]}>
-                    Mod points
-                </button>
-            </div>}
-        </div>
-    )
-    else return (
-        <div className={styles["container-sortby"]}>
-            <button className={styles["sortby-button"] + " " + "button-secondary"} onClick={toggleDropdown}> Sort by </button>
-            <FontAwesomeIcon icon={faCaretDown} size="2x" />
-            {showDropdown && <div className={styles["sortby-dropdown"]}>
-                <button onClick={() => { toggleDropdown(); sortClick("top") }} className={sortBy === "top" ? styles["sortby-active"] + " " + styles["sortby"] : styles["sortby"]}>
-                    Top
-                </button>
-                <button onClick={() => { toggleDropdown(); sortClick("new") }} className={sortBy === "new" ? styles["sortby-active"] + " " + styles["sortby"] : styles["sortby"]}>
-                    Newest
-                </button>
-                <button onClick={() => { toggleDropdown(); sortClick("controversial") }} className={sortBy === "controversial" ? styles["sortby-active"] + " " + styles["sortby"] : styles["sortby"]}>
-                    Controversial
-                </button>
-            </div>}
+    return (
+        <div
+            className={styles["container-sortby"]}
+            onMouseEnter={() => setShowDropdown(true)}
+            onMouseLeave={() => setShowDropdown(false)} >
 
+            <button
+                className={styles["sortby-button"] + " " + "button-secondary"}
+                onClick={toggleDropdown}> Sort by
+            </button>
+            <FontAwesomeIcon icon={faCaretDown} size="2x" />
+
+            {showDropdown && <div className={styles["dummy-path"]}> </div>}
+            {showDropdown && <div className={styles["sortby-dropdown"]}>
+                {alternatives.map(alt =>
+                    <button
+                        key={alt}
+                        onClick={() => { sortClick(alt) }}
+                        className={sortBy === alt ? styles["sortby-active"] + " " + styles["sortby"] : styles["sortby"]}>
+                        {alt}
+                    </button>
+                )}
+            </div>}
         </div>
     )
 }

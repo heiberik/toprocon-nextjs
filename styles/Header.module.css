@@ -8,6 +8,22 @@
     background-image: linear-gradient(to right, var(--background-1-color), var(--background-3-color));
 }
 
+.wrapper-header {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 6.5em;
+    padding: 0px 10px;
+    padding-right: 30px;
+    transition: height 0.4s;
+}
+
+.header-smaller {
+    height: 4.8em;
+}
+
 .header-items {
     display: flex;
     transition: all 0s;
@@ -28,22 +44,6 @@
     cursor: pointer;
 }
 
-.wrapper-header svg {
-    color: var(--text-2-color);
-    cursor: pointer;
-    margin-right: 0px;
-}
-
-.header-name {
-    color: white !important;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    margin-right: 20px;
-    font-weight: 600;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
 .container-buttons {
     display: "flex";
     align-items: center;
@@ -51,78 +51,34 @@
     margin-left: 20px;
 }
 
-.container-buttons .button-submit {
-    margin: 0px;
-}
-
-
-
-.wrapper-header {
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 6.5em;
-    padding: 0px 10px;
-    padding-right: 30px;
-    transition: height 0.4s;
-}
-
-
-.header-smaller {
-    height: 4.8em;
-}
-
 .wrapper-header img {
-    margin-left: -20px;
-    margin-right: 5px;
-    height: 55px;
-    width: auto;
+    height: 60px;
 }
 
 .header-link {
     color: var(--text-1-color);
-    color: white;
     background-color: inherit;
     box-shadow: none;
     border: none;
     margin-right: 12px;
-    font-weight: 600;
-    font-size: 1rem;
-    margin-bottom: 0px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    position: relative;
-    z-index: 5;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    display: flex;
-    transition: all 0.2s;
+    font-weight: 500;
+    font-size: 1.1rem;
+    border-radius: 5px;    
+    transition: all 0.5s;
 }
 
-.header-links:hover {
+.header-link:hover {
     background-color: var(--background-2-color);
 }
 
-.wrapper-header .header-link:hover {
-    background-color: var(--background-2-color);
-}
-
-.wrapper-header .header-link-active {
+.header-link-active {
     background-color: var(--card-1-color);
     color: var(--text-1-color);
     border: solid 1px var(--text-2-color);
 }
 
-.wrapper-header .header-link-active:hover {
+.header-link-active:hover {
     background-color: var(--card-1-color);
-}
-
-.wrapper-header h1 {
-    cursor: pointer;
-    color: var(--text-1-color);
 }
 
 .hamburger {
@@ -133,6 +89,7 @@
 .hamburger svg {
     color: var(--text-4-color);
 }
+
 
 @media screen and (min-width: 1000px) {
     .header-items {
@@ -145,10 +102,6 @@
 
     .container-header {
         margin-bottom: 10px;
-    }
-
-    .header-name {
-        display: none;
     }
 
     .wrapper-header {
@@ -169,17 +122,17 @@
         left: 0;
         top: 5em;
         height: calc(100vh - 5em);
-        width: calc(100% - 20px);
-        padding: 10px;
+        width: calc(100% - 10px);
+        padding: 5px;
         visibility: hidden;
     }
 
     .header-link {
         margin-right: 0px;
-        margin-bottom: 15px;
-        padding: 15px 20px;
+        margin-bottom: 5px;
+        padding: 20px 20px;
         border: solid 1px var(--text-3-color);
-        background-color: var(--background-4-color);
+        background-color: var(--background-1-color);
         text-align: left;
         display: flex;
         justify-content: left;

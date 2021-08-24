@@ -5,15 +5,10 @@
     --background-3-color: rgba(14, 13, 13, 0.5); 
     --background-4-color: rgba(24, 24, 26, 0.219); 
 
-    --primary-1-color: #ff7c01;
-    --primary-2-color: #8d8d8d;
-
     --primary-1-color: #ff3401;
     --primary-2-color: #343a47;
 
-
     --card-1-color: #2b2d35;
-
 
     --text-1-color: #ffffff;
     --text-2-color: #e0e0e0;
@@ -21,8 +16,6 @@
     --text-4-color: rgba(255,255,255,0.8);
     --text-5-color: rgba(255,255,255,0.5);
     --text-white: #ffffff;
-
-
 
     --text-error-color: #ff0000;
     --text-message-color: rgb(27, 216, 27);
@@ -54,7 +47,6 @@ a {
     text-decoration: none;
     cursor: pointer;
 }
-
 
 h1 {
     font-size: 1.8rem;
@@ -103,8 +95,8 @@ input {
 }
 
 input::placeholder, textarea::placeholder  {
-    color: var(--text-4-color) !important;
-    font-size: 1.2rem;
+    color: var(--text-5-color) !important;
+    font-size: 1rem;
 }
 
 
@@ -120,7 +112,7 @@ textarea {
     background-color: var(--background-2-color);
 }
 
-.container-app {
+.main-container-app {
     padding-top: 12em;
     display: flex;
     flex-direction: column;
@@ -131,19 +123,15 @@ textarea {
     min-height: calc(100vh - 15em);   
 }
 
+.container-normal {
+    width: calc(100% - 20px);
+    padding: 8px;
+    padding-top: 0px;
+}
+
 .container-relative {
     position: relative;
 }
-
-
-@media 
-(-webkit-min-device-pixel-ratio: 2), 
-(min-resolution: 192dpi) { 
-    .container-app {
-        max-width: 1200px;
-    }
-}
-
 
 button {
     padding: 0.8em 1.2em;
@@ -160,12 +148,12 @@ button {
 
 .button-primary {
     background-color: var(--primary-1-color);
-    border:solid 2px var(--primary-1-color);
+    border: solid 2px var(--primary-1-color);
 }
 
 .button-secondary {
     background-color: var(--primary-2-color);
-    border:solid 2px var(--primary-2-color);
+    border: solid 2px var(--primary-2-color);
 }
 
 .width-120 {
@@ -181,22 +169,23 @@ button:hover {
     opacity: 0.8;
 }
 
-.container-normal {
-    width: calc(100% - 20px);
-    padding: 8px;
-    padding-top: 0px;
-}
-
 .text-auth {
     font-size: 1.1rem;
     margin-bottom: 30px;
     margin-top: 30px;
 }
 
-
 @media screen and (max-width: 1000px) {
 
-    .container-app {
-        padding-top: 8em;
+    .main-container-app {
+        padding-top: 7em;
+    }
+}
+
+@media 
+(-webkit-min-device-pixel-ratio: 2), 
+(min-resolution: 192dpi) { 
+    .main-container-app {
+        max-width: 1200px;
     }
 }

@@ -1,7 +1,8 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import ProfileButton from './ProfileButton'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import styles from "../styles/Header.module.css"
 import icon from "../public/icon.png"
 import Image from 'next/image'
@@ -13,6 +14,7 @@ import { getUser } from "../services/userService"
 const Header = ({ }) => {
 
     const [user, setUser] = useContext(UserContext);
+    const [showingDropdown, setShowingDropdown] = useState(false)
     const router = useRouter()
 
     const toggleDropdown = (t) => {
@@ -22,10 +24,12 @@ const Header = ({ }) => {
         if (menu.style.visibility !== "visible" && t !== false) {
             menu.style.opacity = 1
             menu.style.visibility = "visible"
+            setShowingDropdown(true)
         }
         else {
             menu.style.opacity = 0
             menu.style.visibility = "hidden"
+            setShowingDropdown(false)
         }
     }
 
@@ -86,7 +90,8 @@ const Header = ({ }) => {
                 </div>
 
                 <div className={styles["hamburger"]} onClick={(e) => toggleDropdown(e)}>
-                    <FontAwesomeIcon icon={faBars} size="2x" color="white" />
+                    {!showingDropdown && <FontAwesomeIcon icon={faBars} size="2x" color="white" />}
+                    {showingDropdown && <FontAwesomeIcon icon={faTimes} size="2x" color="white" />}
                 </div>
 
                 <nav className={styles["header-items"]} id="dropdown">

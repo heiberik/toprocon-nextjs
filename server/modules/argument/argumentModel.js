@@ -4,7 +4,7 @@ const argumentSchema = mongoose.Schema({
     message: {
         type: String,
         min: 10,
-        max: 250,
+        max: 1000,
         required: true
     },
     type: {

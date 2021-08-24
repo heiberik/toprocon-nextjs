@@ -12,6 +12,7 @@
     max-width: calc(100%-60px);
     min-width: 50vw;
     margin-bottom: 15px;
+    position: relative;
 }
 
 .container-arguments {
@@ -88,7 +89,7 @@
         padding: 15px;
         max-width: calc(100%-60px);
         min-width: calc(100% - 30px);
-        margin-bottom: 20px;
+        margin-bottom: 0px;
     }
 
     .topic-name {

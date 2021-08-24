@@ -18,7 +18,7 @@
 }
 
 .container-input svg {
-    color: var(--text-1-color);
+    color: var(--text-4-color);
 }
 
 .container-input .icon-valid {
@@ -34,31 +34,24 @@
     left: 15px;
 }
 
-
 .input-style {
     border: none;
     width: 100%;
     margin-bottom: 0px;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     padding-left: 15px;
     margin-left: 15px;
     background-color: inherit;
-    color: var(--text-2-color);
-    color: rgba(255, 255, 255, 1);
-    opacity: 1;
+    color: var(--text-1-color);
     border-radius: 0px;
-}
-
-.input-style::placeholder {
-    opacity: 1;
 }
 
 .input-wrapper input:-webkit-autofill,
 .input-wrapper input:-webkit-autofill:hover, 
 .input-wrapper input:-webkit-autofill:focus, 
 .input-wrapper input:-webkit-autofill:active {
-    box-shadow: 0 0 0 30px var(--background-3-color) inset !important;
-    -webkit-box-shadow: 0 0 0 30px var(--background-3-color) inset !important;
+    box-shadow: 0 0 0 30px var(--card-1-color) inset !important;
+    -webkit-box-shadow: 0 0 0 30px var(--card-1-color) inset !important;
     -webkit-text-fill-color: white !important;
 }
 
@@ -74,32 +67,4 @@
 .input-style:focus {
     opacity: 1;
 }
-
-
-.input-label {
-    margin-left: 5px;
-    font-weight: 500;
-    font-size: 1em;
-    color: var(--text-3-color);
-}
-
-.check-icon {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: -40px;
-}
-
-.input-button {
-    padding: 0.8em 1.5em;
-    border: solid 2px var(--text-1-color);
-    background-color: var(--text-1-color);
-    box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
-    color: var(--text-2-color);
-    font-weight: 500;
-    font-size: 1em;
-    width: fit-content;
-    white-space: nowrap;
-    transition: all 0.5s;
-    margin-top: 20px;
-}   
+ 

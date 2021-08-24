@@ -4,7 +4,7 @@ import { useState } from 'react'
 import useragent from 'useragent'
 import TopicService from '../server/modules/topic/topicService'
 import styles from "../styles/Topics.module.css"
-import Content from '../components/Content'
+import Banner from '../components/Banner'
 
 
 const TopicsPage = ({ topicsServer }) => {
@@ -13,7 +13,7 @@ const TopicsPage = ({ topicsServer }) => {
 
     return (
         <>
-            <Content />
+            <Banner />
             <div className="container-normal" style={{marginTop: "22em"}}>
                 <Searchbar topics={topics} setTopics={setTopics} />
                 <div className={styles["container-topics"]}>

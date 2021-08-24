@@ -2,7 +2,6 @@
     position: absolute;
     right: 10px;
     top: 10px;
-    color: #b7b7c5;
     padding: 10px;
     cursor: pointer;
 }
@@ -25,7 +24,7 @@
 }   
 
 .container-report .container-popup {
-    border-radius: 10px;
+    border-radius: 5px;
     z-index: 9999;
     padding: 20px;
     width: 200px;
@@ -46,21 +45,25 @@
     color: var(--text-4-color);
     white-space: nowrap;
     padding: 3px 10px;
-    margin: 2px 0px;
+    margin: 0px 0px;
     border-radius: 5px;
+}
+
+.container-report .report-alt:hover {
+    color: var(--text-1-color);
 }
 
 .container-report .container-popup .thank-you {
     color: var(--text-1-color);
     text-align: center;
     margin: auto;
-    font-weight: 900;
+    font-weight: 500;
 }
 
 .container-report .container-popup .error-message-report {
     color: var(--downvote-color);
     text-align: center;
-    font-weight: 900;
+    font-weight: 500;
 }
 
 .container-report .container-popup .report-header {
@@ -69,11 +72,6 @@
     border-radius: 5px;
     padding: 3px 10px;
     margin: 5px 0px;
-}
-
-.container-report .container-popup .report-alt:hover {
-    background-color: var(--primary-1-color);
-    color: var(--text-1-color);
 }
 
 

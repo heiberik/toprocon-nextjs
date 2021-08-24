@@ -17,7 +17,11 @@ const AddArgument = ({ topic, setTopic, setAdding }) => {
 
     const onSubmitHandler = (e) => {
         e.preventDefault()
+
         if (argument.trim().length < 10) {
+            setError("Argument must be at least 10 characters.")
+        }
+        else if (argument.length < 10) {
             setError("Argument must be at least 10 characters.")
         }
         else {
@@ -56,11 +60,8 @@ const AddArgument = ({ topic, setTopic, setAdding }) => {
 
     if (!selected) {
         return (
-            <>
+            <div>
                 <div className={styles["argument"]} >
-
-
-
                     <div className={styles["container-voting"]} style={{filter: "blur(2px)"}}>
                         <div className={styles["overlay"]}></div>
                         <div className={styles["wrapper-upvote"]}>
@@ -71,9 +72,7 @@ const AddArgument = ({ topic, setTopic, setAdding }) => {
                             <p className={styles["downvote"]}> 0 </p>
                             <FontAwesomeIcon icon={faCaretDown} size="1x" color="white" />
                         </div>
-
                     </div>
-
 
                     <div className={styles["container-text"] + " " + styles["full-width"]}>
                         <div>
@@ -82,7 +81,7 @@ const AddArgument = ({ topic, setTopic, setAdding }) => {
                         </div>
                         <div className={styles["argument-input-wrapper"]} style={{filter: "blur(2px)"}}>
                             <textarea
-                                maxLength="250"
+                                maxLength="1000"
                                 className={styles["argument-input"]}
                                 value="Your new and well thought out argument."
                                 onChange={inputChangeHandler} />
@@ -90,13 +89,14 @@ const AddArgument = ({ topic, setTopic, setAdding }) => {
                         <p className={styles["argument-username"]} style={{filter: "blur(2px)"}}>  {user.username} </p>
                     </div>
                 </div>
+
                 {error && <p className="text-error" style={{ margin: "10px 0px" }}> {error} </p>}
 
-            </>
+            </div>
         )
     }
     else return (
-        <>
+        <div>
             <div className={styles["argument"]} >
 
                 <div className={styles["container-voting"]}>
@@ -116,24 +116,25 @@ const AddArgument = ({ topic, setTopic, setAdding }) => {
                         <textarea
                             autoFocus
                             ref={textField}
-                            maxLength="250"
+                            maxLength="1000"
                             className={styles["argument-input"]}
                             value={argument}
                             onChange={inputChangeHandler} />
                     </div>
                     <p className={styles["argument-username"]}>  {user.username} </p>
+                    <p className={styles["argument-length-counter"]}>  {argument.length} / 1000 </p>
+
                 </div>
             </div>
+
             {error && <p className="text-error" style={{ margin: "10px 0px" }}> {error} </p>}
+            
             <div className={styles["container-buttons"]}>
                 <button className={styles["button-add"]} onClick={onSubmitHandler}> Add </button>
                 <button className={styles["button-delete"]} onClick={deleteClick}> Delete </button>
             </div>
-
-        </>
-
+        </div>
     )
-
 }
 
 export default AddArgument

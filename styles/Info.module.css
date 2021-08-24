@@ -1,12 +1,12 @@
 .container-info {
-    padding: 60px 40px;
+    padding: 50px;
     display: flex;
     flex-direction: column;
     margin: auto;
     margin-top: 20px;
     border-radius: 20px;
     width: fit-content;
-    max-width: 70ch;
+    max-width: 60ch;
     background-color: var(--card-1-color);
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.3);
 }
@@ -14,7 +14,7 @@
 .header-new-topic {
     color: var(--text-1-color);
     margin-bottom: 50px;
-    font-size: 2.5rem;
+    font-size: 2rem;
     text-align: center;
 }
 
@@ -23,7 +23,7 @@
     font-weight: 400;
     max-width: 70ch;
     color: var(--text-4-color);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     line-height: 1.5em;
 }
 
@@ -34,30 +34,4 @@
 
 .info-rule {
     color: var(--text-1-color);
-}
-
-.info-button {
-    padding: 0.8em 1.5em;
-    background-color: var(--primary-1-color);
-    border: solid 2px var(--primary-1-color);
-    box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
-    color: var(--text-1-color);
-    width: fit-content;
-    white-space: nowrap;
-    transition: all 0.5s;
-    height: 52px;
-}
-
-
-.info-button-white {
-    padding: 0.8em 1.5em;
-    background-color: var(--primary-2-color);
-    border: solid 2px var(--primary-2-color);
-    box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
-    color: var(--text-1-color);
-    width: 100%;
-    border-radius: 10px;
-    white-space: nowrap;
-    transition: all 0.5s;
-    height: 52px;
 }
