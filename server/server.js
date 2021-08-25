@@ -3,7 +3,8 @@ import topicRoutes from './modules/topic/topicRoutes.js'
 import reportRoutes from "./modules/report/reportRoutes.js"
 import boardRoutes from "./modules/leaderboard/boardRoutes.js"
 import argumentRoutes from './modules/argument/argumentRoutes.js'
-import { notFound, errorHandler } from './middleware/errorMiddleware.js'
+import sslRedirect from 'heroku-ssl-redirect'
+
 
 import bp from 'body-parser'
 
@@ -20,6 +21,7 @@ app.prepare().then(() => {
 
     const server = express()
 
+    server.use(sslRedirect());
     server.use(bp.json())
     server.use(bp.urlencoded({ extended: true }))
 
