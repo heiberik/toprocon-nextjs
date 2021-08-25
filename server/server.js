@@ -3,12 +3,9 @@ import topicRoutes from './modules/topic/topicRoutes.js'
 import reportRoutes from "./modules/report/reportRoutes.js"
 import boardRoutes from "./modules/leaderboard/boardRoutes.js"
 import argumentRoutes from './modules/argument/argumentRoutes.js'
-import sslRedirect from 'heroku-ssl-redirect'
-
-
+import herokuSSLRedirect from 'heroku-ssl-redirect';
+const sslRedirect = herokuSSLRedirect.default
 import bp from 'body-parser'
-
-
 import connectDB from './config/db.js'
 import express from 'express'
 import next from 'next'
