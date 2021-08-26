@@ -16,7 +16,6 @@
     box-shadow: 0px 0px 10px rgba(0,0,0,0.4);
 }
 
-
 .container-text {
     margin-left: 15px;
     margin-top: auto;
@@ -119,14 +118,13 @@
 
 .button-choose {
     padding: 0px;
-    background-color: var(--primary-2-color);
+    background-color: var(--primary-1-color);
     border: solid 2px var(--primary-1-color);
     z-index: 9999999999;
     margin-bottom: 2px;
     margin-right: 10px;
-    color: var(--text-1-color);
+    color: black;
     font-size: 1em;
-    font-weight: 400;
     text-transform: capitalize;
     padding: 7px 30px;
 }
@@ -142,12 +140,12 @@
     padding: 0px;
     font-weight: 500;
     background-color: inherit;
-    height: 28px;
+    height: 20px;
     resize: none;
     min-height: 0px;
-    font-size: 1.1rem;
-    line-height: 1.5em;
+    font-size: 1rem;
     margin-bottom: 0px;
+    margin-top: 2px;
     max-width: 80ch;
     width: 100%;
 }
@@ -181,16 +179,16 @@
 .button-add {
     width: 49%;
     border: solid 2px var(--primary-1-color);
-    background-color: var(--primary-2-color);
-    color: var(--text-1-color);
+    background-color: var(--primary-1-color);
+    color: black;
     white-space: nowrap;
 }
 
 .button-delete {
     width: 49%;
     border: solid 2px var(--primary-1-color);
-    background-color: var(--primary-2-color);
-    color: var(--text-1-color);
+    background-color: var(--primary-1-color);
+    color: black;
     white-space: nowrap;
 }
 

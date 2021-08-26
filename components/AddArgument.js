@@ -112,7 +112,6 @@ const AddArgument = ({ topic, setTopic, setAdding }) => {
 
                 <div className={styles["container-text"] + " " + styles["full-width"]}>
                     <p className={styles["argument-type-pro"]}> {selected} </p>
-                    <div className={styles["argument-input-wrapper"]}>
                         <textarea
                             autoFocus
                             ref={textField}
@@ -120,7 +119,6 @@ const AddArgument = ({ topic, setTopic, setAdding }) => {
                             className={styles["argument-input"]}
                             value={argument}
                             onChange={inputChangeHandler} />
-                    </div>
                     <p className={styles["argument-username"]}>  {user.username} </p>
                     <p className={styles["argument-length-counter"]}>  {argument.length} / 1000 </p>
 
