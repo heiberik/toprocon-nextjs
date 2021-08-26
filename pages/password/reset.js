@@ -66,7 +66,7 @@ const EmailPage = () => {
                     <p className="text-auth"> Open your email to proceed in resetting your password.</p>
 
                     <div>
-                        <button type="submit" className="button-primary button-full-width button-color" style={{ marginBottom: "0px", marginTop: "0px" }}> Submit </button>
+                        <button type="submit" className="button-secondary button-full-width button-color" style={{ marginBottom: "0px", marginTop: "0px" }}> Submit </button>
                         {message && <p className="text-message"> {message} </p>}
                         {error && <p className="text-error"> {error} </p>}
                     </div>

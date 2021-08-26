@@ -133,7 +133,7 @@ const RegisterPage = () => {
 
 
                     <div>
-                        <button type="submit" className="button-primary button-full-width  button-color"> Register </button>
+                        <button type="submit" className="button-secondary button-full-width  button-color"> Register </button>
                         {message && <p className="text-message" style={{ color: "white" }}> {message} </p>}
                         {error && <p className="text-error"> {error} </p>}
                     </div>

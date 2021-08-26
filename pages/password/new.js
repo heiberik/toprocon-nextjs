@@ -82,7 +82,7 @@ const PasswordPage = () => {
                         icon={<FontAwesomeIcon icon={faLock} color="white" />} />
                     s
                     <div className="container-loader">
-                        <button type="submit" className="button-primary" style={{ marginBottom: "20px", marginTop: "15px" }}> Submit </button>
+                        <button type="submit" className="button-secondary button-full-width button-color" style={{ marginBottom: "20px", marginTop: "15px" }}> Submit </button>
                         {error && <p className="text-error"> {error} </p>}
                     </div>
 

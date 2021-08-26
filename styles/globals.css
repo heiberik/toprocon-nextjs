@@ -1,12 +1,20 @@
 :root {
-
     --background-1-color: #27292e;
     --background-2-color: #00000049;    
     --background-3-color: rgba(14, 13, 13, 0.6); 
     --background-4-color: rgba(24, 24, 26, 0.219); 
 
     --primary-1-color: #ff3401;
-    --primary-2-color: #343a47;
+    --primary-2-color: #292828;
+
+    --primary-1-color: #ffee01;
+    --primary-2-color: #292828;
+
+    --primary-1-color: #f0e9e5;
+    --primary-2-color: #9eff01;
+
+    --primary-1-color: #f0e9e5;
+    --primary-2-color: #ffbb01;
 
     --card-1-color: #2b2d35;
 
@@ -15,7 +23,7 @@
     --text-3-color: #4a4a4a;
     --text-4-color: rgba(255,255,255,0.8);
     --text-5-color: rgba(255,255,255,0.5);
-    --text-white: #ffffff;
+    --text-6-color: black;
 
     --text-error-color: #ff0000;
     --text-message-color: rgb(27, 216, 27);
@@ -142,18 +150,21 @@ button {
     font-size: 1rem;
     box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
     transition: all 0.5s;
-    color: var(--text-white);
     white-space: nowrap;
 }
 
 .button-primary {
     background-color: var(--primary-1-color);
     border: solid 2px var(--primary-1-color);
+    color: var(--text-1-color);
+    color: black;
 }
 
 .button-secondary {
     background-color: var(--primary-2-color);
-    border: solid 2px var(--primary-2-color);
+    border: solid 2px var(--primary-1-color);
+    color: var(--text-1-color);
+    color: black;
 }
 
 .width-120 {
@@ -178,7 +189,7 @@ button:hover {
 @media screen and (max-width: 1000px) {
 
     .main-container-app {
-        padding-top: 7em;
+        padding-top: 6em;
     }
 }
 

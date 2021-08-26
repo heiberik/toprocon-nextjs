@@ -21,10 +21,10 @@
     color: var(--text-1-color);
     font-weight: 600;
     font-size: 1.1rem;
-    margin-left: 8px;
+    margin-left: 5px;
     margin-right: 20px; 
-    border-left: 2px solid var(--primary-2-color);
-    padding-left: 15px;
+    border-left: 2px solid var(--text-3-color);
+    padding: 15px;
 }
 
 .container-card-topic div {

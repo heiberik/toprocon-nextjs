@@ -24,11 +24,8 @@
 .container-banner h1 {
     font-size: 5.5rem;
     text-align: left;
-    color: white;
-    color: var(--primary-1-color);
-    color: rgb(255, 0, 0);
     width: fit-content;
-    background: linear-gradient(to right, white 0%, white 25%,var(--primary-1-color)26%, var(--primary-1-color)61%, white 62%);
+    background: linear-gradient(to right, white 0%, white 25%,var(--primary-2-color)26%, var(--primary-2-color)61%, white 62%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -66,10 +63,12 @@
 
     .container-banner h1 {
         font-size: 4rem;
-        margin-left: 20px;
+        padding: 0px 10px;
     }
 
     .container-banner p {
-        margin-left: 20px;
+        margin: 0px;
+        margin-left: 10px;
+        padding: 0px 10px;
     }
 }

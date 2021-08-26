@@ -77,9 +77,14 @@
 
 
 @media screen and (max-width: 1000px) {
+
     .container-report {
-        right: 5px;
-        top: 5px;
+        right: 0px;
+        top: 0px;
         padding: 8px;
+    }
+
+    .container-report svg {
+        height: 18px;
     }
 }

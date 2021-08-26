@@ -89,13 +89,10 @@ const LoginPage = ({ location }) => {
                         validation={v => false}
                         icon={<FontAwesomeIcon icon={faLock} color="white" />} />
 
-
-                    
-
                     <p className="text-auth">Don&apos;t have an account? <Link href="/register">Sign up!</Link></p>
                     
                     <div>
-                        <button type="submit" className="button-primary button-full-width button-color"> Login </button>
+                        <button type="submit" className="button-secondary button-full-width button-color"> Login </button>
                         {message && <p className="text-message"> {message} </p>}
                         {error && <p className="text-error"> {error} </p>}
                     </div>

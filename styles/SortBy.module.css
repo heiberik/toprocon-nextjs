@@ -11,7 +11,7 @@
     position: absolute;
     right: 15px;
     top: 12px;
-    color: white;
+    color: inherit;
     width: 25px;
     height: 25px;
     cursor: pointer;
@@ -20,12 +20,14 @@
 
 .sortby-dropdown {
     position: absolute;
-    background-color: var(--background-1-color);
+    background-color: var(--background-5-color);
+    background-color: var(--card-1-color);
+
     padding: 10px;
     z-index: 999;
     right: 0px;
     top: 55px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.4);
     border-radius: 5px;
 }
 
@@ -33,7 +35,7 @@
     position: relative;
     width: 200px;
     background-color: inherit;
-    color: var(--text-2-color);
+    color: var(--text-4-color);
     outline: none;
     text-align: start;
     margin: 5px;
@@ -42,15 +44,14 @@
 }
 
 .sortby-dropdown .sortby:hover {
-    color: var(--text-1-color);
-    border: solid 2px var(--primary-2-color);;
+    border: solid 2px var(--primary-1-color);;
     opacity: 1;
 }
 
 .sortby-dropdown .sortby-active {
-    color: var(--text-1-color);
+    color: var(--text-6-color);
     background-color: var(--primary-2-color);
-    border: solid 2px var(--primary-2-color);;
+    border: solid 2px var(--primary-1-color);;
     box-shadow: none;
     opacity: 1;
 }

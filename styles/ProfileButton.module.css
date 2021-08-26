@@ -9,10 +9,11 @@
 
 .settings svg {
     margin-right: 20px;
+    color: var(--text-6-color);
 }
 
 .settings-username {
-    color: var(--text-1-color);
+    color: var(--text-6-color);
     font-size: 1rem;
     font-weight: 600;
 }

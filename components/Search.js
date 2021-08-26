@@ -50,7 +50,7 @@ const Search = ({ setSortBy, setPageSearch, limit, searchText, setSearchText, se
             
             <button
                 aria-label="Search"
-                className={active ? "button-primary" + " " + styles["button-search-open"] : "button-primary" + " " +styles["button-search"]}
+                className={active ? "button-secondary" + " " + styles["button-search-open"] : "button-secondary" + " " +styles["button-search"]}
                 onClick={toggleExpand} >
                 
                 {!active && <FontAwesomeIcon icon={faSearch} size="2x" />}
@@ -60,7 +60,7 @@ const Search = ({ setSortBy, setPageSearch, limit, searchText, setSearchText, se
 
             <form onSubmit={searchForTopic} ref={formRef} className={styles["form-search"]}>
                 <input value={searchText} id="input-search" autoComplete="off" data-lpignore="true" onChange={(e) => setSearchText(e.target.value)} placeholder="Search for a topic..." className={styles["input-search"]} />
-                <button type="submit" className={styles["submit-search"]}> Search </button>
+                <button type="submit" className={styles["submit-search"] + " " + "button-secondary"}> Search </button>
             </form>
         </div>
     )

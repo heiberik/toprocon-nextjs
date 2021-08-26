@@ -18,7 +18,9 @@
 
 
 .container-text {
-    margin-left: 25px;
+    margin-left: 15px;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .argument-username {
@@ -34,8 +36,7 @@
 .argument-text {
     color: var(--text-1-color);
     transition: all 1s;
-    font-size: 1.1rem;
-    line-height: 1.5em;
+    font-size: 1rem;
     max-width: 80ch;
     word-break: normal;
 }
@@ -46,7 +47,6 @@
     font-size: 0.9em;
     font-weight: 400;
     text-transform: capitalize;
-    margin-top: 5px;
 }
 
 .argument-type-con {
@@ -97,7 +97,7 @@
 
 .upvote {
     color: var(--upvote-color);
-    font-size: 1em;
+    font-size: 0.9em;
     text-align: center;
     color: white;
     margin-top: 2px;
@@ -107,7 +107,7 @@
 .downvote {
     color: var(--downvote-color);
     color: white;
-    font-size: 1em;
+    font-size: 0.9em;
     text-align: center;
     word-break: keep-all;
 }
@@ -197,12 +197,12 @@
 @media screen and (max-width: 1000px) {
 
     .argument {
-        padding: 15px;
-        padding-left: 10px;
-        padding-right: 20px;
+        padding: 10px;
+        padding-left: 5px;
+        padding-right: 10px;
     }
 
     .container-text {
-        margin-left: 15px;
+        margin-left: 8px;
     }
 }
