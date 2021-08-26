@@ -50,3 +50,19 @@
 .searchbar-leaderboard button:hover:before{
     display: none;
 }
+
+@media screen and (max-width: 1000px) {
+
+    .container-leaderboard .leaderboard-user-card p:first-of-type {
+        text-align: start;
+        width: fit-content;
+    }
+    
+    .container-leaderboard .leaderboard-user-card p:last-of-type {
+        text-align: end;
+    }
+
+    .container-leaderboard .leaderboard-user-card {
+        justify-content: space-between;
+    }
+}
