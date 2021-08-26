@@ -5,6 +5,7 @@ import SortBy from '../../components/SortBy'
 import LeaderboardService from "../../server/modules/leaderboard/boardService"
 import styles from "../../styles/Leaderboard.module.css"
 import styles2 from "../../styles/Searchbar.module.css"
+import Banner from '../../components/Banner'
 
 
 const Leaderboard = ({ leaderboardServer }) => {
@@ -35,26 +36,34 @@ const Leaderboard = ({ leaderboardServer }) => {
     }
 
     return (
-        <div className="container-normal">
+        <>
+            <Banner
+                header={"Leaderboards"}
+                text={`Creating popular topics. Adding well received arguments. 
+                Taking a part in moderating items. Everything will earn you points
+                and make you compete in Toprocon's leaderboards!`}
+            />
+            <div className="container-normal" style={{marginTop: "22em"}}>
 
-            <div className={styles2["container-searchbar"] + " " + styles["searchbar-leaderboard"]} >
-                <div className={styles["container-part"]} style={{ position: "relative", justifyContent: "flex-end", display: "flex", width: "100%", marginRight: "0px" }}>
-                    <SortBy 
-                        sortClick={sortClick} 
-                        sortBy={sortBy} 
-                        alternatives={["total", "topic", "argument", "mod"]} />
+                <div className={styles2["container-searchbar"] + " " + styles["searchbar-leaderboard"]} >
+                    <div className={styles["container-part"]} style={{ position: "relative", justifyContent: "flex-end", display: "flex", width: "100%", marginRight: "0px" }}>
+                        <SortBy
+                            sortClick={sortClick}
+                            sortBy={sortBy}
+                            alternatives={["total", "topic", "argument", "mod"]} />
+                    </div>
+                </div>
+
+                <div className={styles["container-leaderboard"]}>
+                    {leaderboard.map(user => {
+                        return <div className={styles["leaderboard-user-card"]} key={user.username}>
+                            <p onClick={() => usernameClick(user.username)}> {user.username} </p>
+                            <p> {user.points} </p>
+                        </div>
+                    })}
                 </div>
             </div>
-
-            <div className={styles["container-leaderboard"]}>
-                {leaderboard.map(user => {
-                    return <div className={styles["leaderboard-user-card"]} key={user.username}>
-                        <p onClick={() => usernameClick(user.username)}> {user.username} </p>
-                        <p> {user.points} </p>
-                    </div>
-                })}
-            </div>
-        </div>
+        </>
     )
 }
 

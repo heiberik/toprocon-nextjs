@@ -2,8 +2,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding-top: 6em;
-    padding-bottom: 6em;
+    height: 20em;
     justify-content: center;    
     margin-bottom: 45px;
     background-color: var(--background-3-color);
@@ -22,18 +21,22 @@
 }
 
 .container-banner h1 {
-    font-size: 5.5rem;
+    font-size: 3em;
     text-align: left;
     width: fit-content;
-    background: linear-gradient(to right, white 0%, white 25%,var(--primary-2-color)26%, var(--primary-2-color)61%, white 62%);
-    -webkit-background-clip: text;
+    color: var(--primary-2-color);
     background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.header-colorized {
+    font-size: 5em !important;
     -webkit-text-fill-color: transparent;
+    background: linear-gradient(to right, white 0%, white 25%,var(--primary-2-color)26%, var(--primary-2-color)61%, white 62%);
 }
 
 .container-banner p {
     margin-top: 10px;
-    margin-left: 22px;
     max-width: 70ch;
     font-size: 1.2rem;
     text-align: left;
@@ -53,8 +56,6 @@
 
     .container-banner {
         top: 5em;
-        padding-bottom: 5em;
-        padding-top: 4em;
     }
 
     .container-text {
@@ -62,13 +63,15 @@
     }
 
     .container-banner h1 {
-        font-size: 4rem;
         padding: 0px 10px;
+    }
+
+    .header-colorized {
+        font-size: 4em !important;
     }
 
     .container-banner p {
         margin: 0px;
-        margin-left: 10px;
         padding: 0px 10px;
     }
 }

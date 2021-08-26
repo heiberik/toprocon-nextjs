@@ -58,6 +58,10 @@
 @media screen and (max-width: 1000px) {
 
     .topic-card-name {
-        margin-left: 5px;
+        margin-left: 5px;   
+    }
+
+    .container-card-topic {
+        margin-bottom: 10px; 
     }
 }

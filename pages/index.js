@@ -13,8 +13,13 @@ const TopicsPage = ({ topicsServer }) => {
 
     return (
         <>
-            <Banner />
-            <div className="container-normal" style={{marginTop: "22em"}}>
+            <Banner
+                header={"Toprocon"}
+                text={`Read up on the pros and cons of every imaginable topic. Add your own
+                topic or add an argument to an existing topic.`}
+                colorizedHeader={true}
+            />
+            <div className="container-normal" style={{ marginTop: "22em" }}>
                 <Searchbar topics={topics} setTopics={setTopics} />
                 <div className={styles["container-topics"]}>
                     {topics && topics.map(topic => <Topic key={topic._id} topic={topic} />)}
