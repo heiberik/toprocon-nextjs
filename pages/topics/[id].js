@@ -31,7 +31,7 @@ const TopicPage = ({ user, topicSet, topicServer }) => {
         <div className="container-normal">
 
             <Meta
-                desc={"Top pros and cons of " + topic.name + ". " + topic.description}
+                desc={"Pros and cons of " + topic.name + ". " + topic.description}
                 title={"Pros and cons of " + topic.name} />
 
             <div className={styles["container-desc"]}>

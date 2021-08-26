@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
                 <Header />
                 <Meta
                     title="Toprocon"
-                    desc="Pros and Cons of every imaginable user generated topic. Start a new discussion by adding a topic. Add your opinions to other user generated topics. Earn points. Help moderating." />
+                    desc="Pros and cons of every imaginable topic. Start a new discussion by adding a topic. Add your opinions to other user generated topics. Earn points. Help moderating." />
                 {children}
             </div>
             <Footer />
