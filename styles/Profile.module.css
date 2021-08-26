@@ -37,7 +37,7 @@
     border-bottom: none;
     color: var(--text-1-color);
     max-width: fit-content;
-    font-size: 1.1em;
+    font-size: 1em;
 }
 
 .userInfo-username {
@@ -123,5 +123,9 @@
     
     .container-topics-added {
         padding: 5px 10px;
+    }
+
+    .userInfo-username {
+        font-size: 2.5em;
     }
 }

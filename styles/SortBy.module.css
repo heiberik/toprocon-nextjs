@@ -40,10 +40,11 @@
     margin: 5px;
     border: solid 2px transparent;
     box-shadow: none;
+    transform: all 0.2s;
 }
 
 .sortby-dropdown .sortby:hover {
-    border: solid 2px var(--primary-1-color);;
+    color: var(--text-1-color);
     opacity: 1;
 }
 
@@ -53,6 +54,10 @@
     border: solid 2px var(--primary-1-color);;
     box-shadow: none;
     opacity: 1;
+}
+
+.sortby-dropdown .sortby-active:hover {
+    color: var(--text-6-color);
 }
 
 .dummy-path {
