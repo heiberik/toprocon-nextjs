@@ -10,7 +10,10 @@ class MyDocument extends Document {
         return (
             <Html lang="en">
                 <Head>
-                    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=fail" rel="stylesheet" />
+                    <link
+                        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=fail"
+                        rel="stylesheet"
+                    />
                     <script
                         async
                         src="https://www.googletagmanager.com/gtag/js?id=G-ZR2QVBL1EL"

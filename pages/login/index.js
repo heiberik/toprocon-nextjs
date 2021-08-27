@@ -49,11 +49,9 @@ const LoginPage = () => {
 
             loginUser(username, password)
                 .then(res => {
-
                     setLoading(false)
                     setUser(res.data)
-                    router.back()
-
+                    router.push("/")
                 })
                 .catch(error => {
                     setLoading(false)

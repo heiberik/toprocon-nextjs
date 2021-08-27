@@ -8,15 +8,14 @@ const SortBy = ({ sortClick, sortBy, alternatives }) => {
     const [showDropdown, setShowDropdown] = useState(false)
 
     const toggleDropdown = () => {
-        console.log("TOGGLE!");
         setShowDropdown(s => !s)
     }
 
     return (
         <div
             className={styles["container-sortby"]}
-            onMouseEnter={() => {console.log("ENTER"); setShowDropdown(true)}}
-            onMouseLeave={() => {console.log("LEAVE"); setShowDropdown(false)}} >
+            onMouseEnter={() => setShowDropdown(true)}
+            onMouseLeave={() => setShowDropdown(false)} >
 
             <button
                 className={styles["sortby-button"] + " " + "button-secondary"}

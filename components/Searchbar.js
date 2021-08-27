@@ -101,6 +101,7 @@ const Searchbar = ({ topics, setTopics }) => {
         }
     }, [sortBy, setTopics, topicsTop, topicsNew, topicsControversial, limit])
 
+
     const sortClick = (sortBy) => {
         setSearchText("")
         setSortBy(sortBy)
