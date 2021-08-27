@@ -27,7 +27,6 @@ class ArgumentService {
             else topic.numPros++;
 
             await topic.save()
-
             await points.addTopicArgumentPoints(user, topic.user)
 
             return await TopicService.getTopicByIdNew(topicId)
