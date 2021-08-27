@@ -10,6 +10,10 @@ export const registerUser = (username, email, password) => {
     return axios.post(`${url}`, {username, email, password })
 }
 
+export const resendVerificationToken = (email) => {
+    return axios.post(`${url}/verification/resendtoken`, {email})
+}
+
 export const getUser = () => {
     return axios.get(`${url}`)
 }

@@ -52,7 +52,6 @@ const banUser = asyncHandler(async (req, res) => {
 })
 
 
-// @route POST /api/users
 const registerUser = asyncHandler((req, res) => {
 
     const { username, email, password } = req.body
@@ -84,11 +83,25 @@ const checkIfUsernameTaken = asyncHandler(async (req, res) => {
 const activateUser = asyncHandler(async (req, res) => {
 
     const { username, token } = req.params
+    const baseUrl = process.env.NODE_ENV == "development" ? "localhost:3000" : req.headers.host
 
-    UserService.activateUser(username, token)
+    UserService.activateUser(username, token, res)
         .then(userJson => {
-            const baseUrl = process.env.NODE_ENV == "development" ? "localhost:3000" : req.headers.host
-            res.redirect(`http://${baseUrl}/login`)
+            res.redirect(`http://${baseUrl}/login?activated=true`)
+        })
+        .catch(error => {
+            res.redirect(`http://${baseUrl}/activate?message=` + error.message)
+        })
+})
+
+
+const resendVerificationToken = asyncHandler(async (req, res) => {
+
+    const { email } = req.body
+
+    UserService.resendVerificationToken(email, req.headers.host)
+        .then(message => {
+            res.status(201).send(message)
         })
         .catch(error => {
             res.status(400).send(error.message)
@@ -248,5 +261,6 @@ export {
     activateUser,
     resetPassword,
     newPassword,
-    banUser
+    banUser,
+    resendVerificationToken
 }

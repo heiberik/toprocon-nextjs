@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
-import { loginUser } from "../../services/userService"
+import Link from 'next/link'
+import { getUser, loginUser } from "../../services/userService"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { faLock } from '@fortawesome/free-solid-svg-icons'
@@ -11,21 +11,29 @@ import { useContext } from 'react'
 import PuffLoader from "react-spinners/PuffLoader"
 import UserContext from '../../context/user'
 
-const LoginPage = ({ location }) => {
+const LoginPage = () => {
 
     const [user, setUser] = useContext(UserContext);
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState(null)
-    const [message, setMessage] = useState(null)
     const [loading, setLoading] = useState(false)
 
     const router = useRouter()
 
     useEffect(() => {
-        
 
-    }, [])
+        if (router.query.activated === "true") {
+            getUser()
+                .then(res => {
+                    setUser(JSON.parse(res.data))
+                    router.push("/")
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        };
+    }, [router, setUser])
 
     const onSubmitHandler = (e) => {
         e.preventDefault()
@@ -89,28 +97,25 @@ const LoginPage = ({ location }) => {
                         icon={<FontAwesomeIcon icon={faLock} color="white" />} />
 
                     <p className="text-auth">Don&apos;t have an account? <Link href="/register">Sign up!</Link></p>
-                    
+
                     <div>
-                        <button 
-                            type="submit" 
-                            className="button-secondary button-full-width button-color"> 
-                    
+                        <button
+                            type="submit"
+                            className="button-secondary button-full-width button-color">
+
                             {!loading && "Login"}
                             {loading && <p style={{ visibility: "hidden" }}> logging in </p>}
-                            {loading && <div className={styles["container-spinner"]}> 
+                            {loading && <div className={styles["container-spinner"]}>
                                 <PuffLoader color={"white"} size={18} />
                             </div>}
                         </button>
-                       
-                       
-                        {message && <p className="text-success"> {message} </p>}
+
                         {error && <p className="text-error"> {error} </p>}
                     </div>
 
-                    <p className="text-auth" style={{marginBottom: "0px"}}> Forgot password? <Link href="/password/reset">Reset password</Link> here.</p>
+                    <p className="text-auth" style={{ marginBottom: "0px" }}> Forgot password? <Link href="/password/reset">Reset password</Link> here.</p>
                 </form>
             </div>
-
         </div>
     )
 }

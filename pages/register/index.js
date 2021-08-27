@@ -131,7 +131,7 @@ const RegisterPage = () => {
                         validation={(v) => v === password1 && v.length >= 6}
                         icon={<FontAwesomeIcon icon={faLock} color="white" />} />
 
-                    <p className="text-auth"> Already have an account? <Link href="/login">Login</Link> here.</p>
+                    <p className="text-auth"> Already have an account? <Link href="/login">Login</Link> here. Need a new verification email? <Link href="/activate">Resend one</Link> here.</p>
 
 
                     <div>

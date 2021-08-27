@@ -16,7 +16,8 @@ import {
     activateUser,
     resetPassword,
     newPassword,
-    banUser
+    banUser,
+    resendVerificationToken
 } from './userController.js'
 
 import { protect, admin } from '../../middleware/authMiddleware.js'
@@ -40,6 +41,9 @@ router.route('/username/:username')
 
 router.route('/verification/:username/:token')
     .get(activateUser)
+
+router.route('/verification/resendtoken')
+    .post(rateLimit({ windowMs: 60000, max: 5 }), resendVerificationToken)
 
 router.route('/password/reset')
     .post(resetPassword)

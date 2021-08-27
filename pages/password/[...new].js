@@ -3,21 +3,23 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLock } from '@fortawesome/free-solid-svg-icons'
 import Input from '../../components/Input';
 import { newPassword } from '../../services/userService';
-import styles2 from "../../styles/Login.module.css"
+import UserService from "../../server/modules/user/userService"
+import styles from "../../styles/Login.module.css"
+import { useRouter } from 'next/router';
+import PuffLoader from "react-spinners/PuffLoader";
 
 
-const PasswordPage = () => {
+const PasswordPage = ({ token, idUser }) => {
 
     const [password1, setPassword1] = useState("")
     const [password2, setPassword2] = useState("")
     const [error, setError] = useState(null)
-    const [disabled, setDisabled] = useState(false)
+    const [loading, setLoading] = useState(false)
 
-    //let { id, token } = useParams();
-    //const history = useHistory();
+    const router = useRouter();
 
     const onSubmitHandler = (e) => {
-        /*
+
         e.preventDefault()
         if (password1.length < 6) {
             setError("Password is too short to be valid")
@@ -26,24 +28,20 @@ const PasswordPage = () => {
             setError("Passwords do not match")
         }
         else {
-            if (disabled) return
-            setDisabled(true)
-            newPassword(id, password2, token)
+            if (loading) return
+            setLoading(true)
+            newPassword(idUser, password2, token)
                 .then(res => {
-                    setDisabled(false)
-                    history.push({
-                        pathname: '/login',
-                        state: { msg: "Verify your email!" }
-                    })
+                    setLoading(false)
+                    router.push("/login")
                 })
                 .catch(error => {
-                    setDisabled(false)
+                    setLoading(false)
                     setPassword1("")
                     setPassword2("")
                     setError(error.response.data)
                 })
         }
-        */
     }
 
     const password1ChangeHandler = (e) => {
@@ -58,7 +56,7 @@ const PasswordPage = () => {
 
     return (
         <div className="container-normal">
-            <div className={styles2["container-auth-card"]}>
+            <div className={styles["container-auth-card"]}>
 
                 <h1> New password </h1>
                 <form onSubmit={onSubmitHandler} >
@@ -80,9 +78,19 @@ const PasswordPage = () => {
                         placeholder="Reenter password"
                         validation={(v) => v === password1 && v.length >= 6}
                         icon={<FontAwesomeIcon icon={faLock} color="white" />} />
-                    s
+
                     <div className="container-loader">
-                        <button type="submit" className="button-secondary button-full-width button-color" style={{ marginBottom: "20px", marginTop: "15px" }}> Submit </button>
+                        <button
+                            type="submit"
+                            className="button-secondary button-full-width button-color"
+                            style={{ marginBottom: "20px", marginTop: "15px" }}>
+
+                            {!loading && "Submit"}
+                            {loading && <p style={{ visibility: "hidden" }}> submitting </p>}
+                            {loading && <div className={styles["container-spinner"]}>
+                                <PuffLoader color={"white"} size={18} />
+                            </div>}
+                        </button>
                         {error && <p className="text-error"> {error} </p>}
                     </div>
 
@@ -90,6 +98,30 @@ const PasswordPage = () => {
             </div>
         </div>
     )
+}
+
+export async function getServerSideProps(context) {
+
+    const idUser = context.query.new[1]
+    const token = context.query.new[2]
+
+    if (await UserService.validToken(token, idUser)) {
+        return {
+            props: {
+                token: token,
+                idUser: idUser
+            }
+        }
+    }
+    else {
+        return {
+            redirect: {
+                permanent: false,
+                destination: "/login",
+            },
+            props: {},
+        };
+    }
 }
 
 export default PasswordPage

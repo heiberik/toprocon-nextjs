@@ -14,26 +14,16 @@ const tokenSchema = mongoose.Schema({
         type: String, 
         required: true 
     },
-    expireAt: { 
+    createdAt: { 
         type: Date, 
-        default: Date.now, 
-        index: { expires: 86400000 } 
+        expires: '1h', 
+        default: Date.now 
     }
 },
     {
         timestamps: true,
     }
 )
-
-tokenSchema.methods.isValid = function () {
-
-    const expireTime = new Date(this.expireAt);
-    const currentTime = new Date();
-    if (currentTime < expireTime) {
-        return false
-    }
-    return true
-}
 
 
 export default mongoose.models.Token || mongoose.model('Token', tokenSchema)

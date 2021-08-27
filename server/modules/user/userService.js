@@ -58,7 +58,9 @@ class UserService {
 
         try {
             const decoded = await jwt.verify(JSON.parse(parsedCookies.jwt), process.env.JWT_SECRET)
-            const user = await User.findById(decoded.id)
+            const user = await User.findById(decoded.id)  
+            if (!user) throw new Error('User not found.');
+
             return JSON.stringify({
                 _id: user._id,
                 username: user.username,
@@ -152,7 +154,7 @@ class UserService {
             type: "email-verification"
         })
 
-        const baseUrl = process.env.NODE_ENV == "development" ? "localhost:5000" : host
+        const baseUrl = process.env.NODE_ENV == "development" ? "localhost:3000" : host
 
         const mailOptions = {
             from: "Toprocon <" + process.env.MAIL_USERNAME + ">",
@@ -169,20 +171,55 @@ class UserService {
         else return "A verification email has been sent to " + user.email + "."
     }
 
-    activateUser = async (username, token) => {
+    resendVerificationToken = async (email, host) => {
+
+        const user = await User.findOne({ email })
+        if (!user) throw new Error('User with this email does not exist')
+        if (user.active) throw new Error('User is allready activated')
+
+        const token = await Token.create({
+            user: user,
+            token: crypto.randomBytes(64).toString('hex'),
+            type: "email-verification"
+        })
+
+        const baseUrl = process.env.NODE_ENV == "development" ? "localhost:3000" : host
+
+        const mailOptions = {
+            from: "Toprocon <" + process.env.MAIL_USERNAME + ">",
+            to: user.email,
+            subject: "Account Verification Link",
+            html: templates.verifyAccount(user, token, baseUrl)
+        }
+
+        let mailSent = await mailer.sendMail(mailOptions);
+        if (!mailSent) {
+            throw new Error('Technical issue while resending verification mail. Try again later.')
+        }
+        else return "A verification email has been sent to " + user.email + "."
+    }   
+
+    activateUser = async (username, token, res) => {
 
         const verifyToken = await Token.findOne({ token })
-        if (!verifyToken) throw new Error('Your verification link may have expired. Please click on resend.');
+        if (!verifyToken) throw new Error('Your verification link may have expired.');
 
         const user = await User.findOne({ username })
-        if (!user) throw new Error("Can't find user.")
-
-        if (user.active) return "User is already verified."
-
+        if (!verifyToken.user.equals(user._id)) throw new Error('Invalid verification link.');
+        if (!user) throw new Error("Invalid verification link. Can't find user.")
+        
         user.active = true
         await user.save()
 
-        return "User is verified."
+        const newToken = generateToken(user._id)
+
+        res.cookie("jwt", JSON.stringify(newToken), {
+            secure: process.env.NODE_ENV !== "development",
+            httpOnly: true,
+            expires: dayjs().add(30, "days").toDate(),
+        });
+
+        return true
     }
 
     checkIfUsernameTaken = async (username) => {
@@ -200,7 +237,7 @@ class UserService {
 
         const token = await Token.create({
             user: user,
-            token: crypto.randomBytes(32).toString('hex'),
+            token: crypto.randomBytes(64).toString('hex'),
             type: "password-reset"
         })
 
@@ -218,6 +255,16 @@ class UserService {
         else return "Check your email."
     }
 
+    validToken = async (token, user) => {
+
+        const verifyToken = await Token.findOne({ token }) 
+
+        if (!verifyToken) return false
+        if (!verifyToken.user.equals(user)) return false
+        
+        return true
+    }
+
     newPassword = async (id, password, token) => {
 
         const user = await User.findOne({ _id: id })
@@ -226,8 +273,7 @@ class UserService {
         const cToken = await Token.findOne({ token })
         if (!cToken) throw new Error("Token is not valid.")
 
-        if (!cToken.user.equals(user._id)) throw new Error("Invalid user + token")
-        if (!cToken.isValid()) throw new Error("Token is expired.")
+        if (!cToken.user.equals(user._id)) throw new Error("Invalid token.")
 
         user.password = password;
         await user.save()
