@@ -230,7 +230,7 @@ class UserService {
         else return false
     }
 
-    resetPassword = async (email) => {
+    resetPassword = async (email, host) => {
 
         const user = await User.findOne({ email })
         if (!user) throw new Error("Can't find user.")

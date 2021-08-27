@@ -113,7 +113,7 @@ const resetPassword = asyncHandler(async (req, res) => {
 
     const { email } = req.body
 
-    UserService.resetPassword(email)
+    UserService.resetPassword(email, req.headers.host)
         .then(resp => {
             res.status(200).send("Check your email.")
         })
