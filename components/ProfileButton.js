@@ -27,7 +27,6 @@ const ProfileButton = ({ toggleDropdown }) => {
             })
     }
 
-    console.log(user);
     return (
         <div className={styles["settings"] + " " + "button-primary"} onMouseEnter={() => setShowDropdown(true)} onClick={() => setShowDropdown(s => !s)} onMouseLeave={() => setShowDropdown(false)}>
 
