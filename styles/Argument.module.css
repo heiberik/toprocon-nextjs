@@ -178,8 +178,8 @@
 
 .button-add {
     width: 49%;
-    border: solid 2px var(--primary-1-color);
-    background-color: var(--primary-1-color);
+    border: solid 2px var(--primary-2-color);
+    background-color: var(--primary-2-color);
     color: black;
     white-space: nowrap;
 }

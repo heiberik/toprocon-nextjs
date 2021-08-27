@@ -162,7 +162,7 @@ button {
 
 .button-secondary {
     background-color: var(--primary-2-color);
-    border: solid 2px var(--primary-1-color);
+    border: solid 2px var(--primary-2-color);
 
     color: var(--text-1-color);
     color: black;

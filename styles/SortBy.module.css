@@ -51,7 +51,7 @@
 .sortby-dropdown .sortby-active {
     color: var(--text-6-color);
     background-color: var(--primary-2-color);
-    border: solid 2px var(--primary-1-color);;
+    border: solid 2px var(--primary-2-color);;
     box-shadow: none;
     opacity: 1;
 }
