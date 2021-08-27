@@ -27,6 +27,7 @@ const ProfileButton = ({ toggleDropdown }) => {
             })
     }
 
+    console.log(user);
     return (
         <div className={styles["settings"] + " " + "button-primary"} onMouseEnter={() => setShowDropdown(true)} onClick={() => setShowDropdown(s => !s)} onMouseLeave={() => setShowDropdown(false)}>
 
@@ -46,9 +47,9 @@ const ProfileButton = ({ toggleDropdown }) => {
                     </div>
 
                     <div className={styles["dropdown-section"]}>
-                        <a href={`/profile/${user.username}`} className={styles["text-style"]}> My profile </a>
-                        {false && <Link to={`/leaderboards`} className={styles["text-style"]}> Leaderboards </Link>}
-                        {false && <Link to={`/about`} className={styles["text-style"]}> About </Link>}
+                        <Link href={`/profile/${user.username}`} className={styles["text-style"]}> My profile </Link>
+                        {false && <Link href={`/leaderboards`} className={styles["text-style"]}> Leaderboards </Link>}
+                        {false && <Link href={`/about`} className={styles["text-style"]}> About </Link>}
                     </div>
 
                     <div className={styles["dropdown-section"]}>
