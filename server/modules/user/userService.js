@@ -128,33 +128,27 @@ class UserService {
     registerUser = async (username, email, password, host) => {
 
         const userExistsUsername = await User.findOne({ username })
+        if (userExistsUsername) throw new Error('Username already exists')
+
         const userExistsEmail = await User.findOne({ email })
-
-        if (userExistsUsername) {
-            throw new Error('Username already exists')
-        }
-
-        if (userExistsEmail) {
-            throw new Error('Email already in use')
-        }
+        if (userExistsEmail) throw new Error('Email already in use')
 
         const options = new profanity.ProfanityOptions();
         options.wholeWord = false;
-
         const prof = new profanity.Profanity(options);
-        prof.addWords(['admin', 'mod', "moderator", "administrator"]);
+        prof.addWords(['admin', 'mod', "moderator", "administrator", "toprocon"]);
 
         const isProfane = prof.exists(username);
 
         if (isProfane) {
-            throw new Error('Username contains profane language')
+            throw new Error('Username is not allowed')
         };
 
         const user = await User.create({ username, email, password })
 
         const token = await Token.create({
             user: user,
-            token: crypto.randomBytes(16).toString('hex'),
+            token: crypto.randomBytes(64).toString('hex'),
             type: "email-verification"
         })
 
@@ -169,7 +163,7 @@ class UserService {
 
         let mailSent = await mailer.sendMail(mailOptions);
         if (!mailSent) {
-            User.deleteOne({ _id: user._id })
+            await User.deleteOne({ _id: user._id })
             throw new Error('Technical issue while sending verification mail')
         }
         else return "A verification email has been sent to " + user.email + "."

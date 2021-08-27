@@ -4,7 +4,8 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import Input from '../../components/Input';
 import validator from "email-validator"
 import { resetPassword } from '../../services/userService'
-import styles2 from "../../styles/Login.module.css"
+import styles from "../../styles/Login.module.css"
+import PuffLoader from "react-spinners/PuffLoader";
 
 const EmailPage = () => {
 
@@ -12,11 +13,7 @@ const EmailPage = () => {
     const [error, setError] = useState(null)
     const [message, setMessage] = useState(null)
     const [loading, setLoading] = useState(false)
-
-
-    useEffect(() => {
-
-    }, [])
+    
 
     const onSubmitHandler = (e) => {
         e.preventDefault()
@@ -49,7 +46,7 @@ const EmailPage = () => {
 
     return (
         <div className="container-normal">
-            <div className={styles2["container-auth-card"]}>
+            <div className={styles["container-auth-card"]}>
 
                 <h1> Reset password </h1>
                 <form onSubmit={onSubmitHandler} >
@@ -66,8 +63,18 @@ const EmailPage = () => {
                     <p className="text-auth"> Open your email to proceed in resetting your password.</p>
 
                     <div>
-                        <button type="submit" className="button-secondary button-full-width button-color" style={{ marginBottom: "0px", marginTop: "0px" }}> Submit </button>
-                        {message && <p className="text-message"> {message} </p>}
+                        <button 
+                            type="submit" 
+                            className="button-secondary button-full-width button-color" style={{ marginBottom: "0px", marginTop: "0px" }}> 
+                             
+                            {!loading && "Submit"}
+                            {loading && <p style={{ visibility: "hidden" }}> submitting </p>}
+                            {loading && <div className={styles["container-spinner"]}> 
+                                <PuffLoader color={"white"} size={18} />
+                            </div>}
+                        </button>
+                        
+                        {message && <p className="text-success"> {message} </p>}
                         {error && <p className="text-error"> {error} </p>}
                     </div>
 

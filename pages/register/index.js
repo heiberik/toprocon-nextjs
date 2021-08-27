@@ -7,8 +7,8 @@ import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { faLock } from '@fortawesome/free-solid-svg-icons'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import validator from "email-validator"
-import styles from "../../styles/Register.module.css"
-import styles2 from "../../styles/Login.module.css"
+import PuffLoader from "react-spinners/PuffLoader";
+import styles from "../../styles/Login.module.css"
 
 
 const RegisterPage = () => {
@@ -30,16 +30,16 @@ const RegisterPage = () => {
         setMessage(null)
 
         if (username.length < 5) {
-            setError("Username must be at least 5 characters")
+            setError("Username must be at least 5 characters.")
         }
         else if (!validator.validate(email)) {
-            setError("Email is not valid")
+            setError("Email is not valid.")
         }
         else if (password1.length < 6) {
-            setError("Password must be at least 6 characters")
+            setError("Password must be at least 6 characters.")
         }
         else if (password1 !== password2) {
-            setError("Passwords do not match")
+            setError("Passwords do not match.")
         }
         else {
             if (loading) return
@@ -87,10 +87,13 @@ const RegisterPage = () => {
     return (
         <div className="container-normal">
 
-            <div className={styles2["container-auth-card"]}>
+            <div className={styles["container-auth-card"]}>
 
                 <h1> Register </h1>
                 <form onSubmit={onSubmitHandler}>
+
+
+
                     <Input
                         name="username"
                         label="Username"
@@ -128,13 +131,22 @@ const RegisterPage = () => {
                         validation={(v) => v === password1 && v.length >= 6}
                         icon={<FontAwesomeIcon icon={faLock} color="white" />} />
 
-
                     <p className="text-auth"> Already have an account? <Link href="/login">Login</Link> here.</p>
 
 
                     <div>
-                        <button type="submit" className="button-secondary button-full-width  button-color"> Register </button>
-                        {message && <p className="text-message" style={{ color: "white" }}> {message} </p>}
+                        <button
+                            type="submit"
+                            className="button-secondary button-full-width  button-color">
+
+                            {!loading && "Register"}
+                            {loading && <p style={{ visibility: "hidden" }}> loading </p>}
+                            {loading && <div className={styles["container-spinner"]}> 
+                                <PuffLoader color={"white"} size={18} />
+                            </div>}
+                        </button>
+
+                        {message && <p className="text-success" > {message} </p>}
                         {error && <p className="text-error"> {error} </p>}
                     </div>
 

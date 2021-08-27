@@ -7,16 +7,15 @@ import { faLock } from '@fortawesome/free-solid-svg-icons'
 import Input from '../../components/Input'
 import styles from "../../styles/Login.module.css"
 import { useRouter } from 'next/router'
-import { useContext } from 'react';
-import UserContext from '../../context/user';
+import { useContext } from 'react'
+import PuffLoader from "react-spinners/PuffLoader"
+import UserContext from '../../context/user'
 
 const LoginPage = ({ location }) => {
 
     const [user, setUser] = useContext(UserContext);
-
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-
     const [error, setError] = useState(null)
     const [message, setMessage] = useState(null)
     const [loading, setLoading] = useState(false)
@@ -24,7 +23,7 @@ const LoginPage = ({ location }) => {
     const router = useRouter()
 
     useEffect(() => {
-
+        
 
     }, [])
 
@@ -45,7 +44,7 @@ const LoginPage = ({ location }) => {
 
                     setLoading(false)
                     setUser(res.data)
-                    router.push("/")
+                    router.back()
 
                 })
                 .catch(error => {
@@ -92,8 +91,19 @@ const LoginPage = ({ location }) => {
                     <p className="text-auth">Don&apos;t have an account? <Link href="/register">Sign up!</Link></p>
                     
                     <div>
-                        <button type="submit" className="button-secondary button-full-width button-color"> Login </button>
-                        {message && <p className="text-message"> {message} </p>}
+                        <button 
+                            type="submit" 
+                            className="button-secondary button-full-width button-color"> 
+                    
+                            {!loading && "Login"}
+                            {loading && <p style={{ visibility: "hidden" }}> logging in </p>}
+                            {loading && <div className={styles["container-spinner"]}> 
+                                <PuffLoader color={"white"} size={18} />
+                            </div>}
+                        </button>
+                       
+                       
+                        {message && <p className="text-success"> {message} </p>}
                         {error && <p className="text-error"> {error} </p>}
                     </div>
 
