@@ -1,5 +1,7 @@
 :root {
     --background-1-color: #27292e;
+    --background-1-color: #1A202C;
+
     --background-2-color: #00000049;    
     --background-3-color: rgba(14, 13, 13, 0.6); 
     --background-4-color: rgba(24, 24, 26, 0.219); 
@@ -10,14 +12,17 @@
     --primary-1-color: #ffee01;
     --primary-2-color: #292828;
 
-    --primary-1-color: #f0e9e5;
-    --primary-2-color: #ffbb01;
+    --primary-1-color: #ffee01;
+    --primary-2-color: #2C313D;
+
+
 
     --card-1-color: #2b2d35;
+    --card-1-color: #171923;
 
 
     --text-1-color: #ffffff;
-    --text-2-color: #e0e0e0;
+    --text-2-color: #ffffff;
     --text-3-color: #4a4a4a;
     --text-4-color: rgba(255,255,255,0.8);
     --text-5-color: rgba(255,255,255,0.5);
@@ -33,14 +38,13 @@
 * {
     margin: 0px;
     padding: 0px;
-    font-family: 'Quicksand', sans-serif;    
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;   
     letter-spacing: 0.5px;   
 }
 
 html {
     overflow-y: scroll;
     background-color: var(--background-1-color);
-    background-image: linear-gradient(to right, var(--background-1-color), var(--background-2-color));
 }
 
 html, body {
@@ -68,7 +72,7 @@ h2 {
 p {
     color: var(--text-4-color);
     font-size: 1em;
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .text-error {
@@ -140,30 +144,27 @@ textarea {
 }
 
 button {
-    padding: 0.8em 1.2em;
-    border-radius: 5px;
+    padding: 0.8em 0.9em;
+    border-radius: 4px;
     outline: none;
     cursor: pointer;
-    font-weight: 600;
-    font-size: 1rem;
+    font-weight: 400;
+    font-size: 1em;
     box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
     transition: all 0.5s;
     white-space: nowrap;
 }
 
 .button-primary {
-    background-color: var(--primary-1-color);
-    border: solid 2px var(--primary-1-color);
+    background-color: var(--primary-2-color);
+    border: solid 2px var(--primary-2-color);
     color: var(--text-1-color);
-    color: black;
 }
 
 .button-secondary {
     background-color: var(--primary-2-color);
     border: solid 2px var(--primary-2-color);
-
     color: var(--text-1-color);
-    color: black;
 }
 
 .width-120 {

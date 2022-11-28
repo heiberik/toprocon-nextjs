@@ -5,8 +5,9 @@
     height: 20em;
     justify-content: center;    
     margin-bottom: 45px;
-    background-color: var(--background-3-color);
     position: absolute;
+    background-image: linear-gradient(to right, var(--background-2-color), var(--background-3-color));
+
     left: 0px;
     top: 6.5em;
 }
@@ -24,21 +25,19 @@
     font-size: 3em;
     text-align: left;
     width: fit-content;
-    color: var(--primary-2-color);
+    color: var(--primary-1-color);
     background-clip: text;
     -webkit-background-clip: text;
 }
 
 .header-colorized {
     font-size: 5em !important;
-    -webkit-text-fill-color: transparent;
-    background: linear-gradient(to right, white 0%, white 25%,var(--primary-2-color)26%, var(--primary-2-color)61%, white 62%);
 }
 
 .container-banner p {
     margin-top: 10px;
     max-width: 70ch;
-    font-size: 1.2rem;
+    font-size: 1rem;
     text-align: left;
     color: rgba(255, 255, 255, 0.8);
     width: fit-content;

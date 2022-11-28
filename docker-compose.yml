@@ -1,0 +1,32 @@
+version: "3.8"
+services:
+  mongodb:
+    image: "mongo"
+    volumes:
+      - data:/data/db
+    networks:
+      - mern-app
+  nextjs:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    environment:
+      - reRestStrats=FALSE
+    networks:
+      - mern-app
+    volumes:
+      - logs:/app/logs
+      - ./server:/app
+      - /app/node_modules
+    depends_on:
+      - mongodb
+    ports:
+      - "3000:3000"
+
+networks:
+  mern-app:
+    driver: bridge
+
+volumes:
+  data:
+  logs:

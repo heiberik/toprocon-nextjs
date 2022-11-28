@@ -1,6 +1,6 @@
 .container-card-topic {
     padding: 15px;
-    background-color: var(--card-1-color);
+    background-color: var(--primary-2-color);
     margin-bottom: 15px;
     border-radius: 10px;
     cursor: pointer;
@@ -8,12 +8,10 @@
     align-items: center;
     position: relative;
     transition: all 0.1s;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
-    border: solid 2px var(--text-3-color);
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
 }
 
 .container-card-topic:hover {
-    border: solid 2px var(--text-5-color);
 }
 
 
@@ -23,7 +21,7 @@
     font-size: 1.1rem;
     margin-left: 5px;
     margin-right: 20px; 
-    border-left: 2px solid var(--text-3-color);
+    border-left: 1px solid var(--text-3-color);
     padding: 15px;
 }
 
