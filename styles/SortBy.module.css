@@ -11,7 +11,7 @@
     position: absolute;
     right: 15px;
     top: 12px;
-    color: inherit;
+    color: var(--text-1-color);
     width: 25px;
     height: 25px;
     cursor: pointer;
@@ -49,16 +49,13 @@
 }
 
 .sortby-dropdown .sortby-active {
-    color: var(--text-6-color);
+    color: var(--text-1-color);
     background-color: var(--primary-2-color);
     border: solid 2px var(--primary-2-color);;
     box-shadow: none;
     opacity: 1;
 }
 
-.sortby-dropdown .sortby-active:hover {
-    color: var(--text-6-color);
-}
 
 .dummy-path {
     width: 100%;

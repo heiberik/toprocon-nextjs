@@ -3,8 +3,7 @@ import topicRoutes from './modules/topic/topicRoutes.js'
 import reportRoutes from "./modules/report/reportRoutes.js"
 import boardRoutes from "./modules/leaderboard/boardRoutes.js"
 import argumentRoutes from './modules/argument/argumentRoutes.js'
-import herokuSSLRedirect from 'heroku-ssl-redirect';
-const sslRedirect = herokuSSLRedirect.default
+
 import bp from 'body-parser'
 import connectDB from './config/db.js'
 import express from 'express'
@@ -18,7 +17,6 @@ app.prepare().then(() => {
 
     const server = express()
 
-    server.use(sslRedirect());
     server.use(bp.json())
     server.use(bp.urlencoded({ extended: true }))
 
@@ -35,6 +33,8 @@ app.prepare().then(() => {
     server.get('*', (req, res) => {
         return handle(req, res)
     })
+
+    console.log("HEHEHE");
 
     const PORT = process.env.PORT || 3000
     server.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`))
